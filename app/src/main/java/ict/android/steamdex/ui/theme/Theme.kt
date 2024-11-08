@@ -8,6 +8,7 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
 private val LightColorScheme = lightColorScheme(
@@ -89,6 +90,7 @@ private val DarkColorScheme = darkColorScheme(
 @Composable
 fun SteamDexTheme(
     darkTheme: Boolean? = null,
+    amoledMode: Boolean = false,
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
@@ -96,8 +98,21 @@ fun SteamDexTheme(
     val colorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current
-            if (isDarkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+            when {
+                isDarkTheme && amoledMode -> dynamicDarkColorScheme(context).copy(
+                    background = Color.Black,
+                    surface = Color.Black
+                )
+
+                isDarkTheme -> dynamicDarkColorScheme(context)
+                else -> dynamicLightColorScheme(context)
+            }
         }
+
+        isDarkTheme && amoledMode -> DarkColorScheme.copy(
+            background = Color.Black,
+            surface = Color.Black
+        )
 
         isDarkTheme -> DarkColorScheme
         else -> LightColorScheme
