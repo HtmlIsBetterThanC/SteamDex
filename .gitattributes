@@ -1,0 +1,1 @@
+config/detekt/detekt-compose-0.4.17-all.jar filter=lfs diff=lfs merge=lfs -text
