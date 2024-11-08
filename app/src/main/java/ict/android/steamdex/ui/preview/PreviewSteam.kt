@@ -21,7 +21,6 @@ annotation class PreviewSteam
 @Preview(name = "200%", group = "Font", fontScale = 2f)
 annotation class PreviewSteamFontSize
 
-
 @Preview(
     name = "api 28",
     group = "apiLevels",
