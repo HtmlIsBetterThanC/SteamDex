@@ -11,7 +11,7 @@ complexity:
     thresholdInFiles: 16
     thresholdInInterfaces: 16
     thresholdInClasses: 16
-    ignoreAnnotatedFunctions: [ 'PreviewTok' ]
+    ignoreAnnotatedFunctions: [ 'PreviewSteam' ]
   LongParameterList:
     ignoreDefaultParameters: true
     functionThreshold: 15
@@ -21,7 +21,7 @@ style:
   MagicNumber:
     active: false
   UnusedPrivateMember:
-    ignoreAnnotated: [ 'PreviewTok' ]
+    ignoreAnnotated: [ 'PreviewSteam' ]
 Compose:
   ComposableAnnotationNaming:
     active: true
