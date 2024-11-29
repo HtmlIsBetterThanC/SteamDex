@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">SteamDex</string>
+    <string name="settings_language_title">Language</string>
+    <string name="settings_theme_title">Theme</string>
+    <string name="settings_pitch_black_title">Pitch Black</string>
+    <string name="settings_material_you_title">Material You</string>
+    <string name="settings_default_startup_page_title">Default Startup Page</string>
+    <string name="settings_restore_default_title">Restore Default</string>
+    <string name="settings_play_arrow_icon_description">Change settings of %1$s</string>
 </resources>
