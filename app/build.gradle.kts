@@ -50,6 +50,16 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
 
+    // Image loader
+    implementation(libs.coil.compose)
+    implementation(libs.coil.video)
+    implementation(libs.coil.network.ktor3)
+    implementation(libs.coil.network.cache.control)
+
+    // HTTP Client
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.cio)
+
     // Test
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
