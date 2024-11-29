@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SteamDex</string>
+    <string name="cancel_button_title">Cancel</string>
+    <string name="confirm_button_title">Confirm</string>
 </resources>
