@@ -15,7 +15,7 @@ fun PrimaryButton(
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     content:
-    @Composable()
+    @Composable
     (RowScope.() -> Unit)
 ) {
     ElevatedButton(
