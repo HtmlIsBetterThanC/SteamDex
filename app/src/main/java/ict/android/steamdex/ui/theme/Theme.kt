@@ -91,7 +91,8 @@ private val DarkColorScheme = darkColorScheme(
 fun SteamDexTheme(
     darkTheme: Boolean? = null,
     amoledMode: Boolean = false,
-    dynamicColor: Boolean = true,
+    // TODO rename to materialYou
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val isDarkTheme = darkTheme ?: isSystemInDarkTheme()
