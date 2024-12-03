@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -165,7 +164,7 @@ private fun TopAppBarLargePreview() {
             TopAppBarLarge(
                 profile = profile,
                 backEnabled = true,
-                firstIconId = R.drawable.cake,
+                firstIconId = R.drawable.age,
                 secondIconId = R.drawable.country_code,
                 firstIconDescriptionId = R.string.profile_age_icon_description,
                 secondIconDescriptionId = R.string.profile_country_code_description,
