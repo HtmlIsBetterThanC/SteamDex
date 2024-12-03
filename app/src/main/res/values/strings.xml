@@ -7,4 +7,15 @@
     <string name="settings_default_startup_page_title">Default Startup Page</string>
     <string name="settings_restore_default_title">Restore Default</string>
     <string name="settings_play_arrow_icon_description">Change settings of %1$s</string>
+    <string name="cancel_button_title">Cancel</string>
+    <string name="confirm_button_title">Confirm</string>
+    <string name="back_arrow_icon_description">Back arrow icon</string>
+    <string name="explore_navbar_name">Explore</string>
+    <string name="library_navbar_name">Library</string>
+    <string name="profile_navbar_name">Profile</string>
+    <string name="explore_icon_description">Explore icon</string>
+    <string name="library_icon_description">Library icon</string>
+    <string name="profile_icon_description">Profile icon</string>
+    <string name="profile_age_icon_description">Age of Steam account icon</string>
+    <string name="profile_country_code_description">Country code Steam account icon</string>
 </resources>
