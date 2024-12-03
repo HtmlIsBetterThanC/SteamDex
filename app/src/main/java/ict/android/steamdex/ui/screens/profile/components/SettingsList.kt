@@ -20,6 +20,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.Stable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -31,14 +32,13 @@ import ict.android.steamdex.ui.theme.SteamDexTheme
 
 @Composable
 fun SettingsList(
-    settingsItems: List<SettingsItem>,
     onItemClick: (item: SettingsItem) -> Unit,
     modifier: Modifier = Modifier
 ) {
     LazyColumn(
         modifier = modifier
     ) {
-        items(settingsItems) { item -> SettingItemRow(item, onItemClick) }
+        items(settingsList) { item -> SettingItemRow(item, onItemClick) }
     }
 }
 
@@ -80,7 +80,41 @@ fun SettingItemRow(
 data class SettingsItem(
     val name: String,
     @StringRes val titleId: Int,
-    @DrawableRes val iconId: Int,
+    @DrawableRes val iconId: Int
+)
+
+@Stable
+private val settingsList = listOf(
+    SettingsItem(
+        "language",
+        R.string.settings_language_title,
+        R.drawable.language
+    ),
+    SettingsItem(
+        "theme",
+        R.string.settings_theme_title,
+        R.drawable.theme
+    ),
+    SettingsItem(
+        "pitchBlack",
+        R.string.settings_pitch_black_title,
+        R.drawable.pitch_black
+    ),
+    SettingsItem(
+        "materialYou",
+        R.string.settings_material_you_title,
+        R.drawable.material_you
+    ),
+    SettingsItem(
+        "defaultStartupPage",
+        R.string.settings_default_startup_page_title,
+        R.drawable.default_startup_page
+    ),
+    SettingsItem(
+        "restoreDefault",
+        R.string.settings_restore_default_title,
+        R.drawable.restore_defaults
+    )
 )
 
 @PreviewSteam
@@ -92,43 +126,9 @@ fun SettingsListPreview() {
             Modifier
                 .background(MaterialTheme.colorScheme.background)
                 .safeContentPadding()
-                .fillMaxSize(),
+                .fillMaxSize()
         ) {
-            SettingsList(
-                settingsItems = listOf(
-                    SettingsItem(
-                        "language",
-                        R.string.settings_language_title,
-                        R.drawable.language
-                    ),
-                    SettingsItem(
-                        "theme",
-                        R.string.settings_theme_title,
-                        R.drawable.theme
-                    ),
-                    SettingsItem(
-                        "pitchBlack",
-                        R.string.settings_pitch_black_title,
-                        R.drawable.pitch_black
-                    ),
-                    SettingsItem(
-                        "materialYou",
-                        R.string.settings_material_you_title,
-                        R.drawable.material_you
-                    ),
-                    SettingsItem(
-                        "defaultStartupPage",
-                        R.string.settings_default_startup_page_title,
-                        R.drawable.default_startup_page
-                    ),
-                    SettingsItem(
-                        "restoreDefault",
-                        R.string.settings_restore_default_title,
-                        R.drawable.restore_defaults
-                    )
-                ),
-                {},
-            )
+            SettingsList({})
         }
     }
 }

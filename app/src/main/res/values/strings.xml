@@ -18,4 +18,6 @@
     <string name="profile_icon_description">Profile icon</string>
     <string name="profile_age_icon_description">Age of Steam account icon</string>
     <string name="profile_country_code_description">Country code Steam account icon</string>
+    <string name="friends_number_icon_description">Left Icon</string>
+    <string name="games_number_icon_description">Right Icon</string>
 </resources>
