@@ -136,7 +136,8 @@ private fun SingleDetail(
     ) {
         Icon(
             painter = painterResource(iconId),
-            contentDescription = stringResource(iconDescriptionId)
+            contentDescription = stringResource(iconDescriptionId),
+            modifier = Modifier.size(40.dp)
         )
         Text(
             text = details,

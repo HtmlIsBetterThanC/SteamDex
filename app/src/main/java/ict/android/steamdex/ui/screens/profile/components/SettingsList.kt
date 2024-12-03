@@ -4,6 +4,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -15,6 +16,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
+import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -22,6 +24,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -35,10 +38,15 @@ fun SettingsList(
     onItemClick: (item: SettingsItem) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    LazyColumn(
-        modifier = modifier
+    Surface(
+        modifier = modifier,
+        color = Color.Transparent
     ) {
-        items(settingsList) { item -> SettingItemRow(item, onItemClick) }
+        LazyColumn(
+            modifier = modifier
+        ) {
+            items(settingsList) { item -> SettingItemRow(item, onItemClick) }
+        }
     }
 }
 
@@ -54,7 +62,14 @@ fun SettingItemRow(
         modifier = modifier
             .fillMaxWidth()
             .clickable { onItemClick(item) }
+            .background(Color.Transparent)
             .padding(vertical = 12.dp),
+        //If the items of the list reappear, just remove the settings and put them back on
+        colors = ListItemDefaults.colors(
+            containerColor = Color.Transparent,
+            headlineColor = MaterialTheme.colorScheme.onSurface,
+            leadingIconColor = MaterialTheme.colorScheme.onSurfaceVariant
+        ),
         leadingContent = {
             Icon(
                 painter = painterResource(item.iconId),
