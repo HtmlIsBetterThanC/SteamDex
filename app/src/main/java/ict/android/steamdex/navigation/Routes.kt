@@ -3,13 +3,14 @@ package ict.android.steamdex.navigation
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.Stable
 import kotlinx.serialization.Serializable
 
 @Serializable
 object LoginRoute
 
 @Serializable
-object HomeRoute
+object ExploreRoute
 
 @Serializable
 object LibraryRoute
