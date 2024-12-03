@@ -104,7 +104,7 @@ fun TopAppBarLarge(
         }
         Row(
             modifier = Modifier.padding(10.dp),
-            horizontalArrangement = Arrangement.spacedBy(10.dp),
+            horizontalArrangement = Arrangement.spacedBy(15.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             SingleDetail(
@@ -136,7 +136,8 @@ private fun SingleDetail(
     ) {
         Icon(
             painter = painterResource(iconId),
-            contentDescription = stringResource(iconDescriptionId)
+            contentDescription = stringResource(iconDescriptionId),
+            modifier = Modifier.size(40.dp)
         )
         Text(
             text = details,
