@@ -18,7 +18,7 @@ fun NavigationHost(
         startDestination = startDestination
     ) {
         fadeComposable<LoginRoute> { }
-        fadeComposable<HomeRoute> { }
+        fadeComposable<ExploreRoute> { }
         fadeComposable<LibraryRoute> { }
         fadeComposable<GameRoute> { }
         fadeComposable<PublisherRoute> { }

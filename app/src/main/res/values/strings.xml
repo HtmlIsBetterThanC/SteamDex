@@ -3,4 +3,10 @@
     <string name="cancel_button_title">Cancel</string>
     <string name="confirm_button_title">Confirm</string>
     <string name="back_arrow_icon_description">Back arrow icon</string>
+    <string name="explore_navbar_name">Explore</string>
+    <string name="library_navbar_name">Library</string>
+    <string name="profile_navbar_name">Profile</string>
+    <string name="explore_icon_description">Explore icon</string>
+    <string name="library_icon_description">Library icon</string>
+    <string name="profile_icon_description">Profile icon</string>
 </resources>
