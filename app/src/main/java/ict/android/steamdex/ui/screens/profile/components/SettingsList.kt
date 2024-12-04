@@ -4,7 +4,6 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -64,7 +63,7 @@ fun SettingItemRow(
             .clickable { onItemClick(item) }
             .background(Color.Transparent)
             .padding(vertical = 12.dp),
-        //If the items of the list reappear, just remove the settings and put them back on
+        // If the items of the list reappear, just remove the settings and put them back on
         colors = ListItemDefaults.colors(
             containerColor = Color.Transparent,
             headlineColor = MaterialTheme.colorScheme.onSurface,

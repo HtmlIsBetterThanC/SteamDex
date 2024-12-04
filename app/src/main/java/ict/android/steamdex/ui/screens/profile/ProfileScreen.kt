@@ -12,7 +12,7 @@ import ict.android.steamdex.R
 import ict.android.steamdex.ui.components.TopAppBarLarge
 import ict.android.steamdex.ui.preview.PreviewData.profiles
 import ict.android.steamdex.ui.preview.PreviewSteam
-import ict.android.steamdex.ui.screens.profile.components.AppGradients
+import ict.android.steamdex.ui.screens.profile.components.GradientBackground
 import ict.android.steamdex.ui.screens.profile.components.SettingsItem
 import ict.android.steamdex.ui.screens.profile.components.SettingsList
 import ict.android.steamdex.ui.theme.SteamDexTheme
@@ -23,11 +23,11 @@ fun ProfileScreen(
     onSettingsItemClick: (SettingsItem) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    //Applying gradient on the whole screen for Dark Theme - DG
-    //If it bugs out, remove and put it back on
+    // Applying gradient on the whole screen for Dark Theme - DG
+    // If it bugs out, remove and put it back on
     val isDarkTheme = isSystemInDarkTheme()
     val finalModifier = if (isDarkTheme) {
-        modifier.then(AppGradients.gameDetailsBackground)
+        modifier.then(GradientBackground.gameDetailsBackground)
     } else {
         modifier
     }
@@ -45,7 +45,7 @@ fun ProfileScreen(
                 firstIconDescriptionId = R.string.games_number_icon_description,
                 secondIconDescriptionId = R.string.games_number_icon_description,
                 firstDetails = profile.totalGames.toString(),
-                secondDetails = uiState.totalFriends,
+                secondDetails = uiState.totalFriends
             )
         }
     ) { innerPadding ->
