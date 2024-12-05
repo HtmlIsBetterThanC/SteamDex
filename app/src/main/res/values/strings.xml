@@ -9,4 +9,6 @@
     <string name="explore_icon_description">Explore icon</string>
     <string name="library_icon_description">Library icon</string>
     <string name="profile_icon_description">Profile icon</string>
+    <string name="profile_age_icon_description">Age of Steam account icon</string>
+    <string name="profile_country_code_description">Country code Steam account icon</string>
 </resources>
