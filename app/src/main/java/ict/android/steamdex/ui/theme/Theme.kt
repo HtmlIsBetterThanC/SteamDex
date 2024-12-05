@@ -91,12 +91,12 @@ private val DarkColorScheme = darkColorScheme(
 fun SteamDexTheme(
     darkTheme: Boolean? = null,
     amoledMode: Boolean = false,
-    dynamicColor: Boolean = true,
+    materialYou: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val isDarkTheme = darkTheme ?: isSystemInDarkTheme()
     val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+        materialYou && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current
             when {
                 isDarkTheme && amoledMode -> dynamicDarkColorScheme(context).copy(
