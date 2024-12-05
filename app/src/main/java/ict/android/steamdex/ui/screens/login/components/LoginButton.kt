@@ -27,12 +27,12 @@ fun LoginButton(
     ) {
         Row(
             horizontalArrangement = Arrangement.spacedBy(4.dp),
-            verticalAlignment = Alignment.CenterVertically,
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Text(stringResource(R.string.loginScreen_login_button_text))
             Icon(
                 painter = painterResource(R.drawable.steam_icon),
-                contentDescription = null,
+                contentDescription = null
             )
             Text(stringResource(R.string.steam))
         }

@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import ict.android.steamdex.ui.preview.PreviewSteam
 import ict.android.steamdex.ui.screens.login.components.LoginButton
-import ict.android.steamdex.ui.screens.login.components.LogoIcon
+import ict.android.steamdex.ui.screens.login.components.LogoAppIcon
 import ict.android.steamdex.ui.screens.login.components.WelcomeText
 import ict.android.steamdex.ui.theme.SteamDexTheme
 
@@ -30,9 +30,8 @@ fun LoginScreen(
                 .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
-
         ) {
-            LogoIcon(Modifier.size(240.dp))
+            LogoAppIcon(Modifier.size(240.dp))
 
             Column(
                 modifier = Modifier.padding(top = 60.dp),
