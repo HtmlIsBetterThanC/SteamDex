@@ -10,6 +10,7 @@ kotlinxSerialization = "1.7.3"
 kotlinSerialization = "2.0.20"
 ktor = "3.0.1"
 lifecycleRuntimeKtx = "2.8.7"
+aboutLibs = "11.2.3"
 activityCompose = "1.9.3"
 composeBom = "2024.10.01"
 navigationCompose = "2.8.4"
@@ -40,6 +41,8 @@ coil-network-cache-control = { module = "io.coil-kt.coil3:coil-network-cache-con
 coil-video = { module = "io.coil-kt.coil3:coil-video", version.ref = "coil" }
 ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+aboutlibraries-core = { group = "com.mikepenz", name = "aboutlibraries-core", version.ref = "aboutLibs" }
+aboutlibraries-compose = { group = "com.mikepenz", name = "aboutlibraries-compose-m3", version.ref = "aboutLibs" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -47,3 +50,4 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinSerialization" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 detekt-jvm = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+aboutlibraries = { id = "com.mikepenz.aboutlibraries.plugin", version.ref = "aboutLibs" }

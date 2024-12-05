@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.aboutlibraries)
 }
 
 android {
@@ -72,6 +73,10 @@ dependencies {
     // HTTP Client
     implementation(libs.ktor.client.core)
     implementation(libs.ktor.client.cio)
+
+    // About libraries
+    implementation(libs.aboutlibraries.core)
+    implementation(libs.aboutlibraries.compose)
 
     // Test
     testImplementation(libs.junit)
