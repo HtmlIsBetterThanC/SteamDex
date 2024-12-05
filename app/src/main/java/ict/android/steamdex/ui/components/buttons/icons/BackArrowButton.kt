@@ -25,7 +25,7 @@ fun BackArrowButton(
             imageVector = Icons.AutoMirrored.Default.ArrowBack,
             contentDescription = stringResource(R.string.back_arrow_icon_description),
             modifier = modifier,
-            tint = tint,
+            tint = tint
         )
     }
 }
