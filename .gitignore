@@ -16,3 +16,5 @@
 .cxx
 local.properties
 .kotlin
+.idea/compiler.xml
+/.idea/codeStyles
