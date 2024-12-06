@@ -1,4 +1,4 @@
-package ict.android.steamdex.ui.screens.calculator.components
+package ict.android.steamdex.ui.components
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.background
