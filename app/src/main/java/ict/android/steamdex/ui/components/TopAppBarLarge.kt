@@ -137,7 +137,8 @@ private fun SingleDetail(
         Icon(
             painter = painterResource(iconId),
             contentDescription = stringResource(iconDescriptionId),
-            modifier = Modifier.size(40.dp)
+            modifier = Modifier.size(40.dp),
+            tint = MaterialTheme.colorScheme.onSurface
         )
         Text(
             text = details,
@@ -154,12 +155,13 @@ private fun TopAppBarLargePreview() {
         name = "allolla",
         iconUrl = "",
         level = 50,
+        totalValue = 6789,
         totalGames = 500,
         totalHours = 890.5,
         playedGames = 290,
         countryCode = "CA",
-        age = "8.0"
-    )
+        age = "8.0",
+        )
     SteamDexTheme {
         Surface {
             TopAppBarLarge(

@@ -20,4 +20,10 @@
     <string name="profile_country_code_description">Country code Steam account icon</string>
     <string name="friends_number_icon_description">Left Icon</string>
     <string name="games_number_icon_description">Right Icon</string>
+    <string name="eur_symbol">€</string>
+    <string name="calculator_preview_total_value">Total value:</string>
+    <string name="button_calculator">Calculator</string>
+    <string name="progress_bar_out_of">out of</string>
+    <string name="progress_bar_games_played">games played</string>
+    <string name="button_icon_calculator">Calculator</string>
 </resources>

@@ -1,6 +1,8 @@
 package ict.android.steamdex.ui.components.buttons
 
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -14,6 +16,7 @@ fun PrimaryButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
+    colors: ButtonColors = ButtonDefaults.buttonColors(),
     content:
     @Composable
     (RowScope.() -> Unit)
@@ -22,7 +25,8 @@ fun PrimaryButton(
         onClick = onClick,
         modifier = modifier,
         enabled = enabled,
-        content = content
+        content = content,
+        colors = colors
     )
 }
 
