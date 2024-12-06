@@ -8,15 +8,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import ict.android.steamdex.R
+import ict.android.steamdex.ui.components.TopAppBarLarge
 import ict.android.steamdex.ui.preview.PreviewSteam
 import ict.android.steamdex.ui.preview.providers.CalculatorPreviewParametersProvider
-import ict.android.steamdex.ui.components.TopAppBarLarge
+import ict.android.steamdex.ui.screens.calculator.components.HeaderGameList
 import ict.android.steamdex.ui.theme.SteamDexTheme
 
 @Composable
 fun CalculatorScreen(
     uiState: CalculatorUiState,
     onBackClick: () -> Unit,
+
     modifier: Modifier = Modifier
 ) {
     val profile = uiState.profile
@@ -41,7 +43,12 @@ fun CalculatorScreen(
                 .padding(innerPadding)
                 .fillMaxSize()
         ) {
-
+            HeaderGameList(
+                headerListName = R.string.header_title_owned_games,
+                firstParameterTitle = R.string.header_price_hour_parameter,
+                secondParameterTitle = R.string.header_price_parameter,
+                thirdParameterTitle = R.string.header_time_parameter,
+            )
         }
     }
 }
