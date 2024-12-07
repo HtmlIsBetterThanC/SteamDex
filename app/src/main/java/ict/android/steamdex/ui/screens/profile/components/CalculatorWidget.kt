@@ -27,11 +27,8 @@ import androidx.compose.ui.unit.dp
 import ict.android.steamdex.R
 import ict.android.steamdex.models.ui.UiProfile
 import ict.android.steamdex.ui.components.buttons.PrimaryButton
-import ict.android.steamdex.ui.preview.PreviewData.profiles
 import ict.android.steamdex.ui.preview.PreviewSteam
 import ict.android.steamdex.ui.theme.SteamDexTheme
-
-val profile = profiles.first() // TODO delete this shit
 
 @Composable
 fun CalculatorWidget(
@@ -40,7 +37,6 @@ fun CalculatorWidget(
     modifier: Modifier = Modifier
 ) {
     Column(
-
         modifier = modifier
             .clip(RoundedCornerShape(10.dp))
             .background(color = MaterialTheme.colorScheme.onSecondary)

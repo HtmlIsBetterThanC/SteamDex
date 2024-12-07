@@ -1,6 +1,5 @@
 package ict.android.steamdex.ui.screens.profile
 
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,10 +13,10 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import ict.android.steamdex.R
 import ict.android.steamdex.ui.components.TopAppBarLarge
+import ict.android.steamdex.ui.components.modifiers.gradientBackground
 import ict.android.steamdex.ui.preview.PreviewSteam
 import ict.android.steamdex.ui.preview.providers.ProfilePreviewParametersProvider
 import ict.android.steamdex.ui.screens.profile.components.CalculatorWidget
-import ict.android.steamdex.ui.screens.profile.components.GradientBackground
 import ict.android.steamdex.ui.screens.profile.components.SettingsItem
 import ict.android.steamdex.ui.screens.profile.components.SettingsList
 import ict.android.steamdex.ui.theme.SteamDexTheme
@@ -29,19 +28,9 @@ fun ProfileScreen(
     onCalculatorWidgetButtonClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    // TODO change to the other gradient
-    // Applying gradient on the whole screen for Dark Theme - DG
-    // If it bugs out, remove and put it back on
-    val isDarkTheme = isSystemInDarkTheme()
-    val finalModifier = if (isDarkTheme) {
-        modifier.then(GradientBackground.gameDetailsBackground)
-    } else {
-        modifier
-    }
-
     val profile = uiState.profile
     Scaffold(
-        modifier = finalModifier,
+        modifier = modifier.gradientBackground(true),
         containerColor = Color.Transparent,
         topBar = {
             TopAppBarLarge(
