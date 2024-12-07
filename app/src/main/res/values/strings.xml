@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">SteamDex</string>
+    <string name="header_title_owned_games">Owned Games</string>
+    <string name="header_price_hour_parameter">Price / Hour</string>
+    <string name="header_price_parameter">Price</string>
+    <string name="header_time_parameter">Time</string>
     <string name="settings_language_title">Language</string>
     <string name="settings_theme_title">Theme</string>
     <string name="settings_pitch_black_title">Pitch Black</string>
