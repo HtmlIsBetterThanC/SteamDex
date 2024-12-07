@@ -37,15 +37,10 @@ fun SettingsList(
     onItemClick: (item: SettingsItem) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Surface(
-        modifier = modifier,
-        color = Color.Transparent
+    LazyColumn(
+        modifier = modifier
     ) {
-        LazyColumn(
-            modifier = modifier
-        ) {
-            items(settingsList) { item -> SettingItemRow(item, onItemClick) }
-        }
+        items(settingsList) { item -> SettingItemRow(item, onItemClick) }
     }
 }
 
@@ -62,7 +57,7 @@ fun SettingItemRow(
             .fillMaxWidth()
             .clickable { onItemClick(item) }
             .background(Color.Transparent)
-            .padding(vertical = 12.dp),
+            .padding(vertical = 10.dp),
         // If the items of the list reappear, just remove the settings and put them back on
         colors = ListItemDefaults.colors(
             containerColor = Color.Transparent,

@@ -22,7 +22,7 @@ object PreviewData {
             totalValue = 17654,
             totalGames = 1567,
             totalHours = 4876.2,
-            playedGames = 423,
+            playedGames = 1322,
             countryCode = "DE",
             age = "9.8 years"
         ),
@@ -55,7 +55,7 @@ object PreviewData {
             totalValue = 14567,
             totalGames = 1314,
             totalHours = 3945.7,
-            playedGames = 389,
+            playedGames = 38,
             countryCode = "JP",
             age = "14.6 years"
         )
