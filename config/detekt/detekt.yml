@@ -58,9 +58,9 @@ Compose:
   ModifierNaming:
     active: true
   ModifierNotUsedAtRoot:
-    active: false
+    active: true
   ModifierReused:
-    active: false
+    active: true
   ModifierWithoutDefault:
     active: true
   MultipleEmitters:
