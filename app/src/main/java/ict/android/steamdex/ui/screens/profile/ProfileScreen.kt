@@ -13,7 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import ict.android.steamdex.R
-import ict.android.steamdex.ui.components.CalculatorWidget
+import ict.android.steamdex.ui.components.ProfileAdditionalDetail
 import ict.android.steamdex.ui.components.TopAppBarLarge
 import ict.android.steamdex.ui.components.modifiers.gradientBackground
 import ict.android.steamdex.ui.preview.PreviewSteam
@@ -31,14 +31,14 @@ fun ProfileScreen(
 ) {
     val profile = uiState.profile
     Scaffold(
-        modifier = modifier.gradientBackground(isSystemInDarkTheme()),
+        modifier = modifier,
         containerColor = Color.Transparent,
         topBar = {
             TopAppBarLarge(
                 profile = profile,
                 backEnabled = false,
                 firstIconId = R.drawable.games_number, // TODO discuss the usefulness of this data
-                secondIconId = R.drawable.age,
+                secondIconId = R.drawable.friends_number,
                 firstIconDescriptionId = R.string.games_number_icon_description,
                 secondIconDescriptionId = R.string.games_number_icon_description,
                 firstDetails = profile.totalGames.toString(),
@@ -51,7 +51,7 @@ fun ProfileScreen(
                 .fillMaxSize()
                 .padding(horizontal = 10.dp)
         ) {
-            CalculatorWidget(
+            ProfileAdditionalDetail(
                 profile = profile,
                 onClickButton = onCalculatorWidgetButtonClick,
                 additionalInfoEnabled = false
@@ -64,14 +64,15 @@ fun ProfileScreen(
 
 @PreviewSteam
 @Composable
-private fun ProfileScreenPreview(
+private fun ProfileScreenGradientPreview(
     @PreviewParameter(ProfilePreviewParametersProvider::class) uiState: ProfileUiState
 ) {
     SteamDexTheme {
         ProfileScreen(
             uiState,
             {},
-            {}
+            {},
+            Modifier.gradientBackground(isSystemInDarkTheme()),
         )
     }
 }
