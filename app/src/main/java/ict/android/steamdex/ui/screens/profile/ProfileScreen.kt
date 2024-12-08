@@ -13,11 +13,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import ict.android.steamdex.R
+import ict.android.steamdex.ui.components.CalculatorWidget
 import ict.android.steamdex.ui.components.TopAppBarLarge
 import ict.android.steamdex.ui.components.modifiers.gradientBackground
 import ict.android.steamdex.ui.preview.PreviewSteam
 import ict.android.steamdex.ui.preview.providers.ProfilePreviewParametersProvider
-import ict.android.steamdex.ui.components.CalculatorWidget
 import ict.android.steamdex.ui.screens.profile.components.SettingsItem
 import ict.android.steamdex.ui.screens.profile.components.SettingsList
 import ict.android.steamdex.ui.theme.SteamDexTheme
@@ -38,7 +38,7 @@ fun ProfileScreen(
                 profile = profile,
                 backEnabled = false,
                 firstIconId = R.drawable.games_number, // TODO discuss the usefulness of this data
-                secondIconId = R.drawable.friends_number,
+                secondIconId = R.drawable.age,
                 firstIconDescriptionId = R.string.games_number_icon_description,
                 secondIconDescriptionId = R.string.games_number_icon_description,
                 firstDetails = profile.totalGames.toString(),
@@ -56,7 +56,7 @@ fun ProfileScreen(
                 onClickButton = onCalculatorWidgetButtonClick,
                 additionalInfoEnabled = false
             )
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(Modifier.height(8.dp))
             SettingsList(onSettingsItemClick)
         }
     }

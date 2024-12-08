@@ -102,7 +102,7 @@ fun TopAppBarLarge(
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text =  profile.level.toString(),
+                    text = profile.level.toString(),
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurface
                 )
@@ -116,7 +116,7 @@ fun TopAppBarLarge(
             SingleDetail(
                 iconId = firstIconId,
                 iconDescriptionId = firstIconDescriptionId,
-                details = firstDetails,
+                details = firstDetails
             )
 
             SingleDetail(

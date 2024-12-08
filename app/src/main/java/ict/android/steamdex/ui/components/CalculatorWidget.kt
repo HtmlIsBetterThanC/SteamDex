@@ -42,7 +42,6 @@ fun CalculatorWidget(
             .clip(RoundedCornerShape(10.dp))
             .background(color = MaterialTheme.colorScheme.onSecondary)
             .padding(10.dp),
-
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
@@ -107,8 +106,7 @@ private fun ProgressBarSection(
     Column(
         modifier = modifier
             .padding(5.dp),
-        verticalArrangement = Arrangement.SpaceBetween,
-        horizontalAlignment = Alignment.Start
+        verticalArrangement = Arrangement.SpaceBetween
     ) {
         Row(
             horizontalArrangement = Arrangement.spacedBy(5.dp),
@@ -170,7 +168,7 @@ private fun CustomLinearProgressIndicator(
 @Composable
 fun CalculatorButton(
     onClick: () -> Unit,
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier
 ) {
     PrimaryButton(
         onClick = onClick,
@@ -188,8 +186,8 @@ fun CalculatorButton(
                     tint = MaterialTheme.colorScheme.onSurface
                 )
                 Text(
-                    modifier = Modifier,
                     text = stringResource(R.string.button_calculator),
+                    modifier = Modifier,
                     color = MaterialTheme.colorScheme.onSurface,
                     style = MaterialTheme.typography.bodyLarge
                 )
