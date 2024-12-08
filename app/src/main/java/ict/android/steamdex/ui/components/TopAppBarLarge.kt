@@ -54,16 +54,12 @@ fun TopAppBarLarge(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Row(
-                modifier = Modifier
-                    .weight(1f),
+                modifier = Modifier.weight(1f),
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 if (backEnabled) {
-                    BackArrowButton(
-                        onClick = onBackClick,
-                        modifier = modifier
-                    )
+                    BackArrowButton(onBackClick)
                 }
 
                 Box(
@@ -103,8 +99,8 @@ fun TopAppBarLarge(
             ) {
                 Text(
                     text = profile.level.toString(),
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.onSurface
+                    color = MaterialTheme.colorScheme.onSurface,
+                    style = MaterialTheme.typography.bodyLarge
                 )
             }
         }

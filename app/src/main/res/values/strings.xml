@@ -11,8 +11,14 @@
     <string name="profile_icon_description">Profile icon</string>
     <string name="profile_age_icon_description">Age of Steam account icon</string>
     <string name="profile_country_code_description">Country code Steam account icon</string>
+    <string name="calculator_preview_total_value">Total value:</string>
+    <string name="button_calculator">Calculator</string>
+    <string name="progress_bar_out_of">out of</string>
+    <string name="progress_bar_games_played">games played</string>
+    <string name="button_icon_calculator">Calculator</string>
     <string name="header_title_owned_games">Owned Games</string>
     <string name="header_price_hour_parameter">Price / Hour</string>
     <string name="header_price_parameter">Price</string>
     <string name="header_time_parameter">Time</string>
+    <string name="header_title_parameter">Title</string>
 </resources>
