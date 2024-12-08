@@ -1,5 +1,6 @@
 package ict.android.steamdex.ui.screens.profile
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,7 +17,7 @@ import ict.android.steamdex.ui.components.TopAppBarLarge
 import ict.android.steamdex.ui.components.modifiers.gradientBackground
 import ict.android.steamdex.ui.preview.PreviewSteam
 import ict.android.steamdex.ui.preview.providers.ProfilePreviewParametersProvider
-import ict.android.steamdex.ui.screens.profile.components.CalculatorWidget
+import ict.android.steamdex.ui.components.CalculatorWidget
 import ict.android.steamdex.ui.screens.profile.components.SettingsItem
 import ict.android.steamdex.ui.screens.profile.components.SettingsList
 import ict.android.steamdex.ui.theme.SteamDexTheme
@@ -30,7 +31,7 @@ fun ProfileScreen(
 ) {
     val profile = uiState.profile
     Scaffold(
-        modifier = modifier.gradientBackground(true),
+        modifier = modifier.gradientBackground(isSystemInDarkTheme()),
         containerColor = Color.Transparent,
         topBar = {
             TopAppBarLarge(
@@ -53,6 +54,7 @@ fun ProfileScreen(
             CalculatorWidget(
                 profile = profile,
                 onClickButton = onCalculatorWidgetButtonClick,
+                additionalInfoEnabled = false
             )
             Spacer(modifier = Modifier.height(8.dp))
             SettingsList(onSettingsItemClick)
