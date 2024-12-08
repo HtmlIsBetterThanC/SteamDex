@@ -21,4 +21,20 @@
     <string name="header_price_parameter">Price</string>
     <string name="header_time_parameter">Time</string>
     <string name="header_title_parameter">Title</string>
+    <string name="icon_content_description_most_played">Most played</string>
+    <string name="text_most_played">Most played</string>
+    <string name="icon_description_trending_games">Trending games</string>
+    <string name="text_trending_games">Trending games</string>
+    <string name="icon_description_games_on_sale">Games on sale</string>
+    <string name="text_games_on_sale">Games on sale</string>
+    <string name="icon_description_popular_games">Popular games</string>
+    <string name="text_popular_games">Popular games</string>
+    <string name="card_icon_image_carousel">Image carousel</string>
+    <string name="column_text_carousel_first">1st</string>
+    <string name="column_text_carousel_second">2nd</string>
+    <string name="column_text_carousel_third">3rd</string>
+    <string name="column_text_carousel_other_cases">%1$sth</string>
+    <string name="text_player_count">Player count: %1$s</string>
+    <string name="text_variant_player_count">Player count: %1$s</string>
+    <string name="search_button_icon_description_search">Search</string>
 </resources>

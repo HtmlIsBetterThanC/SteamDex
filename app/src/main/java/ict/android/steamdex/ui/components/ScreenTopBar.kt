@@ -1,5 +1,6 @@
 package ict.android.steamdex.ui.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -16,8 +17,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import ict.android.steamdex.ui.preview.PreviewSteam
 import ict.android.steamdex.ui.theme.SteamDexTheme
@@ -55,7 +58,11 @@ fun ScreenTopBar(
                 }
             }
         },
-        modifier = modifier,
+        colors = TopAppBarDefaults.topAppBarColors(
+            containerColor = Color.Transparent,
+            scrolledContainerColor = Color.Transparent
+        ),
+        modifier = modifier.background(Color.Transparent),
         actions = actions
     )
 }
