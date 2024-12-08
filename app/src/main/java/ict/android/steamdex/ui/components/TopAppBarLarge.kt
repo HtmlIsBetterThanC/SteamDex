@@ -84,8 +84,10 @@ fun TopAppBarLarge(
                 }
 
                 Text(
-                    profile.name,
-                    modifier = Modifier.basicMarquee()
+                    text = profile.name,
+                    modifier = Modifier.basicMarquee(),
+                    color = MaterialTheme.colorScheme.onSurface,
+                    style = MaterialTheme.typography.titleLarge
                 )
             }
 
@@ -99,7 +101,11 @@ fun TopAppBarLarge(
                     ),
                 contentAlignment = Alignment.Center
             ) {
-                Text(profile.level.toString())
+                Text(
+                    text = profile.level.toString(),
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
             }
         }
         Row(
@@ -137,7 +143,8 @@ private fun SingleDetail(
         Icon(
             painter = painterResource(iconId),
             contentDescription = stringResource(iconDescriptionId),
-            modifier = Modifier.size(40.dp)
+            modifier = Modifier.size(40.dp),
+            tint = MaterialTheme.colorScheme.onSurface
         )
         Text(
             text = details,
@@ -154,6 +161,7 @@ private fun TopAppBarLargePreview() {
         name = "allolla",
         iconUrl = "",
         level = 50,
+        totalValue = 42069,
         totalGames = 500,
         totalHours = 890.5,
         playedGames = 290,
