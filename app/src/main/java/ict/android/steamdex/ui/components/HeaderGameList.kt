@@ -27,7 +27,7 @@ fun HeaderGameList(
     @StringRes firstParameterTitle: Int,
     @StringRes secondParameterTitle: Int,
     @StringRes thirdParameterTitle: Int,
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier
 ) {
     Column(
         modifier = modifier
