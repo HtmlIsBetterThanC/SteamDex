@@ -30,4 +30,5 @@
     <string name="header_price_hour_parameter">Price / Hour</string>
     <string name="header_price_parameter">Price</string>
     <string name="header_time_parameter">Time</string>
+    <string name="header_title_parameter">Title</string>
 </resources>
