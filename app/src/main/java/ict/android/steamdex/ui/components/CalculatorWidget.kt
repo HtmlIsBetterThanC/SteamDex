@@ -1,4 +1,4 @@
-package ict.android.steamdex.ui.screens.profile.components
+package ict.android.steamdex.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -34,6 +34,7 @@ import ict.android.steamdex.ui.theme.SteamDexTheme
 fun CalculatorWidget(
     profile: UiProfile,
     onClickButton: () -> Unit,
+    additionalInfoEnabled: Boolean,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -52,6 +53,10 @@ fun CalculatorWidget(
             totalGames = profile.totalGames,
             gamesPlayed = profile.playedGames,
         )
+        if(additionalInfoEnabled){
+
+        }
+
         CalculatorButton(
             onClick = onClickButton
         )
@@ -212,6 +217,7 @@ private fun CalculatorPreviewPreview() {
             CalculatorWidget(
                 profile = profile,
                 onClickButton = {},
+                additionalInfoEnabled = false
             )
         }
     }
