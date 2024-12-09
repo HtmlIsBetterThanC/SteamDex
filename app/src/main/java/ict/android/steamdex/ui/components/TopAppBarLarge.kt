@@ -43,7 +43,9 @@ fun TopAppBarLarge(
     onBackClick: () -> Unit = {}
 ) {
     Column(
-        modifier = modifier,
+        modifier = modifier
+            .padding(vertical = 10.dp),
+        verticalArrangement = Arrangement.spacedBy(10.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Row(
@@ -59,7 +61,10 @@ fun TopAppBarLarge(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 if (backEnabled) {
-                    BackArrowButton(onBackClick)
+                    BackArrowButton(
+                        onClick = onBackClick,
+                        tint = MaterialTheme.colorScheme.onSurface
+                    )
                 }
 
                 Box(
@@ -105,7 +110,6 @@ fun TopAppBarLarge(
             }
         }
         Row(
-            modifier = Modifier.padding(10.dp),
             horizontalArrangement = Arrangement.spacedBy(15.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {

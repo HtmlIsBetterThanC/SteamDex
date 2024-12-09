@@ -1,5 +1,7 @@
 package ict.android.steamdex.ui.components
 
+import android.icu.text.DecimalFormat
+import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -9,8 +11,8 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -28,14 +30,16 @@ import ict.android.steamdex.R
 import ict.android.steamdex.models.ui.UiProfile
 import ict.android.steamdex.ui.components.buttons.PrimaryButton
 import ict.android.steamdex.ui.preview.PreviewSteam
+import ict.android.steamdex.ui.screens.calculator.CalculatorUiState
 import ict.android.steamdex.ui.theme.SteamDexTheme
+import java.time.format.TextStyle
 
 @Composable
 fun ProfileAdditionalDetail(
-    profile: UiProfile,
-    onClickButton: () -> Unit,
-    additionalInfoEnabled: Boolean,
-    modifier: Modifier = Modifier
+    calculator: CalculatorUiState, // TODO to rework with UiProfile object
+    modifier: Modifier = Modifier,
+    additionalInfoEnabled: Boolean = false,
+    onCalculatorClick: () -> Unit = {},
 ) {
     Column(
         modifier = modifier
@@ -45,29 +49,45 @@ fun ProfileAdditionalDetail(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
-        TotalValueSection(
-            totalGamesValue = profile.totalValue
+        ValueSection(
+            labelValue = R.string.profile_additional_details_total_value,
+            styleValue = MaterialTheme.typography.headlineSmall,
+            value = calculator.profile.totalValue.toString(),
+            trailingUnit = "€",
         )
-        ProgressBarSection(
-            totalGames = profile.totalGames,
-            gamesPlayed = profile.playedGames
+        ProgressBarGamesPlayed(
+            gamesPlayed = calculator.profile.playedGames,
+            totalGames = calculator.profile.totalGames
         )
-        if(additionalInfoEnabled){
 
+        if (additionalInfoEnabled) {
+            ProgressBarXp(calculator.currentXpToNextLevel)
+            ValueSection(
+                labelValue = R.string.profile_additional_details_total_hours,
+                styleValue = MaterialTheme.typography.labelLarge,
+                value = calculator.profile.totalHours.toString(),
+                trailingUnit = "h",
+            )
+            ValueSection(
+                labelValue = R.string.profile_additional_details_today_value,
+                styleValue = MaterialTheme.typography.labelLarge,
+                value = calculator.todayValue.toString(),
+                trailingUnit = "€",
+            )
+        } else {
+            CalculatorButton(onCalculatorClick)
         }
-
-        CalculatorButton(
-            onClick = onClickButton
-        )
     }
 }
 
 @Composable
-private fun TotalValueSection(
-    totalGamesValue: Int,
+private fun ValueSection(
+    @StringRes labelValue: Int,
+    value: String,
+    trailingUnit: String, // TODO check if it's correct in this way
+    styleValue: androidx.compose.ui.text.TextStyle,
     modifier: Modifier = Modifier,
-    // TODO don't leave it as default
-    currency: String = "€"
+
 ) {
     Row(
         modifier = modifier
@@ -77,33 +97,35 @@ private fun TotalValueSection(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            text = stringResource(R.string.calculator_preview_total_value),
+            text = stringResource(labelValue),
             color = MaterialTheme.colorScheme.onSurface,
-            style = MaterialTheme.typography.headlineSmall
+            style = styleValue
         )
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = totalGamesValue.toString(),
+                text = value,
                 color = MaterialTheme.colorScheme.secondaryContainer,
-                style = MaterialTheme.typography.headlineSmall
+                style = styleValue
             )
             Text(
-                text = currency,
+                text = trailingUnit,
                 color = MaterialTheme.colorScheme.secondaryContainer,
-                style = MaterialTheme.typography.headlineSmall
+                style = styleValue
+
             )
         }
     }
 }
 
 @Composable
-private fun ProgressBarSection(
-    totalGames: Int,
+private fun ProgressBarGamesPlayed(
     gamesPlayed: Int,
-    modifier: Modifier = Modifier
+    totalGames: Int,
+    modifier: Modifier = Modifier,
+    ratio: Float = gamesPlayed.toFloat() / totalGames.toFloat()
 ) {
     Column(
         modifier = modifier
@@ -119,26 +141,53 @@ private fun ProgressBarSection(
                 color = MaterialTheme.colorScheme.primaryContainer,
                 style = MaterialTheme.typography.titleMedium
             )
+
+            val dec = DecimalFormat("#.00")
+            val percentageRatio = ratio * 100f
             Text(
-                text = stringResource(R.string.progress_bar_out_of),
-                color = MaterialTheme.colorScheme.onSurface,
-                style = MaterialTheme.typography.titleMedium
+                text = "(${dec.format(percentageRatio)}%)",
+                color = MaterialTheme.colorScheme.primary,
+                style = MaterialTheme.typography.labelLarge
             )
+
             Text(
-                text = totalGames.toString(),
+                text = stringResource(R.string.progress_bar_games_played),
+                color = MaterialTheme.colorScheme.onSurface,
+                style = MaterialTheme.typography.labelLarge
+            )
+        }
+        CustomLinearProgressIndicator(
+            progress = ratio
+        )
+    }
+}
+
+@Composable
+private fun ProgressBarXp(
+    currentXpToNextLevel: Int,
+    modifier: Modifier = Modifier
+) {
+    Column(
+        modifier = modifier
+            .padding(5.dp),
+        verticalArrangement = Arrangement.SpaceBetween
+    ) {
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(5.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = currentXpToNextLevel.toString(),
                 color = MaterialTheme.colorScheme.primaryContainer,
                 style = MaterialTheme.typography.titleMedium
             )
             Text(
-                text = stringResource(R.string.progress_bar_games_played),
+                text = stringResource(R.string.progress_bar_fixed_xp),
                 color = MaterialTheme.colorScheme.onSurface,
-                style = MaterialTheme.typography.titleMedium
+                style = MaterialTheme.typography.labelLarge
             )
         }
-        CustomLinearProgressIndicator(
-            progress = gamesPlayed.toFloat() / totalGames.toFloat(),
-            modifier = modifier
-        )
+        CustomLinearProgressIndicator(currentXpToNextLevel.toFloat() / 500.toFloat())
     }
 }
 
@@ -175,7 +224,6 @@ fun CalculatorButton(
     PrimaryButton(
         onClick = onClick,
         modifier = modifier,
-        colors = ButtonDefaults.buttonColors(MaterialTheme.colorScheme.tertiaryContainer),
         enabled = true,
         content = {
             Row(
@@ -185,6 +233,7 @@ fun CalculatorButton(
                 Icon(
                     painter = painterResource(R.drawable.calculate),
                     contentDescription = stringResource(R.string.button_icon_calculator),
+                    modifier = Modifier.size(40.dp),
                     tint = MaterialTheme.colorScheme.onSurface
                 )
                 Text(
@@ -208,16 +257,21 @@ private fun ProfileAdditionalDetailsPreview() {
         totalValue = 6789,
         totalGames = 500,
         totalHours = 890.5,
-        playedGames = 290,
+        playedGames = 292,
         countryCode = "CA",
         age = "8.0"
+    )
+    val calculator = CalculatorUiState(
+        profile = profile,
+        todayValue = 14542.9,
+        currentXpToNextLevel = 239
     )
     SteamDexTheme {
         Surface {
             ProfileAdditionalDetail(
-                profile = profile,
-                onClickButton = {},
-                additionalInfoEnabled = false
+                calculator = calculator,
+                onCalculatorClick = {},
+                additionalInfoEnabled = true,
             )
         }
     }

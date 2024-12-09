@@ -15,6 +15,12 @@
     <string name="button_calculator">Calculator</string>
     <string name="progress_bar_out_of">out of</string>
     <string name="progress_bar_games_played">games played</string>
+    // TODO check the name of this strings
+    <string name="profile_additional_details_total_value">Total value:</string>
+    <string name="profile_additional_details_total_hours">Total hours:</string>
+    <string name="profile_additional_details_today_value">Today\'s value:</string>
+    // -----
+    <string name="progress_bar_fixed_xp">/500 XP to next level</string>
     <string name="button_icon_calculator">Calculator</string>
     <string name="header_title_owned_games">Owned Games</string>
     <string name="header_price_hour_parameter">Price / Hour</string>

@@ -1,29 +1,37 @@
+
 package ict.android.steamdex.ui.screens.calculator
 
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.layout
 import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.unit.dp
 import ict.android.steamdex.R
+import ict.android.steamdex.ui.components.HeaderGameList
+import ict.android.steamdex.ui.components.ProfileAdditionalDetail
 import ict.android.steamdex.ui.components.TopAppBarLarge
+import ict.android.steamdex.ui.components.modifiers.gradientBackground
 import ict.android.steamdex.ui.preview.PreviewSteam
 import ict.android.steamdex.ui.preview.providers.CalculatorPreviewParametersProvider
-import ict.android.steamdex.ui.screens.calculator.components.HeaderGameList
 import ict.android.steamdex.ui.theme.SteamDexTheme
 
 @Composable
 fun CalculatorScreen(
-    uiState: CalculatorUiState,
+    uiState: CalculatorUiState, // TODO change this
     onBackClick: () -> Unit,
-
     modifier: Modifier = Modifier
 ) {
     val profile = uiState.profile
     Scaffold(
         modifier = modifier,
+        containerColor = Color.Transparent,
         topBar = {
             TopAppBarLarge(
                 profile = profile,
@@ -41,13 +49,35 @@ fun CalculatorScreen(
         Column(
             modifier = Modifier
                 .padding(innerPadding)
-                .fillMaxSize()
+                .padding(10.dp)
+                .fillMaxSize(),
+            verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
+            // TODO fix the border of this component
+            ProfileAdditionalDetail(
+                calculator = uiState,
+                additionalInfoEnabled = true,
+                onCalculatorClick = {}
+            )
+
             HeaderGameList(
                 headerListName = R.string.header_title_owned_games,
+                itemTitle = R.string.header_title_owned_games,
                 firstParameterTitle = R.string.header_price_hour_parameter,
                 secondParameterTitle = R.string.header_price_parameter,
                 thirdParameterTitle = R.string.header_time_parameter,
+
+                // TODO stolen from stackoverflow check if it's the correct way
+                modifier = Modifier.layout { measurable, constraints ->
+                    val placeable = measurable.measure( // this shit measure the component
+                        constraints.copy( // this other shit create a new constraint set to be modified
+                            maxWidth = constraints.maxWidth + 20.dp.roundToPx(), // the constrain modified in width
+                        )
+                    )
+                    layout(placeable.width, placeable.height) {
+                        placeable.place((0).dp.roundToPx(), 0) // where the modified component it's placed
+                    }
+                }
             )
         }
     }
@@ -59,6 +89,10 @@ private fun CalculatorScreenPreview(
     @PreviewParameter(CalculatorPreviewParametersProvider::class) uiState: CalculatorUiState
 ) {
     SteamDexTheme {
-        CalculatorScreen(uiState, {})
+        CalculatorScreen(
+            uiState,
+            {},
+            Modifier.gradientBackground(isSystemInDarkTheme())
+        )
     }
 }
