@@ -1,4 +1,4 @@
-package ict.android.steamdex.ui.screens.calculator.components
+package ict.android.steamdex.ui.components
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.background
@@ -23,12 +23,11 @@ import ict.android.steamdex.ui.theme.SteamDexTheme
 @Composable
 fun HeaderGameList(
     @StringRes headerListName: Int,
+    @StringRes itemTitle: Int,
     @StringRes firstParameterTitle: Int,
     @StringRes secondParameterTitle: Int,
     @StringRes thirdParameterTitle: Int,
-    modifier: Modifier = Modifier,
-    itemTitle: String = "Title",
-
+    modifier: Modifier = Modifier
 ) {
     Column(
         modifier = modifier
@@ -50,7 +49,7 @@ fun HeaderGameList(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = itemTitle,
+                text = stringResource(itemTitle),
                 style = MaterialTheme.typography.labelMedium
             )
             Row(
@@ -81,6 +80,7 @@ private fun OwnedGamesPreview() {
         Surface {
             HeaderGameList(
                 headerListName = R.string.header_title_owned_games,
+                itemTitle = R.string.header_title_parameter,
                 firstParameterTitle = R.string.header_price_hour_parameter,
                 secondParameterTitle = R.string.header_price_parameter,
                 thirdParameterTitle = R.string.header_time_parameter
