@@ -1,6 +1,5 @@
 package ict.android.steamdex.ui.components
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -39,6 +38,7 @@ fun ScreenTopBar(
 ) {
     TopAppBar(
         title = {
+            // TODO make clickable area bigger
             Row(
                 Modifier
                     .padding(16.dp)
@@ -58,12 +58,10 @@ fun ScreenTopBar(
                 }
             }
         },
-        colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = Color.Transparent,
-            scrolledContainerColor = Color.Transparent
-        ),
-        modifier = modifier.background(Color.Transparent),
-        actions = actions
+        modifier = modifier.padding(end = 10.dp),
+        actions = actions,
+        expandedHeight = 80.dp,
+        colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent)
     )
 }
 
