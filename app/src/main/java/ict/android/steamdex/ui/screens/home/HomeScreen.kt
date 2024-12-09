@@ -18,21 +18,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
+import ict.android.steamdex.R
 import ict.android.steamdex.ui.components.ScreenTopBar
 import ict.android.steamdex.ui.preview.PreviewSteam
 import ict.android.steamdex.ui.preview.providers.HomePreviewParametersProvider
 import ict.android.steamdex.ui.screens.home.components.Carousel
 import ict.android.steamdex.ui.screens.home.components.CarouselVariant
-import ict.android.steamdex.ui.screens.home.components.GamesOnSaleTopBar
-import ict.android.steamdex.ui.screens.home.components.MostPlayedTopBar
-import ict.android.steamdex.ui.screens.home.components.PopularGamesTopBar
+import ict.android.steamdex.ui.screens.home.components.CategoryGamesBar
 import ict.android.steamdex.ui.screens.home.components.SearchButton
-import ict.android.steamdex.ui.screens.home.components.TrendingGamesTopBar
 import ict.android.steamdex.ui.theme.SteamDexTheme
 
 @Composable
 fun HomeScreen(
     uiState: HomeUiState,
+    onCategoryClick: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val profile = uiState.profile
@@ -65,25 +64,45 @@ fun HomeScreen(
                 )
             }
             item {
-                MostPlayedTopBar()
+                CategoryGamesBar(
+                    categoryIconId = R.drawable.leaderboard,
+                    categoryIconDescriptionId = R.string.most_played_icon_description,
+                    categoryTitleId = R.string.home_most_played_category,
+                    onClick = { onCategoryClick(Category.MostPlayed.id) }
+                )
             }
             item {
                 CarouselVariant()
             }
             item {
-                TrendingGamesTopBar()
+                Carousel()
+            }
+            item {
+                CategoryGamesBar(
+                    categoryIconId = R.drawable.trending_up,
+                    categoryIconDescriptionId = R.string.trending_up_icon_description,
+                    categoryTitleId = R.string.home_trending_category,
+                    onClick = { onCategoryClick(Category.Trending.id) }
+                )
             }
             item {
                 Carousel()
             }
             item {
-                GamesOnSaleTopBar()
+                CategoryGamesBar(
+                    categoryIconId = R.drawable.savings,
+                    categoryIconDescriptionId = R.string.savings_icon_description,
+                    categoryTitleId = R.string.home_on_sale_category,
+                    onClick = { onCategoryClick(Category.OnSale.id) }
+                )
             }
             item {
-                Carousel()
-            }
-            item {
-                PopularGamesTopBar()
+                CategoryGamesBar(
+                    categoryIconId = R.drawable.popular,
+                    categoryIconDescriptionId = R.string.popular_icon_description,
+                    categoryTitleId = R.string.home_popular_category,
+                    onClick = { onCategoryClick(Category.Popular.id) }
+                )
             }
             item {
                 Carousel()
@@ -97,12 +116,22 @@ fun HomeScreen(
     }
 }
 
+enum class Category(val id: Int) {
+    MostPlayed(0),
+    Trending(1),
+    OnSale(2),
+    Popular(3)
+}
+
 @PreviewSteam
 @Composable
 private fun HomeScreenPreview(
     @PreviewParameter(HomePreviewParametersProvider::class) uiState: HomeUiState
 ) {
     SteamDexTheme {
-        HomeScreen(uiState)
+        HomeScreen(
+            uiState,
+            {}
+        )
     }
 }
