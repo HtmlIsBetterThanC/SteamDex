@@ -1,6 +1,8 @@
 package ict.android.steamdex.ui.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeContentPadding
@@ -10,6 +12,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -31,7 +34,14 @@ fun SteamAsyncImage(
     val value = painter.state.collectAsStateWithLifecycle().value
     when (value) {
         is AsyncImagePainter.State.Loading -> {
-            CircularProgressIndicator(Modifier.padding(8.dp))
+            Column(
+                modifier = modifier,
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                // TODO is it good in most cases?
+                CircularProgressIndicator(Modifier.padding(bottom = 16.dp))
+            }
         }
 
         is AsyncImagePainter.State.Success -> {
