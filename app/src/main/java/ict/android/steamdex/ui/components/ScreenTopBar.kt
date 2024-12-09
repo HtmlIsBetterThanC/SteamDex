@@ -1,5 +1,6 @@
 package ict.android.steamdex.ui.components
 
+import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -49,6 +50,7 @@ fun ScreenTopBar(
                 Column {
                     Text(
                         profileName,
+                        modifier = Modifier.basicMarquee(),
                         style = MaterialTheme.typography.titleLarge
                     )
                     Text(
