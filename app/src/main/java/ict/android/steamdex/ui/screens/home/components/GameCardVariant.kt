@@ -39,7 +39,7 @@ fun GameCardVariant(
         modifier = modifier
             .width(300.dp)
             .height(200.dp),
-        shape = RoundedCornerShape(8.dp),
+        shape = RoundedCornerShape(28.dp),
         elevation = CardDefaults
             .cardElevation(defaultElevation = 2.dp)
     ) {
