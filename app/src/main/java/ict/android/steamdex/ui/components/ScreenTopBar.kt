@@ -16,8 +16,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import ict.android.steamdex.ui.preview.PreviewSteam
 import ict.android.steamdex.ui.theme.SteamDexTheme
@@ -42,7 +44,6 @@ fun ScreenTopBar(
                     .clickable { onProfileClick() },
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                SteamAsyncImage(profileIconUrl, Modifier.size(40.dp))
                 Column {
                     Text(
                         profileName,
@@ -55,8 +56,13 @@ fun ScreenTopBar(
                 }
             }
         },
-        modifier = modifier,
-        actions = actions
+        modifier = modifier.padding(horizontal = 10.dp),
+        navigationIcon = {
+            SteamAsyncImage(profileIconUrl, Modifier.size(40.dp))
+        },
+        actions = actions,
+        expandedHeight = 80.dp,
+        colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent)
     )
 }
 
