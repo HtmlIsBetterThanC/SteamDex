@@ -11,6 +11,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -26,11 +27,12 @@ import ict.android.steamdex.ui.components.buttons.PrimaryButton
 import ict.android.steamdex.ui.components.modifiers.gradientBackground
 import ict.android.steamdex.ui.preview.PreviewSteam
 import ict.android.steamdex.ui.preview.providers.HomePreviewParametersProvider
-import ict.android.steamdex.ui.screens.home.components.Carousel
+import ict.android.steamdex.ui.screens.home.components.HorizontalCarousel
 import ict.android.steamdex.ui.screens.home.components.CategoryGamesBar
 import ict.android.steamdex.ui.theme.SteamDexTheme
 
 // TODO handles empty games list
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
     uiState: HomeUiState,
@@ -85,7 +87,7 @@ fun HomeScreen(
                     categoryTitleId = R.string.home_most_played_category,
                     onClick = { onCategoryClick(Category.MostPlayed.id) }
                 )
-                Carousel(games = uiState.mostPlayedGames, variant = true)
+                HorizontalCarousel(games = uiState.mostPlayedGames, large = true)
             }
 
             Column {
@@ -95,7 +97,7 @@ fun HomeScreen(
                     categoryTitleId = R.string.home_trending_category,
                     onClick = { onCategoryClick(Category.Trending.id) }
                 )
-                Carousel(uiState.trendingGames)
+                HorizontalCarousel(uiState.trendingGames)
             }
 
             Column {
@@ -105,7 +107,7 @@ fun HomeScreen(
                     categoryTitleId = R.string.home_on_sale_category,
                     onClick = { onCategoryClick(Category.OnSale.id) }
                 )
-                Carousel(uiState.onSaleGames)
+                HorizontalCarousel(uiState.onSaleGames)
             }
 
             Column {
@@ -115,7 +117,7 @@ fun HomeScreen(
                     categoryTitleId = R.string.home_popular_category,
                     onClick = { onCategoryClick(Category.Popular.id) }
                 )
-                Carousel(uiState.popularGames)
+                HorizontalCarousel(uiState.popularGames)
             }
         }
     }
