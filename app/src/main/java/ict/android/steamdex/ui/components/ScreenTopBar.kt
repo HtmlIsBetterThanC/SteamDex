@@ -38,12 +38,14 @@ fun ScreenTopBar(
 ) {
     TopAppBar(
         title = {
+            // TODO make clickable area bigger
             Row(
                 Modifier
                     .padding(16.dp)
                     .clickable { onProfileClick() },
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
+                SteamAsyncImage(profileIconUrl, Modifier.size(40.dp))
                 Column {
                     Text(
                         profileName,
@@ -56,10 +58,7 @@ fun ScreenTopBar(
                 }
             }
         },
-        modifier = modifier.padding(horizontal = 10.dp),
-        navigationIcon = {
-            SteamAsyncImage(profileIconUrl, Modifier.size(40.dp))
-        },
+        modifier = modifier.padding(end = 10.dp),
         actions = actions,
         expandedHeight = 80.dp,
         colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent)
