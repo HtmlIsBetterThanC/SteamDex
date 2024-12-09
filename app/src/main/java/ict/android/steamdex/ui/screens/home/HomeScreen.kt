@@ -1,6 +1,5 @@
 package ict.android.steamdex.ui.screens.home
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,8 +12,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -44,7 +41,6 @@ fun HomeScreen(
     modifier: Modifier = Modifier
 ) {
     val profile = uiState.profile
-    val games = uiState.games
 
     Scaffold(
         modifier = modifier.fillMaxSize(),
@@ -82,37 +78,45 @@ fun HomeScreen(
                 .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            CategoryGamesBar(
-                categoryIconId = R.drawable.leaderboard,
-                categoryIconDescriptionId = R.string.most_played_icon_description,
-                categoryTitleId = R.string.home_most_played_category,
-                onClick = { onCategoryClick(Category.MostPlayed.id) }
-            )
-            Carousel(games = games, variant = true)
+            Column {
+                CategoryGamesBar(
+                    categoryIconId = R.drawable.leaderboard,
+                    categoryIconDescriptionId = R.string.most_played_icon_description,
+                    categoryTitleId = R.string.home_most_played_category,
+                    onClick = { onCategoryClick(Category.MostPlayed.id) }
+                )
+                Carousel(games = uiState.mostPlayedGames, variant = true)
+            }
 
-            CategoryGamesBar(
-                categoryIconId = R.drawable.trending_up,
-                categoryIconDescriptionId = R.string.trending_up_icon_description,
-                categoryTitleId = R.string.home_trending_category,
-                onClick = { onCategoryClick(Category.Trending.id) }
-            )
-            Carousel(games)
+            Column {
+                CategoryGamesBar(
+                    categoryIconId = R.drawable.trending_up,
+                    categoryIconDescriptionId = R.string.trending_up_icon_description,
+                    categoryTitleId = R.string.home_trending_category,
+                    onClick = { onCategoryClick(Category.Trending.id) }
+                )
+                Carousel(uiState.trendingGames)
+            }
 
-            CategoryGamesBar(
-                categoryIconId = R.drawable.savings,
-                categoryIconDescriptionId = R.string.savings_icon_description,
-                categoryTitleId = R.string.home_on_sale_category,
-                onClick = { onCategoryClick(Category.OnSale.id) }
-            )
-            Carousel(games)
+            Column {
+                CategoryGamesBar(
+                    categoryIconId = R.drawable.savings,
+                    categoryIconDescriptionId = R.string.savings_icon_description,
+                    categoryTitleId = R.string.home_on_sale_category,
+                    onClick = { onCategoryClick(Category.OnSale.id) }
+                )
+                Carousel(uiState.onSaleGames)
+            }
 
-            CategoryGamesBar(
-                categoryIconId = R.drawable.popular,
-                categoryIconDescriptionId = R.string.popular_icon_description,
-                categoryTitleId = R.string.home_popular_category,
-                onClick = { onCategoryClick(Category.Popular.id) }
-            )
-            Carousel(games)
+            Column {
+                CategoryGamesBar(
+                    categoryIconId = R.drawable.popular,
+                    categoryIconDescriptionId = R.string.popular_icon_description,
+                    categoryTitleId = R.string.home_popular_category,
+                    onClick = { onCategoryClick(Category.Popular.id) }
+                )
+                Carousel(uiState.popularGames)
+            }
         }
     }
 }
