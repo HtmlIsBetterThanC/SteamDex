@@ -1,120 +1,119 @@
 package ict.android.steamdex.ui.screens.home
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import ict.android.steamdex.R
 import ict.android.steamdex.ui.components.ScreenTopBar
+import ict.android.steamdex.ui.components.SearchFAB
+import ict.android.steamdex.ui.components.buttons.PrimaryButton
+import ict.android.steamdex.ui.components.modifiers.gradientBackground
 import ict.android.steamdex.ui.preview.PreviewSteam
 import ict.android.steamdex.ui.preview.providers.HomePreviewParametersProvider
 import ict.android.steamdex.ui.screens.home.components.Carousel
 import ict.android.steamdex.ui.screens.home.components.CategoryGamesBar
-import ict.android.steamdex.ui.screens.home.components.SearchButton
 import ict.android.steamdex.ui.theme.SteamDexTheme
 
 // TODO handles empty games list
 @Composable
 fun HomeScreen(
     uiState: HomeUiState,
+    onProfileClick: () -> Unit,
+    onEditClick: () -> Unit,
     onCategoryClick: (Int) -> Unit,
+    onSearchClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val profile = uiState.profile
     val games = uiState.games
 
-    Box(
-        modifier = modifier.fillMaxSize()
-    ) {
-        LazyColumn(
-            contentPadding = PaddingValues(bottom = 16.dp),
+    Scaffold(
+        modifier = modifier.fillMaxSize(),
+        topBar = {
+            ScreenTopBar(
+                profileIconUrl = profile.iconUrl,
+                profileName = profile.name,
+                profileLevel = profile.level,
+                onProfileClick = onProfileClick,
+                actions = {
+                    PrimaryButton(
+                        onEditClick,
+                        Modifier
+                            .size(40.dp)
+                            .clip(RoundedCornerShape(10.dp))
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Edit,
+                            // TODO add contentDescription
+                            contentDescription = null
+                        )
+                    }
+                }
+            )
+        },
+        floatingActionButton = {
+            SearchFAB(onSearchClick)
+        },
+        containerColor = Color.Transparent
+    ) { innerPadding ->
+        // TODO move to LazyColumn
+        Column(
+            modifier = Modifier
+                .padding(innerPadding)
+                .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            item {
-                ScreenTopBar(
-                    modifier = Modifier
-                        .background(color = Color.Transparent),
-                    profileIconUrl = profile.iconUrl,
-                    profileName = profile.name,
-                    profileLevel = profile.level,
-                    onProfileClick = { },
-                    actions = {
-                        IconButton(
-                            {},
-                            Modifier.size(40.dp)
-                        ) {
-                            Icon(
-                                imageVector = Icons.Default.Edit,
-                                contentDescription = null
-                            )
-                        }
-                    }
-                )
-            }
-            item {
-                CategoryGamesBar(
-                    categoryIconId = R.drawable.leaderboard,
-                    categoryIconDescriptionId = R.string.most_played_icon_description,
-                    categoryTitleId = R.string.home_most_played_category,
-                    onClick = { onCategoryClick(Category.MostPlayed.id) }
-                )
-            }
-            item {
-                Carousel(games = games, variant = true)
-            }
-            item {
-                Carousel(games)
-            }
-            item {
-                CategoryGamesBar(
-                    categoryIconId = R.drawable.trending_up,
-                    categoryIconDescriptionId = R.string.trending_up_icon_description,
-                    categoryTitleId = R.string.home_trending_category,
-                    onClick = { onCategoryClick(Category.Trending.id) }
-                )
-            }
-            item {
-                Carousel(games)
-            }
-            item {
-                CategoryGamesBar(
-                    categoryIconId = R.drawable.savings,
-                    categoryIconDescriptionId = R.string.savings_icon_description,
-                    categoryTitleId = R.string.home_on_sale_category,
-                    onClick = { onCategoryClick(Category.OnSale.id) }
-                )
-            }
-            item {
-                CategoryGamesBar(
-                    categoryIconId = R.drawable.popular,
-                    categoryIconDescriptionId = R.string.popular_icon_description,
-                    categoryTitleId = R.string.home_popular_category,
-                    onClick = { onCategoryClick(Category.Popular.id) }
-                )
-            }
-            item {
-                Carousel(games)
-            }
+            CategoryGamesBar(
+                categoryIconId = R.drawable.leaderboard,
+                categoryIconDescriptionId = R.string.most_played_icon_description,
+                categoryTitleId = R.string.home_most_played_category,
+                onClick = { onCategoryClick(Category.MostPlayed.id) }
+            )
+            Carousel(games = games, variant = true)
+
+            CategoryGamesBar(
+                categoryIconId = R.drawable.trending_up,
+                categoryIconDescriptionId = R.string.trending_up_icon_description,
+                categoryTitleId = R.string.home_trending_category,
+                onClick = { onCategoryClick(Category.Trending.id) }
+            )
+            Carousel(games)
+
+            CategoryGamesBar(
+                categoryIconId = R.drawable.savings,
+                categoryIconDescriptionId = R.string.savings_icon_description,
+                categoryTitleId = R.string.home_on_sale_category,
+                onClick = { onCategoryClick(Category.OnSale.id) }
+            )
+            Carousel(games)
+
+            CategoryGamesBar(
+                categoryIconId = R.drawable.popular,
+                categoryIconDescriptionId = R.string.popular_icon_description,
+                categoryTitleId = R.string.home_popular_category,
+                onClick = { onCategoryClick(Category.Popular.id) }
+            )
+            Carousel(games)
         }
-        SearchButton(
-            modifier = Modifier
-                .padding(16.dp)
-                .align(Alignment.BottomEnd),
-        )
     }
 }
 
@@ -130,10 +129,15 @@ enum class Category(val id: Int) {
 private fun HomeScreenPreview(
     @PreviewParameter(HomePreviewParametersProvider::class) uiState: HomeUiState
 ) {
-    SteamDexTheme {
+    val theme = isSystemInDarkTheme()
+    SteamDexTheme(theme) {
         HomeScreen(
-            uiState,
-            {}
+            uiState = uiState,
+            onCategoryClick = {},
+            onSearchClick = {},
+            onProfileClick = {},
+            onEditClick = {},
+            modifier = Modifier.gradientBackground(theme)
         )
     }
 }
