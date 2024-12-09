@@ -9,15 +9,20 @@ class HomePreviewParametersProvider : PreviewParameterProvider<HomeUiState> {
     override val values = sequenceOf(
         HomeUiState(
             profile = profiles[0],
-            games = games
+            mostPlayedGames = games,
+            trendingGames = games,
+            onSaleGames = games.subList(0, 3),
+            popularGames = games.subList(3, games.size - 1)
         ),
         HomeUiState(
             profile = profiles[1],
-            games = games.subList(0, 2)
+            mostPlayedGames = games.subList(0, 3),
+            trendingGames = games.subList(3, games.size - 1),
+            onSaleGames = games,
+            popularGames = games
         ),
         HomeUiState(
-            profile = profiles[2],
-            games = emptyList()
-        ),
+            profile = profiles[2]
+        )
     )
 }
