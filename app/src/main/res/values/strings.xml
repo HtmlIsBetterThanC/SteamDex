@@ -31,11 +31,7 @@
     <string name="popular_icon_description">Popular games icon</string>
     <string name="home_popular_category">Popular games</string>
     <string name="card_icon_image_carousel">Image carousel</string>
-    <string name="column_text_carousel_first">1st</string>
-    <string name="column_text_carousel_second">2nd</string>
-    <string name="column_text_carousel_third">3rd</string>
-    <string name="column_text_carousel_other_cases">%1$sth</string>
-    <string name="text_player_count">Player count: %1$s</string>
+    <string name="home_currently_playing">Currently playing: %1$s</string>
     <string name="text_variant_player_count">Player count: %1$s</string>
     <string name="search_button_icon_description_search">Search</string>
 </resources>

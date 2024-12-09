@@ -23,11 +23,11 @@ import ict.android.steamdex.ui.components.ScreenTopBar
 import ict.android.steamdex.ui.preview.PreviewSteam
 import ict.android.steamdex.ui.preview.providers.HomePreviewParametersProvider
 import ict.android.steamdex.ui.screens.home.components.Carousel
-import ict.android.steamdex.ui.screens.home.components.CarouselVariant
 import ict.android.steamdex.ui.screens.home.components.CategoryGamesBar
 import ict.android.steamdex.ui.screens.home.components.SearchButton
 import ict.android.steamdex.ui.theme.SteamDexTheme
 
+// TODO handles empty games list
 @Composable
 fun HomeScreen(
     uiState: HomeUiState,
@@ -35,6 +35,8 @@ fun HomeScreen(
     modifier: Modifier = Modifier
 ) {
     val profile = uiState.profile
+    val games = uiState.games
+
     Box(
         modifier = modifier.fillMaxSize()
     ) {
@@ -72,10 +74,10 @@ fun HomeScreen(
                 )
             }
             item {
-                CarouselVariant()
+                Carousel(games = games, variant = true)
             }
             item {
-                Carousel()
+                Carousel(games)
             }
             item {
                 CategoryGamesBar(
@@ -86,7 +88,7 @@ fun HomeScreen(
                 )
             }
             item {
-                Carousel()
+                Carousel(games)
             }
             item {
                 CategoryGamesBar(
@@ -105,7 +107,7 @@ fun HomeScreen(
                 )
             }
             item {
-                Carousel()
+                Carousel(games)
             }
         }
         SearchButton(
