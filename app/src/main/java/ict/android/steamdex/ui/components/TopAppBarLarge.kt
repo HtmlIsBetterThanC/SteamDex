@@ -54,16 +54,12 @@ fun TopAppBarLarge(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Row(
-                modifier = Modifier
-                    .weight(1f),
+                modifier = Modifier.weight(1f),
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 if (backEnabled) {
-                    BackArrowButton(
-                        onClick = onBackClick,
-                        modifier = modifier
-                    )
+                    BackArrowButton(onBackClick)
                 }
 
                 Box(
@@ -84,8 +80,10 @@ fun TopAppBarLarge(
                 }
 
                 Text(
-                    profile.name,
-                    modifier = Modifier.basicMarquee()
+                    text = profile.name,
+                    modifier = Modifier.basicMarquee(),
+                    color = MaterialTheme.colorScheme.onSurface,
+                    style = MaterialTheme.typography.titleLarge
                 )
             }
 
@@ -99,7 +97,11 @@ fun TopAppBarLarge(
                     ),
                 contentAlignment = Alignment.Center
             ) {
-                Text(profile.level.toString())
+                Text(
+                    text = profile.level.toString(),
+                    color = MaterialTheme.colorScheme.onSurface,
+                    style = MaterialTheme.typography.bodyLarge
+                )
             }
         }
         Row(
@@ -137,7 +139,8 @@ private fun SingleDetail(
         Icon(
             painter = painterResource(iconId),
             contentDescription = stringResource(iconDescriptionId),
-            modifier = Modifier.size(40.dp)
+            modifier = Modifier.size(40.dp),
+            tint = MaterialTheme.colorScheme.onSurface
         )
         Text(
             text = details,
@@ -154,6 +157,7 @@ private fun TopAppBarLargePreview() {
         name = "allolla",
         iconUrl = "",
         level = 50,
+        totalValue = 42069,
         totalGames = 500,
         totalHours = 890.5,
         playedGames = 290,
