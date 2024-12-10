@@ -8,28 +8,28 @@ class CalculatorPreviewParametersProvider : PreviewParameterProvider<CalculatorU
     override val values = sequenceOf(
         CalculatorUiState(
             profile = profiles[0],
-            todayValue = 2000.0,
-            currentXpToNextLevel = 128
+            todayValue = 14542,
+            currentXpToNextLevel = 239
         ),
         CalculatorUiState(
             profile = profiles[1],
-            todayValue = 1750.5,
-            currentXpToNextLevel = 256
+            todayValue = 18234,
+            currentXpToNextLevel = 412
         ),
         CalculatorUiState(
             profile = profiles[2],
-            todayValue = 2350.75,
-            currentXpToNextLevel = 92
+            todayValue = 12876,
+            currentXpToNextLevel = 186
         ),
         CalculatorUiState(
             profile = profiles[3],
-            todayValue = 1450.25,
-            currentXpToNextLevel = 175
+            todayValue = 22345,
+            currentXpToNextLevel = 567
         ),
         CalculatorUiState(
             profile = profiles[4],
-            todayValue = 2200.0,
-            currentXpToNextLevel = 210
+            todayValue = 9654,
+            currentXpToNextLevel = 95
         )
     )
 }
