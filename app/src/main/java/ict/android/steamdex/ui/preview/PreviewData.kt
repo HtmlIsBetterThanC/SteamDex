@@ -9,7 +9,7 @@ object PreviewData {
     val profiles = listOf(
         UiProfile(
             name = "Davanker",
-            iconUrl = "https://",
+            iconUrl = "https://avatars.cloudflare.steamstatic.com/f1709bbe276101f1b625f0aaec5a5c347dfb7a70_full.jpg",
             level = 49,
             totalValue = 11223,
             totalGames = 993,
@@ -20,7 +20,8 @@ object PreviewData {
         ),
         UiProfile(
             name = "Asuka_Unit02",
-            iconUrl = "https://",
+            iconUrl = "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/" +
+                "items/216150/5933160d2b734175fd7e7adbeb894fc1b4a02f08.gif",
             level = 78,
             totalValue = 17654,
             totalGames = 1567,
@@ -31,7 +32,7 @@ object PreviewData {
         ),
         UiProfile(
             name = "NobodyKnownThatIAmSuS",
-            iconUrl = "https://",
+            iconUrl = "https://avatars.cloudflare.steamstatic.com/fba2f7ffa02a5501d1fdee81221d87b4504a6159_full.jpg",
             level = 33,
             totalValue = 6789,
             totalGames = 567,
@@ -42,7 +43,7 @@ object PreviewData {
         ),
         UiProfile(
             name = "x%x_st1ll_w4t3t_x%x",
-            iconUrl = "https://",
+            iconUrl = "https://avatars.cloudflare.steamstatic.com/cf1cd9cddd1a03bc6bbd6aadb67f39ec6cd08e0c_full.jpg",
             level = 2001,
             totalValue = 28345,
             totalGames = 2345,
@@ -53,7 +54,7 @@ object PreviewData {
         ),
         UiProfile(
             name = "Shinji_Unit01",
-            iconUrl = "https://",
+            iconUrl = "https://avatars.cloudflare.steamstatic.com/b765087933ca51334eb486605e0be4d46a135343_full.jpg",
             level = 66,
             totalValue = 14567,
             totalGames = 1314,
