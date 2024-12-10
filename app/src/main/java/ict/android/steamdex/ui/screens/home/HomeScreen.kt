@@ -6,9 +6,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -27,8 +26,8 @@ import ict.android.steamdex.ui.components.buttons.PrimaryButton
 import ict.android.steamdex.ui.components.modifiers.gradientBackground
 import ict.android.steamdex.ui.preview.PreviewSteam
 import ict.android.steamdex.ui.preview.providers.HomePreviewParametersProvider
-import ict.android.steamdex.ui.screens.home.components.HorizontalCarousel
 import ict.android.steamdex.ui.screens.home.components.CategoryGamesBar
+import ict.android.steamdex.ui.screens.home.components.HorizontalCarousel
 import ict.android.steamdex.ui.theme.SteamDexTheme
 
 // TODO handles empty games list
@@ -73,51 +72,55 @@ fun HomeScreen(
         },
         containerColor = Color.Transparent
     ) { innerPadding ->
-        // TODO move to LazyColumn
-        Column(
-            modifier = Modifier
-                .padding(innerPadding)
-                .verticalScroll(rememberScrollState()),
+        LazyColumn(
+            modifier = Modifier.padding(innerPadding),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            Column {
-                CategoryGamesBar(
-                    categoryIconId = R.drawable.leaderboard,
-                    categoryIconDescriptionId = R.string.most_played_icon_description,
-                    categoryTitleId = R.string.home_most_played_category,
-                    onClick = { onCategoryClick(Category.MostPlayed.id) }
-                )
-                HorizontalCarousel(games = uiState.mostPlayedGames, large = true)
+            item {
+                Column {
+                    CategoryGamesBar(
+                        categoryIconId = R.drawable.leaderboard,
+                        categoryIconDescriptionId = R.string.most_played_icon_description,
+                        categoryTitleId = R.string.home_most_played_category,
+                        onClick = { onCategoryClick(Category.MostPlayed.id) }
+                    )
+                }
             }
 
-            Column {
-                CategoryGamesBar(
-                    categoryIconId = R.drawable.trending_up,
-                    categoryIconDescriptionId = R.string.trending_up_icon_description,
-                    categoryTitleId = R.string.home_trending_category,
-                    onClick = { onCategoryClick(Category.Trending.id) }
-                )
-                HorizontalCarousel(uiState.trendingGames)
+            item {
+                Column {
+                    CategoryGamesBar(
+                        categoryIconId = R.drawable.trending_up,
+                        categoryIconDescriptionId = R.string.trending_up_icon_description,
+                        categoryTitleId = R.string.home_trending_category,
+                        onClick = { onCategoryClick(Category.Trending.id) }
+                    )
+                    HorizontalCarousel(uiState.trendingGames)
+                }
             }
 
-            Column {
-                CategoryGamesBar(
-                    categoryIconId = R.drawable.savings,
-                    categoryIconDescriptionId = R.string.savings_icon_description,
-                    categoryTitleId = R.string.home_on_sale_category,
-                    onClick = { onCategoryClick(Category.OnSale.id) }
-                )
-                HorizontalCarousel(uiState.onSaleGames)
+            item {
+                Column {
+                    CategoryGamesBar(
+                        categoryIconId = R.drawable.savings,
+                        categoryIconDescriptionId = R.string.savings_icon_description,
+                        categoryTitleId = R.string.home_on_sale_category,
+                        onClick = { onCategoryClick(Category.OnSale.id) }
+                    )
+                    HorizontalCarousel(uiState.onSaleGames)
+                }
             }
 
-            Column {
-                CategoryGamesBar(
-                    categoryIconId = R.drawable.popular,
-                    categoryIconDescriptionId = R.string.popular_icon_description,
-                    categoryTitleId = R.string.home_popular_category,
-                    onClick = { onCategoryClick(Category.Popular.id) }
-                )
-                HorizontalCarousel(uiState.popularGames)
+            item {
+                Column {
+                    CategoryGamesBar(
+                        categoryIconId = R.drawable.popular,
+                        categoryIconDescriptionId = R.string.popular_icon_description,
+                        categoryTitleId = R.string.home_popular_category,
+                        onClick = { onCategoryClick(Category.Popular.id) }
+                    )
+                    HorizontalCarousel(uiState.popularGames)
+                }
             }
         }
     }
