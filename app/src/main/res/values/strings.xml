@@ -22,5 +22,6 @@
     <string name="header_time_parameter">Time</string>
     <string name="header_title_parameter">Title</string>
     <string name="search_icon_description">Search icon</string>
+    <string name="app_icon_description">App icon</string>
     <string name="dependencies_dependencies_title">Dependencies</string>
 </resources>
