@@ -18,15 +18,17 @@ fun WelcomeText(
 ) {
     Column(
         modifier = modifier,
-        horizontalAlignment = Alignment.CenterHorizontally,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
             text = stringResource(R.string.welcome_text),
+            color = MaterialTheme.colorScheme.onBackground,
             style = MaterialTheme.typography.displaySmall
         )
         Text(
             text = stringResource(R.string.app_name),
-            style = MaterialTheme.typography.displaySmall,
+            color = MaterialTheme.colorScheme.onBackground,
+            style = MaterialTheme.typography.displaySmall
         )
     }
 }
