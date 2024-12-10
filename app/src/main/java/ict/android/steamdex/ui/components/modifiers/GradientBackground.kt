@@ -14,10 +14,9 @@ import ict.android.steamdex.ui.theme.SteamDexTheme
 
 @Stable
 fun Modifier.gradientBackground(darkTheme: Boolean): Modifier {
-    // TODO add light theme colors
-    val firstColor = if (darkTheme) Color(0xFF482A0C) else Color(0xFF482A0C)
-    val secondColor = if (darkTheme) Color.Black else Color.Black
-    val thirdColor = if (darkTheme) Color(0xFF071835) else Color(0xFF071835)
+    val firstColor = if (darkTheme) Color(0xFF482A0C) else Color(0xFFEEC296)
+    val secondColor = if (darkTheme) Color(0xFF0E0E0F) else Color(0xFFE5E5E5)
+    val thirdColor = if (darkTheme) Color(0xFF071835) else Color(0xFF81A9EE)
 
     return this.then(
         Modifier.background(
