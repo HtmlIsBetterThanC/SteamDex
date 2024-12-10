@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -14,6 +15,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import ict.android.steamdex.R
 import ict.android.steamdex.ui.components.buttons.PrimaryButton
+import ict.android.steamdex.ui.preview.PreviewSteam
+import ict.android.steamdex.ui.theme.SteamDexTheme
 
 @Composable
 fun CalculatorButton(
@@ -44,4 +47,14 @@ fun CalculatorButton(
             }
         }
     )
+}
+
+@PreviewSteam
+@Composable
+private fun CalculatorButtonPrevire() {
+    SteamDexTheme {
+        Surface {
+            CalculatorButton({})
+        }
+    }
 }

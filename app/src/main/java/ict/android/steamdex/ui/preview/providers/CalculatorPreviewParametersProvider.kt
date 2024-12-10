@@ -2,7 +2,6 @@ package ict.android.steamdex.ui.preview.providers
 
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import ict.android.steamdex.ui.preview.PreviewData.profiles
-import ict.android.steamdex.ui.screens.calculator.CalculatorUiState
 
 class CalculatorPreviewParametersProvider : PreviewParameterProvider<CalculatorUiState> {
     override val values = sequenceOf(
