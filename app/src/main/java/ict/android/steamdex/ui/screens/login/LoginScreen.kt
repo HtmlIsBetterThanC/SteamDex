@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -14,6 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import ict.android.steamdex.ui.components.modifiers.gradientBackground
 import ict.android.steamdex.ui.preview.PreviewSteam
+import ict.android.steamdex.ui.preview.PreviewSteamGradient
 import ict.android.steamdex.ui.screens.login.components.LoginButton
 import ict.android.steamdex.ui.screens.login.components.LogoAppIcon
 import ict.android.steamdex.ui.screens.login.components.WelcomeText
@@ -22,11 +24,13 @@ import ict.android.steamdex.ui.theme.SteamDexTheme
 @Composable
 fun LoginScreen(
     onLogin: () -> Unit,
+    useGradientBackground: Boolean,
     modifier: Modifier = Modifier
 ) {
     Scaffold(
         modifier = modifier,
-        containerColor = Color.Transparent
+        containerColor =
+        if (useGradientBackground) Color.Transparent else MaterialTheme.colorScheme.background
     ) { innerPadding ->
         Column(
             Modifier
@@ -52,11 +56,23 @@ fun LoginScreen(
 @PreviewSteam
 @Composable
 private fun LoginScreenPreview() {
+    SteamDexTheme {
+        LoginScreen(
+            onLogin = {},
+            useGradientBackground = false
+        )
+    }
+}
+
+@PreviewSteamGradient
+@Composable
+private fun LoginScreenGradientPreview() {
     val theme = isSystemInDarkTheme()
     SteamDexTheme(theme) {
         LoginScreen(
-            {},
-            Modifier.gradientBackground(theme)
+            onLogin = {},
+            useGradientBackground = true,
+            modifier = Modifier.gradientBackground(theme)
         )
     }
 }
