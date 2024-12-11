@@ -13,6 +13,8 @@ import ict.android.steamdex.ui.screens.calculator.CalculatorUiState
 import ict.android.steamdex.ui.screens.home.HomeScreen
 import ict.android.steamdex.ui.screens.home.HomeUiState
 import ict.android.steamdex.ui.screens.login.LoginScreen
+import ict.android.steamdex.ui.screens.profile.ProfileScreen
+import ict.android.steamdex.ui.screens.profile.ProfileUiState
 
 @Composable
 fun NavigationHost(
@@ -55,7 +57,19 @@ fun NavigationHost(
         fadeComposable<LibraryRoute> { }
         fadeComposable<GameRoute> { }
         fadeComposable<PublisherRoute> { }
-        fadeComposable<ProfileRoute> { }
+        fadeComposable<ProfileRoute> {
+            val onCalculatorClick = { navController.navigate(CalculatorRoute) }
+            ProfileScreen(
+                uiState = ProfileUiState(
+                    profile = profiles[1],
+                    totalFriends = "45"
+                ),
+                useGradientBackground = useGradientBackground,
+                onCalculatorClick = onCalculatorClick,
+                onSettingsItemClick = { },
+                bottomBar = { BottomNavbar(navController) }
+            )
+        }
         fadeComposable<CalculatorRoute> {
             val onBackClick: () -> Unit = { navController.navigateUp() }
             CalculatorScreen(
