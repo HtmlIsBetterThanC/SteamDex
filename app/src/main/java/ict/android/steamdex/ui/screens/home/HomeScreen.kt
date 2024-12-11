@@ -39,12 +39,12 @@ fun HomeScreen(
     uiState: HomeUiState,
     useGradientBackground: Boolean,
     onProfileClick: () -> Unit,
-    onEditClick: () -> Unit,
     onCategoryClick: (Int) -> Unit,
     onSearchClick: () -> Unit,
     modifier: Modifier = Modifier,
     bottomBar: @Composable () -> Unit = {}
 ) {
+    // TODO implement edit mode
     val profile = uiState.profile
 
     Scaffold(
@@ -57,7 +57,7 @@ fun HomeScreen(
                 onProfileClick = onProfileClick,
                 actions = {
                     PrimaryButton(
-                        onEditClick,
+                        { },
                         Modifier
                             .size(40.dp)
                             .clip(RoundedCornerShape(10.dp))
@@ -132,7 +132,6 @@ private fun HomeScreenPreview(
             onCategoryClick = {},
             onSearchClick = {},
             onProfileClick = {},
-            onEditClick = {},
             bottomBar = {
                 BottomNavbar(rememberNavController())
             }
@@ -153,7 +152,6 @@ private fun HomeScreenGradientPreview(
             onCategoryClick = {},
             onSearchClick = {},
             onProfileClick = {},
-            onEditClick = {},
             modifier = Modifier.gradientBackground(theme),
             bottomBar = {
                 BottomNavbar(rememberNavController())
