@@ -56,6 +56,7 @@ fun GameCard(
                 .padding(16.dp)
                 .clip(MaterialTheme.shapes.medium)
         ) {
+            // TODO add background color to column or remove text
             Text(
                 text = name,
                 modifier = Modifier.basicMarquee(),

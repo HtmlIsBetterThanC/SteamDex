@@ -10,6 +10,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -24,6 +25,7 @@ import ict.android.steamdex.ui.components.SearchFAB
 import ict.android.steamdex.ui.components.buttons.PrimaryButton
 import ict.android.steamdex.ui.components.modifiers.gradientBackground
 import ict.android.steamdex.ui.preview.PreviewSteam
+import ict.android.steamdex.ui.preview.PreviewSteamGradient
 import ict.android.steamdex.ui.preview.providers.HomePreviewParametersProvider
 import ict.android.steamdex.ui.screens.home.components.MostPlayedCategory
 import ict.android.steamdex.ui.screens.home.components.OnSaleCategory
@@ -35,6 +37,7 @@ import ict.android.steamdex.ui.theme.SteamDexTheme
 @Composable
 fun HomeScreen(
     uiState: HomeUiState,
+    useGradientBackground: Boolean,
     onProfileClick: () -> Unit,
     onEditClick: () -> Unit,
     onCategoryClick: (Int) -> Unit,
@@ -72,7 +75,8 @@ fun HomeScreen(
         floatingActionButton = {
             SearchFAB(onSearchClick)
         },
-        containerColor = Color.Transparent
+        containerColor =
+        if(useGradientBackground) Color.Transparent else MaterialTheme.colorScheme.background
     ) { innerPadding ->
         LazyColumn(
             modifier = Modifier.padding(innerPadding),
@@ -121,10 +125,31 @@ enum class Category(val id: Int) {
 private fun HomeScreenPreview(
     @PreviewParameter(HomePreviewParametersProvider::class) uiState: HomeUiState
 ) {
+    SteamDexTheme {
+        HomeScreen(
+            uiState = uiState,
+            useGradientBackground = false,
+            onCategoryClick = {},
+            onSearchClick = {},
+            onProfileClick = {},
+            onEditClick = {},
+            bottomBar = {
+                BottomNavbar(rememberNavController())
+            }
+        )
+    }
+}
+
+@PreviewSteamGradient
+@Composable
+private fun HomeScreenGradientPreview(
+    @PreviewParameter(HomePreviewParametersProvider::class) uiState: HomeUiState
+) {
     val theme = isSystemInDarkTheme()
     SteamDexTheme(theme) {
         HomeScreen(
             uiState = uiState,
+            useGradientBackground = true,
             onCategoryClick = {},
             onSearchClick = {},
             onProfileClick = {},
@@ -136,3 +161,4 @@ private fun HomeScreenPreview(
         )
     }
 }
+
