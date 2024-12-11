@@ -8,6 +8,8 @@ import ict.android.steamdex.navigation.graphs.aboutGraph
 import ict.android.steamdex.ui.components.BottomNavbar
 import ict.android.steamdex.ui.preview.PreviewData.games
 import ict.android.steamdex.ui.preview.PreviewData.profiles
+import ict.android.steamdex.ui.screens.calculator.CalculatorScreen
+import ict.android.steamdex.ui.screens.calculator.CalculatorUiState
 import ict.android.steamdex.ui.screens.home.HomeScreen
 import ict.android.steamdex.ui.screens.home.HomeUiState
 import ict.android.steamdex.ui.screens.login.LoginScreen
@@ -54,7 +56,19 @@ fun NavigationHost(
         fadeComposable<GameRoute> { }
         fadeComposable<PublisherRoute> { }
         fadeComposable<ProfileRoute> { }
-        fadeComposable<CalculatorRoute> { }
+        fadeComposable<CalculatorRoute> {
+            val onBackClick: () -> Unit = { navController.navigateUp() }
+            CalculatorScreen(
+                uiState = CalculatorUiState(
+                    profile = profiles[1],
+                    todayValue = 14542,
+                    currentXpToNextLevel = 239
+                ),
+                useGradientBackground = useGradientBackground,
+                onBackClick = onBackClick,
+                onGameClick = {}
+            )
+        }
         aboutGraph(navController)
     }
 }
