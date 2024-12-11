@@ -29,13 +29,15 @@ import ict.android.steamdex.ui.theme.SteamDexTheme
 fun ProfileScreen(
     uiState: ProfileUiState,
     useGradientBackground: Boolean,
+    onCalculatorClick: () -> Unit,
     onSettingsItemClick: (SettingsItem) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val profile = uiState.profile
     Scaffold(
         modifier = modifier,
-        containerColor = if (useGradientBackground) Color.Transparent else MaterialTheme.colorScheme.background,
+        containerColor =
+        if (useGradientBackground) Color.Transparent else MaterialTheme.colorScheme.background,
         topBar = {
             TopAppBarLarge(
                 profile = profile,
@@ -50,7 +52,8 @@ fun ProfileScreen(
         }
     ) { innerPadding ->
         Column(
-            Modifier.padding(innerPadding)
+            Modifier
+                .padding(innerPadding)
                 .fillMaxSize()
                 .padding(horizontal = 10.dp)
         ) {
@@ -59,7 +62,7 @@ fun ProfileScreen(
                 playedGames = uiState.profile.playedGames,
                 totalGames = uiState.profile.totalGames,
                 content = {
-                    CalculatorButton({})
+                    CalculatorButton(onCalculatorClick)
                 }
             )
             Spacer(Modifier.height(8.dp))
@@ -77,6 +80,7 @@ private fun ProfileScreenPreview(
         ProfileScreen(
             uiState = uiState,
             useGradientBackground = false,
+            onCalculatorClick = {},
             onSettingsItemClick = {}
         )
     }
@@ -91,8 +95,9 @@ private fun ProfileScreenGradientPreview(
         ProfileScreen(
             uiState = uiState,
             useGradientBackground = true,
+            onCalculatorClick = {},
             onSettingsItemClick = {},
-            Modifier.gradientBackground(isSystemInDarkTheme()),
+            Modifier.gradientBackground(isSystemInDarkTheme())
         )
     }
 }
