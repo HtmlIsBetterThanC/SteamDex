@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -18,11 +17,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import ict.android.steamdex.R
-import ict.android.steamdex.ui.preview.PreviewData.profiles
-import ict.android.steamdex.ui.preview.PreviewSteam
-import ict.android.steamdex.ui.screens.calculator.CalculatorUiState
-import ict.android.steamdex.ui.screens.calculator.components.CalculatorAdditionalDetails
-import ict.android.steamdex.ui.theme.SteamDexTheme
 
 @Composable
 fun ProfileAdditionalDetail(
@@ -41,7 +35,7 @@ fun ProfileAdditionalDetail(
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
         ValueSection(
-            labelValue = R.string.profile_additional_details_total_value,
+            labelValue = R.string.profile_total_value,
             styleValue = MaterialTheme.typography.headlineSmall,
             value = totalValue.toString()
         )
@@ -91,31 +85,3 @@ fun ProgressBarGamesPlayed(
         CustomLinearProgressIndicator(ratio)
     }
 }
-
-@PreviewSteam
-@Composable
-private fun ProfileAdditionalDetailsPreviewDetail() {
-    val profile = profiles.first()
-    val calculatorPreview = CalculatorUiState(
-        profile = profile,
-        todayValue = 14542,
-        currentXpToNextLevel = 239
-    )
-    SteamDexTheme {
-        Surface {
-            ProfileAdditionalDetail(
-                totalValue = calculatorPreview.profile.totalValue,
-                playedGames = calculatorPreview.profile.playedGames,
-                totalGames = calculatorPreview.profile.totalValue,
-                content = {
-                    CalculatorAdditionalDetails(
-                        totalHours = calculatorPreview.profile.totalHours,
-                        todayValue = calculatorPreview.todayValue,
-                        currentXpToNextLevel = calculatorPreview.currentXpToNextLevel,
-                    )
-                }
-            )
-        }
-    }
-}
-

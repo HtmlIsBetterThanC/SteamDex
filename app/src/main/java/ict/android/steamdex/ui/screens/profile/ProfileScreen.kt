@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -17,7 +18,9 @@ import ict.android.steamdex.ui.components.ProfileAdditionalDetail
 import ict.android.steamdex.ui.components.TopAppBarLarge
 import ict.android.steamdex.ui.components.modifiers.gradientBackground
 import ict.android.steamdex.ui.preview.PreviewSteam
+import ict.android.steamdex.ui.preview.PreviewSteamGradient
 import ict.android.steamdex.ui.preview.providers.ProfilePreviewParametersProvider
+import ict.android.steamdex.ui.screens.profile.components.CalculatorButton
 import ict.android.steamdex.ui.screens.profile.components.SettingsItem
 import ict.android.steamdex.ui.screens.profile.components.SettingsList
 import ict.android.steamdex.ui.theme.SteamDexTheme
@@ -25,14 +28,14 @@ import ict.android.steamdex.ui.theme.SteamDexTheme
 @Composable
 fun ProfileScreen(
     uiState: ProfileUiState,
+    useGradientBackground: Boolean,
     onSettingsItemClick: (SettingsItem) -> Unit,
-    onCalculatorWidgetButtonClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val profile = uiState.profile
     Scaffold(
         modifier = modifier,
-        containerColor = Color.Transparent,
+        containerColor = if (useGradientBackground) Color.Transparent else MaterialTheme.colorScheme.background,
         topBar = {
             TopAppBarLarge(
                 profile = profile,
@@ -52,9 +55,12 @@ fun ProfileScreen(
                 .padding(horizontal = 10.dp)
         ) {
             ProfileAdditionalDetail(
-                profile = profile,
-                onClickButton = onCalculatorWidgetButtonClick,
-                additionalInfoEnabled = false
+                totalValue = uiState.profile.totalValue,
+                playedGames = uiState.profile.playedGames,
+                totalGames = uiState.profile.totalGames,
+                content = {
+                    CalculatorButton({})
+                }
             )
             Spacer(Modifier.height(8.dp))
             SettingsList(onSettingsItemClick)
@@ -64,14 +70,28 @@ fun ProfileScreen(
 
 @PreviewSteam
 @Composable
+private fun ProfileScreenPreview(
+    @PreviewParameter(ProfilePreviewParametersProvider::class) uiState: ProfileUiState
+) {
+    SteamDexTheme {
+        ProfileScreen(
+            uiState = uiState,
+            useGradientBackground = false,
+            onSettingsItemClick = {}
+        )
+    }
+}
+
+@PreviewSteamGradient
+@Composable
 private fun ProfileScreenGradientPreview(
     @PreviewParameter(ProfilePreviewParametersProvider::class) uiState: ProfileUiState
 ) {
     SteamDexTheme {
         ProfileScreen(
-            uiState,
-            {},
-            {},
+            uiState = uiState,
+            useGradientBackground = true,
+            onSettingsItemClick = {},
             Modifier.gradientBackground(isSystemInDarkTheme()),
         )
     }
