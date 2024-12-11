@@ -43,13 +43,12 @@ fun TopAppBarLarge(
     onBackClick: () -> Unit = {}
 ) {
     Column(
-        modifier = modifier,
+        modifier = modifier.padding(10.dp),
+        verticalArrangement = Arrangement.spacedBy(10.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 10.dp),
+            modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(10.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -105,7 +104,6 @@ fun TopAppBarLarge(
             }
         }
         Row(
-            modifier = Modifier.padding(10.dp),
             horizontalArrangement = Arrangement.spacedBy(15.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
