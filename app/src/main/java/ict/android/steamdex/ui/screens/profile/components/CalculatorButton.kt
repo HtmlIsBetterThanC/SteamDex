@@ -1,4 +1,4 @@
-package ict.android.steamdex.ui.components.buttons
+package ict.android.steamdex.ui.screens.profile.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -14,6 +14,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import ict.android.steamdex.R
+import ict.android.steamdex.ui.components.buttons.PrimaryButton
 import ict.android.steamdex.ui.preview.PreviewSteam
 import ict.android.steamdex.ui.theme.SteamDexTheme
 
