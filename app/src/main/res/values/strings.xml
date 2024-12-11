@@ -2,9 +2,6 @@
     <string name="app_name">SteamDex</string>
     <string name="cancel_button_title">Cancel</string>
     <string name="confirm_button_title">Confirm</string>
-    <string name="welcome_text">Welcome to</string>
-    <string name="loginScreen_login_button_text">Sign in through </string>
-    <string name="steam">Steam</string>
     <string name="back_arrow_icon_description">Back arrow icon</string>
     <string name="explore_navbar_name">Explore</string>
     <string name="library_navbar_name">Library</string>
@@ -25,5 +22,21 @@
     <string name="header_time_parameter">Time</string>
     <string name="header_title_parameter">Title</string>
     <string name="search_icon_description">Search icon</string>
+    <string name="most_played_icon_description">Histogram icon</string>
+    <string name="home_most_played_category">Most played</string>
+    <string name="trending_up_icon_description">Arrow line that goes up icon</string>
+    <string name="trailing_icon_description">Trending icon</string>
+    <string name="home_trending_category">Trending</string>
+    <string name="savings_icon_description">Ping savings icon</string>
+    <string name="home_on_sale_category">On sale</string>
+    <string name="popular_icon_description">Popular games icon</string>
+    <string name="home_popular_category">Popular games</string>
+    <string name="card_icon_image_carousel">Image carousel</string>
+    <string name="home_currently_playing">In game: %1$s</string>
+    <string name="text_variant_player_count">Player count: %1$s</string>
+    <string name="search_button_icon_description_search">Search</string>
+    <string name="welcome_text">Welcome to</string>
+    <string name="loginScreen_login_button_text">Sign in through </string>
+    <string name="steam">Steam</string>
     <string name="app_icon_description">App icon</string>
 </resources>
