@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -19,6 +20,7 @@ import ict.android.steamdex.ui.components.ProfileAdditionalDetail
 import ict.android.steamdex.ui.components.TopAppBarLarge
 import ict.android.steamdex.ui.components.modifiers.gradientBackground
 import ict.android.steamdex.ui.preview.PreviewSteam
+import ict.android.steamdex.ui.preview.PreviewSteamGradient
 import ict.android.steamdex.ui.preview.providers.CalculatorPreviewParametersProvider
 import ict.android.steamdex.ui.screens.calculator.components.CalculatorAdditionalDetails
 import ict.android.steamdex.ui.theme.SteamDexTheme
@@ -26,6 +28,7 @@ import ict.android.steamdex.ui.theme.SteamDexTheme
 @Composable
 fun CalculatorScreen(
     uiState: CalculatorUiState,
+    useGradientBackground: Boolean,
     onBackClick: () -> Unit,
     onGameClick: (Long) -> Unit,
     modifier: Modifier = Modifier
@@ -33,7 +36,13 @@ fun CalculatorScreen(
     val profile = uiState.profile
     Scaffold(
         modifier = modifier,
-        containerColor = Color.Transparent,
+        containerColor = if (useGradientBackground) {
+            (
+                Color.Transparent
+                )
+        } else {
+            MaterialTheme.colorScheme.background
+        },
         topBar = {
             TopAppBarLarge(
                 profile = profile,
@@ -100,6 +109,22 @@ private fun CalculatorScreenPreview(
     SteamDexTheme {
         CalculatorScreen(
             uiState = uiState,
+            useGradientBackground = false,
+            onBackClick = {},
+            onGameClick = {},
+        )
+    }
+}
+
+@PreviewSteamGradient
+@Composable
+private fun CalculatorScreenGradientPreview(
+    @PreviewParameter(CalculatorPreviewParametersProvider::class) uiState: CalculatorUiState
+) {
+    SteamDexTheme {
+        CalculatorScreen(
+            uiState = uiState,
+            useGradientBackground = true,
             onBackClick = {},
             onGameClick = {},
             modifier = Modifier.gradientBackground(isSystemInDarkTheme())
