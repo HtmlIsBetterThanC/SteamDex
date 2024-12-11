@@ -17,6 +17,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.rememberNavController
+import ict.android.steamdex.ui.components.BottomNavbar
 import ict.android.steamdex.ui.components.ScreenTopBar
 import ict.android.steamdex.ui.components.SearchFAB
 import ict.android.steamdex.ui.components.buttons.PrimaryButton
@@ -37,7 +39,8 @@ fun HomeScreen(
     onEditClick: () -> Unit,
     onCategoryClick: (Int) -> Unit,
     onSearchClick: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    bottomBar: @Composable () -> Unit = {}
 ) {
     val profile = uiState.profile
 
@@ -65,6 +68,7 @@ fun HomeScreen(
                 }
             )
         },
+        bottomBar = bottomBar,
         floatingActionButton = {
             SearchFAB(onSearchClick)
         },
@@ -125,7 +129,10 @@ private fun HomeScreenPreview(
             onSearchClick = {},
             onProfileClick = {},
             onEditClick = {},
-            modifier = Modifier.gradientBackground(theme)
+            modifier = Modifier.gradientBackground(theme),
+            bottomBar = {
+                BottomNavbar(rememberNavController())
+            }
         )
     }
 }
