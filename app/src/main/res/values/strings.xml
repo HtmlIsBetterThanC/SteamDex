@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">SteamDex</string>
+    <string name="settings_language_title">Language</string>
+    <string name="settings_theme_title">Theme</string>
+    <string name="settings_pitch_black_title">Pitch Black</string>
+    <string name="settings_material_you_title">Material You</string>
+    <string name="settings_default_startup_page_title">Default Startup Page</string>
+    <string name="settings_restore_default_title">Restore Default</string>
+    <string name="settings_play_arrow_icon_description">Change settings of %1$s</string>
     <string name="cancel_button_title">Cancel</string>
     <string name="confirm_button_title">Confirm</string>
     <string name="most_played_icon_description">Histogram icon</string>
@@ -18,6 +25,12 @@
     <string name="welcome_text">Welcome to</string>
     <string name="loginScreen_login_button_text">Sign in through </string>
     <string name="steam">Steam</string>
+    // TODO check the name of this strings
+    <string name="profile_additional_details_total_value">Total value:</string>
+    <string name="profile_additional_details_total_hours">Total hours:</string>
+    <string name="profile_additional_details_today_value">Today\'s value:</string>
+    // -----
+    <string name="progress_bar_fixed_xp">/500 XP to next level</string>
     <string name="back_arrow_icon_description">Back arrow icon</string>
     <string name="explore_navbar_name">Explore</string>
     <string name="library_navbar_name">Library</string>
@@ -27,16 +40,12 @@
     <string name="profile_icon_description">Profile icon</string>
     <string name="profile_age_icon_description">Age of Steam account icon</string>
     <string name="profile_country_code_description">Country code Steam account icon</string>
-    <string name="calculator_preview_total_value">Total value:</string>
+    <string name="friends_number_icon_description">Total number of friend on Steam</string>
+    <string name="games_number_icon_description">Total number of games on Steam</string>
+    <string name="profile_total_value">Total value:</string>
     <string name="button_calculator">Calculator</string>
     <string name="progress_bar_out_of">out of</string>
     <string name="progress_bar_games_played">games played</string>
-    // TODO check the name of this strings
-    <string name="profile_additional_details_total_value">Total value:</string>
-    <string name="profile_additional_details_total_hours">Total hours:</string>
-    <string name="profile_additional_details_today_value">Today\'s value:</string>
-    // -----
-    <string name="progress_bar_fixed_xp">/500 XP to next level</string>
     <string name="button_icon_calculator">Calculator</string>
     <string name="header_title_owned_games">Owned Games</string>
     <string name="header_price_hour_parameter">Price / Hour</string>
