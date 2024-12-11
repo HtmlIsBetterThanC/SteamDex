@@ -18,7 +18,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import ict.android.steamdex.R
-import ict.android.steamdex.models.ui.UiProfile
+import ict.android.steamdex.ui.preview.PreviewData.profiles
 import ict.android.steamdex.ui.preview.PreviewSteam
 import ict.android.steamdex.ui.screens.calculator.CalculatorUiState
 import ict.android.steamdex.ui.screens.calculator.components.CalculatorAdditionalDetails
@@ -43,7 +43,7 @@ fun ProfileAdditionalDetail(
         ValueSection(
             labelValue = R.string.profile_additional_details_total_value,
             styleValue = MaterialTheme.typography.headlineSmall,
-            value = totalValue.toString(),
+            value = totalValue.toString()
         )
         ProgressBarGamesPlayed(
             gamesPlayed = playedGames,
@@ -61,8 +61,7 @@ fun ProgressBarGamesPlayed(
     ratio: Float = gamesPlayed.toFloat() / totalGames.toFloat()
 ) {
     Column(
-        modifier = modifier
-            .padding(5.dp),
+        modifier = modifier.padding(5.dp),
         verticalArrangement = Arrangement.SpaceBetween
     ) {
         Row(
@@ -89,26 +88,14 @@ fun ProgressBarGamesPlayed(
                 style = MaterialTheme.typography.labelLarge
             )
         }
-        CustomLinearProgressIndicator(
-            progress = ratio
-        )
+        CustomLinearProgressIndicator(ratio)
     }
 }
 
 @PreviewSteam
 @Composable
 private fun ProfileAdditionalDetailsPreviewDetail() {
-    val profile = UiProfile(
-        name = "Davanker",
-        iconUrl = "https://avatars.cloudflare.steamstatic.com/f1709bbe276101f1b625f0aaec5a5c347dfb7a70_full.jpg",
-        level = 49,
-        totalValue = 11223,
-        totalGames = 993,
-        totalHours = 2927.0,
-        playedGames = 289,
-        countryCode = "IT",
-        age = "12.4 years"
-    )
+    val profile = profiles.first()
     val calculatorPreview = CalculatorUiState(
         profile = profile,
         todayValue = 14542,
@@ -132,36 +119,3 @@ private fun ProfileAdditionalDetailsPreviewDetail() {
     }
 }
 
-// TODO check if it's the correct way to do two previews
-@PreviewSteam
-@Composable
-private fun ProfileAdditionalDetailsPreviewButton() {
-    val profile = UiProfile(
-        name = "Davanker",
-        iconUrl = "https://avatars.cloudflare.steamstatic.com/f1709bbe276101f1b625f0aaec5a5c347dfb7a70_full.jpg",
-        level = 49,
-        totalValue = 11223,
-        totalGames = 993,
-        totalHours = 2927.0,
-        playedGames = 289,
-        countryCode = "IT",
-        age = "12.4 years"
-    )
-    val calculatorPreview = CalculatorUiState(
-        profile = profile,
-        todayValue = 14542,
-        currentXpToNextLevel = 239
-    )
-    SteamDexTheme {
-        Surface {
-            ProfileAdditionalDetail(
-                totalValue = calculatorPreview.profile.totalValue,
-                playedGames = calculatorPreview.profile.playedGames,
-                totalGames = calculatorPreview.profile.totalValue,
-                content = {
-                    CalculatorButton({})
-                }
-            )
-        }
-    }
-}
