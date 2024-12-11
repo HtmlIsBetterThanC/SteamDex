@@ -132,7 +132,6 @@ private fun ProfileAdditionalDetailsPreviewDetail() {
     }
 }
 
-// TODO check if it's the correct way to do two previews
 @PreviewSteam
 @Composable
 private fun ProfileAdditionalDetailsPreviewButton() {

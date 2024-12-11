@@ -27,6 +27,7 @@ import ict.android.steamdex.ui.theme.SteamDexTheme
 fun CalculatorScreen(
     uiState: CalculatorUiState,
     onBackClick: () -> Unit,
+    onGameClick: (Long) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val profile = uiState.profile
@@ -98,9 +99,10 @@ private fun CalculatorScreenPreview(
 ) {
     SteamDexTheme {
         CalculatorScreen(
-            uiState,
-            {},
-            Modifier.gradientBackground(isSystemInDarkTheme())
+            uiState = uiState,
+            onBackClick = {},
+            onGameClick = {},
+            modifier = Modifier.gradientBackground(isSystemInDarkTheme())
         )
     }
 }

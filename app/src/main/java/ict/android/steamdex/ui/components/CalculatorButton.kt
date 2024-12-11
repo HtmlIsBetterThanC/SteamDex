@@ -51,7 +51,7 @@ fun CalculatorButton(
 
 @PreviewSteam
 @Composable
-private fun CalculatorButtonPrevire() {
+private fun CalculatorButtonPreview() {
     SteamDexTheme {
         Surface {
             CalculatorButton({})
