@@ -56,18 +56,23 @@ fun AboutYouScreen(
             modifier = Modifier
                 .padding(innerPadding)
                 .padding(10.dp),
-            verticalArrangement = Arrangement.spacedBy(80.dp)
+            verticalArrangement = Arrangement.spacedBy(80.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Column(
                 modifier = Modifier
+                    .weight(.8f)
                     .fillMaxWidth(),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
+                // TODO -> Create light-themed Icon
                 AppLogo()
             }
             Column(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth(),
                 verticalArrangement = Arrangement.spacedBy(20.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {

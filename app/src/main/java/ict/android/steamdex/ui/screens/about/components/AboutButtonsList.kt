@@ -14,14 +14,14 @@ fun AboutButtonsList(modifier: Modifier = Modifier) {
             icon = painterResource(R.drawable.group_filled),
             text = "Authors",
             onClick = { },
-            buttonColor = MaterialTheme.colorScheme.tertiaryContainer
+            buttonColor = MaterialTheme.colorScheme.secondaryContainer
 
         ),
         ButtonConfig(
             icon = painterResource(R.drawable.translate),
             text = "Translation",
             onClick = { },
-            buttonColor = MaterialTheme.colorScheme.tertiaryContainer
+            buttonColor = MaterialTheme.colorScheme.secondaryContainer
 
         ),
         ButtonConfig(
@@ -37,14 +37,14 @@ fun AboutButtonsList(modifier: Modifier = Modifier) {
             icon = painterResource(R.drawable.contract),
             text = "Dependencies",
             onClick = { },
-            buttonColor = MaterialTheme.colorScheme.tertiaryContainer
+            buttonColor = MaterialTheme.colorScheme.secondaryContainer
 
         ),
         ButtonConfig(
             icon = painterResource(R.drawable.article),
             text = "App Licenses",
             onClick = { },
-            buttonColor = MaterialTheme.colorScheme.tertiaryContainer
+            buttonColor = MaterialTheme.colorScheme.secondaryContainer
         ),
         ButtonConfig(
             icon = painterResource(R.drawable.github_mark_1),
@@ -58,13 +58,13 @@ fun AboutButtonsList(modifier: Modifier = Modifier) {
             icon = painterResource(R.drawable.visibility),
             text = "Privacy Policy",
             onClick = { },
-            buttonColor = MaterialTheme.colorScheme.tertiaryContainer
+            buttonColor = MaterialTheme.colorScheme.secondaryContainer
         ),
         ButtonConfig(
             icon = painterResource(R.drawable.security_update_warning),
             text = "App Version",
             onClick = { },
-            buttonColor = MaterialTheme.colorScheme.tertiaryContainer
+            buttonColor = MaterialTheme.colorScheme.secondaryContainer
         ),
         ButtonConfig(
             icon = painterResource(R.drawable.cached),
@@ -73,6 +73,7 @@ fun AboutButtonsList(modifier: Modifier = Modifier) {
             buttonColor = MaterialTheme.colorScheme.primaryContainer
         )
     )
+
     ButtonRow(firstRowButtons, modifier)
 
     ButtonRow(secondRowButtons, modifier)

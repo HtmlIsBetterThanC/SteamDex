@@ -37,7 +37,7 @@ fun AboutButton(
                 painter = icon,
                 contentDescription = text,
                 modifier = Modifier.size(50.dp),
-                tint = MaterialTheme.colorScheme.onSurface
+                tint = MaterialTheme.colorScheme.surface
             )
         }
     }
