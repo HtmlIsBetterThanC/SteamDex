@@ -13,7 +13,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.rememberNavController
 import ict.android.steamdex.R
+import ict.android.steamdex.ui.components.BottomNavbar
 import ict.android.steamdex.ui.components.ProfileAdditionalDetail
 import ict.android.steamdex.ui.components.TopAppBarLarge
 import ict.android.steamdex.ui.components.modifiers.gradientBackground
@@ -31,7 +33,8 @@ fun ProfileScreen(
     useGradientBackground: Boolean,
     onCalculatorClick: () -> Unit,
     onSettingsItemClick: (SettingsItem) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    bottomBar: @Composable () -> Unit = {}
 ) {
     val profile = uiState.profile
     Scaffold(
@@ -49,7 +52,8 @@ fun ProfileScreen(
                 firstDetails = profile.totalGames.toString(),
                 secondDetails = uiState.totalFriends
             )
-        }
+        },
+        bottomBar = bottomBar
     ) { innerPadding ->
         Column(
             Modifier
@@ -81,7 +85,8 @@ private fun ProfileScreenPreview(
             uiState = uiState,
             useGradientBackground = false,
             onCalculatorClick = {},
-            onSettingsItemClick = {}
+            onSettingsItemClick = {},
+            bottomBar = { BottomNavbar(rememberNavController()) }
         )
     }
 }
@@ -97,7 +102,8 @@ private fun ProfileScreenGradientPreview(
             useGradientBackground = true,
             onCalculatorClick = {},
             onSettingsItemClick = {},
-            Modifier.gradientBackground(isSystemInDarkTheme())
+            modifier = Modifier.gradientBackground(isSystemInDarkTheme()),
+            bottomBar = { BottomNavbar(rememberNavController()) }
         )
     }
 }
