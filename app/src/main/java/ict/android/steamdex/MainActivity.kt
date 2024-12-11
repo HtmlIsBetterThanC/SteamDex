@@ -4,10 +4,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import ict.android.steamdex.navigation.NavigationHost
+import ict.android.steamdex.ui.components.modifiers.gradientBackground
 import ict.android.steamdex.ui.theme.SteamDexTheme
 
 class MainActivity : ComponentActivity() {
@@ -16,10 +18,20 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             SteamDexTheme {
+                // TODO collect from viewmodel
+                val darkTheme = isSystemInDarkTheme()
+                val useGradientBackground = false
+                val navModifier =
+                    if (useGradientBackground) {
+                        Modifier.fillMaxSize().gradientBackground(darkTheme)
+                    } else {
+                        Modifier.fillMaxSize()
+                    }
                 val navController = rememberNavController()
                 NavigationHost(
                     navController = navController,
-                    modifier = Modifier.fillMaxSize()
+                    useGradientBackground = useGradientBackground,
+                    modifier = navModifier
                 )
             }
         }
