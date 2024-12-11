@@ -15,6 +15,7 @@ import ict.android.steamdex.ui.theme.SteamDexTheme
 fun LogoAppIcon(
     modifier: Modifier = Modifier
 ) {
+    // TODO use icon without background
     AsyncImage(
         model = R.mipmap.ic_launcher_round,
         contentDescription = stringResource(R.string.app_icon_description),
