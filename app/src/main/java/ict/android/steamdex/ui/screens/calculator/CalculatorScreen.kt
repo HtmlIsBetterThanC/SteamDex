@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -48,7 +49,8 @@ fun CalculatorScreen(
                 secondIconDescriptionId = R.string.profile_country_code_description,
                 firstDetails = profile.age,
                 secondDetails = profile.countryCode,
-                onBackClick = onBackClick
+                onBackClick = onBackClick,
+                modifier = Modifier.padding(top = 30.dp)
             )
         }
     ) { innerPadding ->

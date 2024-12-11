@@ -57,12 +57,12 @@ fun GameCard(
                 .clip(MaterialTheme.shapes.medium)
         ) {
             // TODO add background color to column or remove text
-            Text(
+            /*Text(
                 text = name,
                 modifier = Modifier.basicMarquee(),
                 color = MaterialTheme.colorScheme.surface,
                 style = MaterialTheme.typography.titleMedium
-            )
+            )*/
             Text(
                 text = stringResource(R.string.home_currently_playing, currentPlayers),
                 color = MaterialTheme.colorScheme.primaryContainer,
