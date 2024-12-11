@@ -25,9 +25,7 @@ fun CalculatorAdditionalDetails(
     currentXpToNextLevel: Int,
     modifier: Modifier = Modifier
 ) {
-    Column(
-        modifier = modifier
-    ) {
+    Column(modifier) {
         ProgressBarXp(currentXpToNextLevel)
         ValueSection(
             labelValue = R.string.profile_additional_details_total_hours,
@@ -48,8 +46,7 @@ private fun ProgressBarXp(
     modifier: Modifier = Modifier
 ) {
     Column(
-        modifier = modifier
-            .padding(5.dp),
+        modifier = modifier.padding(5.dp),
         verticalArrangement = Arrangement.SpaceBetween
     ) {
         Row(
@@ -79,7 +76,7 @@ private fun CalculatorAdditionalDetailsPreview() {
             CalculatorAdditionalDetails(
                 totalHours = 2234.4,
                 todayValue = 12000,
-                currentXpToNextLevel = 500,
+                currentXpToNextLevel = 500
             )
         }
     }

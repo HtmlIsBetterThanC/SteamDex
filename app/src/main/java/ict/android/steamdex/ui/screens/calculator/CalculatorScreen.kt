@@ -36,13 +36,8 @@ fun CalculatorScreen(
     val profile = uiState.profile
     Scaffold(
         modifier = modifier,
-        containerColor = if (useGradientBackground) {
-            (
-                Color.Transparent
-                )
-        } else {
-            MaterialTheme.colorScheme.background
-        },
+        containerColor =
+        if (useGradientBackground) Color.Transparent else MaterialTheme.colorScheme.background,
         topBar = {
             TopAppBarLarge(
                 profile = profile,
@@ -60,11 +55,10 @@ fun CalculatorScreen(
         Column(
             modifier = Modifier
                 .padding(innerPadding)
-                .padding(10.dp)
-                .fillMaxSize(),
+                .fillMaxSize()
+                .padding(10.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
-            // TODO fix the border of this component
             ProfileAdditionalDetail(
                 totalValue = uiState.profile.totalValue,
                 playedGames = uiState.profile.playedGames,
