@@ -18,8 +18,8 @@ import ict.android.steamdex.ui.theme.SteamDexTheme
 fun PitchBlackDialog(
     showDialog: Boolean,
     onDismissDialog: () -> Unit,
-    onPitchBlackActivate: () -> Unit,
-    onPitchBlackDeactivate: () -> Unit,
+    onPitchBlackActivateClick: () -> Unit,
+    onPitchBlackDeactivateClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     ActivateDialog(
@@ -27,8 +27,8 @@ fun PitchBlackDialog(
         dialogTitle = stringResource(R.string.profile_screen_pitch_black_dialog_title),
         dialogDescription = stringResource(R.string.profile_screen_pitch_black_dialog_description),
         onDismissDialog = onDismissDialog,
-        onActivateClick = onPitchBlackActivate,
-        onDeactivateClick = onPitchBlackDeactivate,
+        onActivateClick = onPitchBlackActivateClick,
+        onDeactivateClick = onPitchBlackDeactivateClick,
         modifier = modifier
     )
 }
@@ -44,8 +44,8 @@ private fun PitchBlackDialogPreview() {
             PitchBlackDialog(
                 showDialog = true,
                 onDismissDialog = {},
-                onPitchBlackActivate = { pitchBlack = true },
-                onPitchBlackDeactivate = { pitchBlack = false }
+                onPitchBlackActivateClick = { pitchBlack = true },
+                onPitchBlackDeactivateClick = { pitchBlack = false }
             )
         }
     }

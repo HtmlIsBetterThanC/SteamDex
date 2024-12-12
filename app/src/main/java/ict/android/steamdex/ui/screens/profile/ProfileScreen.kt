@@ -125,8 +125,8 @@ fun ProfileScreen(
             PitchBlackDialog(
                 showDialog = showPitchBlackDialog,
                 onDismissDialog = { showPitchBlackDialog = false },
-                onPitchBlackActivate = { onPitchBlackChange(true) },
-                onPitchBlackDeactivate = { onPitchBlackChange(false) }
+                onPitchBlackActivateClick = { onPitchBlackChange(true) },
+                onPitchBlackDeactivateClick = { onPitchBlackChange(false) }
             )
             ResetDialog(
                 showDialog = showResetDialog,
