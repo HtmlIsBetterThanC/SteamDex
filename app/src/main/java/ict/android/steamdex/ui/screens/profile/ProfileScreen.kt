@@ -32,11 +32,43 @@ fun ProfileScreen(
     uiState: ProfileUiState,
     useGradientBackground: Boolean,
     onCalculatorClick: () -> Unit,
-    onSettingsItemClick: (SettingsItem) -> Unit,
+    onLanguageChange: (String) -> Unit,
+    onThemeChange: (Boolean?) -> Unit,
+    onPitchBlackChange: (Boolean) -> Unit,
+    onMaterialYouChange: (Boolean) -> Unit,
+    onDefaultStartingScreenChange: (String) -> Unit,
+    onResetSettingClick: () -> Unit,
     modifier: Modifier = Modifier,
     bottomBar: @Composable () -> Unit = {}
 ) {
     val profile = uiState.profile
+    val onSettingItemClick: (item: SettingsItem) -> Unit = {
+        when (it.id) {
+            1 -> {
+                // TODO languages dialog
+            }
+
+            2 -> {
+                // TODO theme dialog
+            }
+
+            3 -> {
+                // TODO pitch black dialog
+            }
+
+            4 -> {
+                // TODO material you dialog
+            }
+
+            5 -> {
+                // TODO default starting dialog
+            }
+
+            6 -> {
+                // TODO reset dialog
+            }
+        }
+    }
     Scaffold(
         modifier = modifier,
         containerColor =
@@ -70,7 +102,7 @@ fun ProfileScreen(
                 }
             )
             Spacer(Modifier.height(8.dp))
-            SettingsList(onSettingsItemClick)
+            SettingsList(onSettingItemClick)
         }
     }
 }
@@ -85,8 +117,13 @@ private fun ProfileScreenPreview(
             uiState = uiState,
             useGradientBackground = false,
             onCalculatorClick = {},
-            onSettingsItemClick = {},
-            bottomBar = { BottomNavbar(rememberNavController()) }
+            onLanguageChange = {},
+            onThemeChange = {},
+            onPitchBlackChange = {},
+            onMaterialYouChange = {},
+            onDefaultStartingScreenChange = {},
+            onResetSettingClick = {},
+            bottomBar = { BottomNavbar(rememberNavController()) },
         )
     }
 }
@@ -101,7 +138,12 @@ private fun ProfileScreenGradientPreview(
             uiState = uiState,
             useGradientBackground = true,
             onCalculatorClick = {},
-            onSettingsItemClick = {},
+            onLanguageChange = {},
+            onThemeChange = {},
+            onPitchBlackChange = {},
+            onMaterialYouChange = {},
+            onDefaultStartingScreenChange = {},
+            onResetSettingClick = {},
             modifier = Modifier.gradientBackground(isSystemInDarkTheme()),
             bottomBar = { BottomNavbar(rememberNavController()) }
         )

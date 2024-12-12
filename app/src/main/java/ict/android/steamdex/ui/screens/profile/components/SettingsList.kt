@@ -86,7 +86,7 @@ fun SettingItemRow(
 
 @Immutable
 data class SettingsItem(
-    val name: String,
+    val id: Int,
     @StringRes val titleId: Int,
     @DrawableRes val iconId: Int
 )
@@ -94,34 +94,34 @@ data class SettingsItem(
 @Stable
 private val settingsList = listOf(
     SettingsItem(
-        "language",
-        R.string.settings_language_title,
-        R.drawable.language
+        id = 1,
+        titleId = R.string.settings_language_title,
+        iconId = R.drawable.language
     ),
     SettingsItem(
-        "theme",
-        R.string.settings_theme_title,
-        R.drawable.theme
+        id = 2,
+        titleId = R.string.settings_theme_title,
+        iconId = R.drawable.theme
     ),
     SettingsItem(
-        "pitchBlack",
-        R.string.settings_pitch_black_title,
-        R.drawable.pitch_black
+        id = 3,
+        titleId = R.string.settings_pitch_black_title,
+        iconId = R.drawable.pitch_black
     ),
     SettingsItem(
-        "materialYou",
-        R.string.settings_material_you_title,
-        R.drawable.material_you
+        id = 4,
+        titleId = R.string.settings_material_you_title,
+        iconId = R.drawable.material_you
     ),
     SettingsItem(
-        "defaultStartupPage",
-        R.string.settings_default_startup_page_title,
-        R.drawable.default_startup_page
+        id = 5,
+        titleId = R.string.settings_default_startup_page_title,
+        iconId = R.drawable.default_startup_page
     ),
     SettingsItem(
-        "restoreDefault",
-        R.string.settings_restore_default_title,
-        R.drawable.restore_defaults
+        id = 6,
+        titleId = R.string.settings_restore_default_title,
+        iconId = R.drawable.restore_defaults
     )
 )
 
