@@ -29,6 +29,7 @@ import ict.android.steamdex.ui.preview.providers.ProfilePreviewParametersProvide
 import ict.android.steamdex.ui.screens.profile.components.CalculatorButton
 import ict.android.steamdex.ui.screens.profile.components.SettingsItem
 import ict.android.steamdex.ui.screens.profile.components.SettingsList
+import ict.android.steamdex.ui.screens.profile.components.dialog.PitchBlackDialog
 import ict.android.steamdex.ui.screens.profile.components.dialog.ResetDialog
 import ict.android.steamdex.ui.screens.profile.components.dialog.ThemeDialog
 import ict.android.steamdex.ui.theme.SteamDexTheme
@@ -51,6 +52,9 @@ fun ProfileScreen(
     var showThemeDialog by remember {
         mutableStateOf(false)
     }
+    var showPitchBlackDialog by remember {
+        mutableStateOf(false)
+    }
     var showResetDialog by remember {
         mutableStateOf(false)
     }
@@ -62,9 +66,7 @@ fun ProfileScreen(
 
             2 -> showThemeDialog = true
 
-            3 -> {
-                // TODO pitch black dialog
-            }
+            3 -> showPitchBlackDialog = true
 
             4 -> {
                 // TODO material you dialog
@@ -119,6 +121,12 @@ fun ProfileScreen(
                     showThemeDialog = false
                 },
                 onThemeChange = onThemeChange
+            )
+            PitchBlackDialog(
+                showDialog = showPitchBlackDialog,
+                onDismissDialog = { showPitchBlackDialog = false },
+                onPitchBlackActivate = { onPitchBlackChange(true) },
+                onPitchBlackDeactivate = { onPitchBlackChange(false) }
             )
             ResetDialog(
                 showDialog = showResetDialog,
