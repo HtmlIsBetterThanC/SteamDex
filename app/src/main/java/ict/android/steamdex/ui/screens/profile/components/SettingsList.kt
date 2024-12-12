@@ -2,12 +2,9 @@ package ict.android.steamdex.ui.screens.profile.components
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -37,10 +34,13 @@ fun SettingsList(
     onItemClick: (item: SettingsItem) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    LazyColumn(
-        modifier = modifier
-    ) {
-        items(settingsList) { item -> SettingItemRow(item, onItemClick) }
+    LazyColumn(modifier) {
+        items(settingsList) { item ->
+            SettingItemRow(
+                item = item,
+                onItemClick = onItemClick
+            )
+        }
     }
 }
 
@@ -56,10 +56,9 @@ fun SettingItemRow(
         modifier = modifier
             .fillMaxWidth()
             .clickable { onItemClick(item) }
-            .background(Color.Transparent)
             .padding(vertical = 10.dp),
-        // If the items of the list reappear, just remove the settings and put them back on
-        colors = ListItemDefaults.colors(
+        colors =
+        ListItemDefaults.colors(
             containerColor = Color.Transparent,
             headlineColor = MaterialTheme.colorScheme.onSurface,
             leadingIconColor = MaterialTheme.colorScheme.onSurfaceVariant
@@ -67,7 +66,7 @@ fun SettingItemRow(
         leadingContent = {
             Icon(
                 painter = painterResource(item.iconId),
-                contentDescription = null,
+                contentDescription = null
             )
         },
         trailingContent = {
@@ -129,14 +128,9 @@ private val settingsList = listOf(
 @PreviewSteam
 @PreviewSteamFontSize
 @Composable
-fun SettingsListPreview() {
+private fun SettingsListPreview() {
     SteamDexTheme {
-        Surface(
-            Modifier
-                .background(MaterialTheme.colorScheme.background)
-                .safeContentPadding()
-                .fillMaxSize()
-        ) {
+        Surface {
             SettingsList({})
         }
     }
