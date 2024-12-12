@@ -5,6 +5,10 @@ import ict.android.steamdex.models.ui.UiProfile
 
 @Immutable
 data class ProfileUiState(
-    val profile: UiProfile,
-    val totalFriends: String
+    val profile: UiProfile = UiProfile(),
+    val totalFriends: String = "",
+    val darkTheme: Boolean? = null,
+    val pitchBlack: Boolean = false,
+    val materialYou: Boolean = false,
+    val gradientBackground: Boolean = true
 )
