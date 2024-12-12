@@ -11,7 +11,9 @@
     <string name="profile_icon_description">Profile icon</string>
     <string name="profile_age_icon_description">Age of Steam account icon</string>
     <string name="profile_country_code_description">Country code Steam account icon</string>
-    <string name="calculator_preview_total_value">Total value:</string>
+    <string name="friends_number_icon_description">Total number of friend on Steam</string>
+    <string name="games_number_icon_description">Total number of games on Steam</string>
+    <string name="profile_total_value">Total value:</string>
     <string name="button_calculator">Calculator</string>
     <string name="progress_bar_out_of">out of</string>
     <string name="progress_bar_games_played">games played</string>
@@ -23,4 +25,12 @@
     <string name="header_title_parameter">Title</string>
     <string name="search_icon_description">Search icon</string>
     <string name="app_icon_description">App icon</string>
+    <string name="profile_screen_theme_system">System</string>
+    <string name="profile_screen_theme_dark">Dark</string>
+    <string name="profile_screen_theme_light">Light</string>
+    <string name="profile_screen_theme_dialog_title">Theme</string>
+    <string name="profile_screen_reset_dialog_title">Reset all your settings</string>
+    <string name="profile_screen_reset_dialog_description">You are going to lose all your settings preferences</string>
+    <string name="activate_button_title">Activate</string>
+    <string name="deactivate_button_title">Deactivate</string>
 </resources>
