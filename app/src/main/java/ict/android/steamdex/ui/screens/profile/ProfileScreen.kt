@@ -45,7 +45,7 @@ fun ProfileScreen(
     onThemeChange: (Boolean?) -> Unit,
     onPitchBlackChange: (Boolean) -> Unit,
     onMaterialYouChange: (Boolean) -> Unit,
-    onDefaultStartingScreenChange: (String) -> Unit,
+    onDefaultStartingScreenChange: (Any) -> Unit,
     onResetSettingClick: () -> Unit,
     modifier: Modifier = Modifier,
     bottomBar: @Composable () -> Unit = {}

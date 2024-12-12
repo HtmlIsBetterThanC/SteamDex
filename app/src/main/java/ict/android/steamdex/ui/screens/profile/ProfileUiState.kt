@@ -9,5 +9,5 @@ data class ProfileUiState(
     val profile: UiProfile = UiProfile(),
     val totalFriends: String = "",
     val darkTheme: Boolean? = null,
-    val defaultStartingScreen: String = ExploreRoute.javaClass.name
+    val defaultStartingScreen: Any = ExploreRoute
 )

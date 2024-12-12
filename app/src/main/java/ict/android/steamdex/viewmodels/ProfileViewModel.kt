@@ -8,6 +8,7 @@ import ict.android.steamdex.ext.fromRouteToString
 import ict.android.steamdex.ui.preview.PreviewData.profiles
 import ict.android.steamdex.ui.screens.profile.ProfileUiState
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -15,7 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ProfileViewModel @Inject constructor(private val settingsRepository: SettingsRepository) : ViewModel() {
     private val _uiState: MutableStateFlow<ProfileUiState> = MutableStateFlow(ProfileUiState())
-    val uiState = _uiState.value
+    val uiState = _uiState.asStateFlow()
 
     fun start() {
         viewModelScope.launch {
@@ -60,11 +61,10 @@ class ProfileViewModel @Inject constructor(private val settingsRepository: Setti
 
     fun updateDefaultStartingScreen(screen: Any) {
         viewModelScope.launch {
-            val routeString = screen.fromRouteToString()
-            settingsRepository.updateDefaultStartingScreen(routeString)
+            settingsRepository.updateDefaultStartingScreen(screen.fromRouteToString())
             _uiState.update {
                 it.copy(
-                    defaultStartingScreen = routeString
+                    defaultStartingScreen = screen
                 )
             }
         }
