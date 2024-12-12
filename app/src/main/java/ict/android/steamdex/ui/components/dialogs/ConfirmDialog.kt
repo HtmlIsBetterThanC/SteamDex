@@ -63,7 +63,10 @@ fun ConfirmDialog(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(16.dp, Alignment.End)
                     ) {
-                        ConfirmButton(onConfirmClick, color = confirmTextColor)
+                        ConfirmButton({
+                            onConfirmClick()
+                            onDismissDialog()
+                        }, color = confirmTextColor)
                         CancelButton(onDismissDialog, color = cancelTextColor)
                     }
                 }
