@@ -29,6 +29,7 @@ import ict.android.steamdex.ui.preview.providers.ProfilePreviewParametersProvide
 import ict.android.steamdex.ui.screens.profile.components.CalculatorButton
 import ict.android.steamdex.ui.screens.profile.components.SettingsItem
 import ict.android.steamdex.ui.screens.profile.components.SettingsList
+import ict.android.steamdex.ui.screens.profile.components.dialog.ResetDialog
 import ict.android.steamdex.ui.screens.profile.components.dialog.ThemeDialog
 import ict.android.steamdex.ui.theme.SteamDexTheme
 
@@ -50,16 +51,16 @@ fun ProfileScreen(
     var showThemeDialog by remember {
         mutableStateOf(false)
     }
-    val onDismissDialog = { showThemeDialog = false }
+    var showResetDialog by remember {
+        mutableStateOf(false)
+    }
     val onSettingItemClick: (item: SettingsItem) -> Unit = {
         when (it.id) {
             1 -> {
                 // TODO languages dialog
             }
 
-            2 -> {
-                showThemeDialog = true
-            }
+            2 -> showThemeDialog = true
 
             3 -> {
                 // TODO pitch black dialog
@@ -73,9 +74,7 @@ fun ProfileScreen(
                 // TODO default starting dialog
             }
 
-            6 -> {
-                // TODO reset dialog
-            }
+            6 -> showResetDialog = true
         }
     }
 
@@ -116,8 +115,17 @@ fun ProfileScreen(
             ThemeDialog(
                 showDialog = showThemeDialog,
                 currentTheme = uiState.darkTheme,
-                onDismissDialog = onDismissDialog,
+                onDismissDialog = {
+                    showThemeDialog = false
+                },
                 onThemeChange = onThemeChange
+            )
+            ResetDialog(
+                showDialog = showResetDialog,
+                onDismissDialog = {
+                    showResetDialog = false
+                },
+                onConfirmDialog = onResetSettingClick
             )
         }
     }
