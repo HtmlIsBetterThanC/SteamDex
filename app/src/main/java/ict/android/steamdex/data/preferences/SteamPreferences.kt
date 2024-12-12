@@ -26,13 +26,16 @@ class SteamPreferences @Inject constructor(@ApplicationContext private val conte
     val observableDarkTheme = dataStore.observeValue(DARK_THEME_KEY).map { it?.toNullableBoolean() }
     val observablePithBlack = dataStore.observeValue(PITCH_BLACK_KEY).map { it ?: false }
     val observableMaterialYou = dataStore.observeValue(MATERIAL_YOU_KEY).map { it ?: false }
-    val gradientBackground = dataStore.observeValue(GRADIENT_BACKGROUND_KEY).map { it ?: true }
+    val observableGradientBackground = dataStore.observeValue(GRADIENT_BACKGROUND_KEY).map { it ?: true }
 
     suspend fun isFirstTime() = dataStore.getValue(FIRST_TIME_KEY, true)
     suspend fun setFistTime() = dataStore.setValue(FIRST_TIME_KEY, false)
 
-    suspend fun getDarkTheme() = dataStore.getValue(DARK_THEME_KEY)?.toNullableBoolean()
+    suspend fun getDarkTheme() = dataStore.getValue(DARK_THEME_KEY, "null").toNullableBoolean()
     suspend fun setDarkTheme(darkTheme: Boolean?) = dataStore.setValue(DARK_THEME_KEY, darkTheme.toString())
+
+    suspend fun getPitchBlack() = dataStore.getValue(PITCH_BLACK_KEY, false)
+    suspend fun setPitchBlack(pitchBlack: Boolean) = dataStore.setValue(PITCH_BLACK_KEY, pitchBlack)
 
     suspend fun getMaterialYou() = dataStore.getValue(MATERIAL_YOU_KEY, false)
     suspend fun setMaterialYou(materialYou: Boolean) = dataStore.setValue(MATERIAL_YOU_KEY, materialYou)
