@@ -82,13 +82,13 @@ fun AboutYouScreen(
                 AboutButtonsList(
                     onAuthorsClick = { },
                     onTranslationClick = { },
-                    onDonationClick = { onDonationClick },
+                    onDonationClick = onDonationClick,
                     onDependenciesClick = { },
                     onAppLicensesClick = { },
-                    onGitHubClick = { onGitHubClick },
+                    onGitHubClick = onGitHubClick,
                     onPrivacyPolicyClick = { },
                     onAppVersionClick = { },
-                    onUpdatesClick = { onUpdatesClick },
+                    onUpdatesClick = onUpdatesClick,
                 )
             }
         }

@@ -24,21 +24,21 @@ fun AboutButtonsList(
         ButtonConfig(
             icon = painterResource(R.drawable.group_filled),
             text = "Authors",
-            onClick = { },
+            onClick = onAuthorsClick,
             buttonColor = MaterialTheme.colorScheme.secondaryContainer
 
         ),
         ButtonConfig(
             icon = painterResource(R.drawable.translate),
             text = "Translation",
-            onClick = { },
+            onClick = onTranslationClick,
             buttonColor = MaterialTheme.colorScheme.secondaryContainer
 
         ),
         ButtonConfig(
             icon = painterResource(R.drawable.volunteer_activism),
             text = "Donations",
-            onClick = { },
+            onClick = onDonationClick,
             buttonColor = MaterialTheme.colorScheme.tertiaryContainer
 
         )
@@ -47,20 +47,20 @@ fun AboutButtonsList(
         ButtonConfig(
             icon = painterResource(R.drawable.contract),
             text = "Dependencies",
-            onClick = { },
+            onClick = onDependenciesClick,
             buttonColor = MaterialTheme.colorScheme.secondaryContainer
 
         ),
         ButtonConfig(
             icon = painterResource(R.drawable.article),
             text = "App Licenses",
-            onClick = { },
+            onClick = onAppLicensesClick,
             buttonColor = MaterialTheme.colorScheme.secondaryContainer
         ),
         ButtonConfig(
             icon = painterResource(R.drawable.github_mark_1),
             text = "GitHub",
-            onClick = { },
+            onClick = onGitHubClick,
             buttonColor = MaterialTheme.colorScheme.tertiaryContainer
         )
     )
@@ -68,19 +68,19 @@ fun AboutButtonsList(
         ButtonConfig(
             icon = painterResource(R.drawable.visibility),
             text = "Privacy Policy",
-            onClick = { },
+            onClick = onPrivacyPolicyClick,
             buttonColor = MaterialTheme.colorScheme.secondaryContainer
         ),
         ButtonConfig(
             icon = painterResource(R.drawable.security_update_warning),
             text = "App Version",
-            onClick = { },
+            onClick = onAppVersionClick,
             buttonColor = MaterialTheme.colorScheme.secondaryContainer
         ),
         ButtonConfig(
             icon = painterResource(R.drawable.cached),
             text = "Updates",
-            onClick = { },
+            onClick = onUpdatesClick,
             buttonColor = MaterialTheme.colorScheme.primaryContainer
         )
     )
