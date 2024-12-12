@@ -8,7 +8,18 @@ import ict.android.steamdex.R
 import ict.android.steamdex.ui.screens.about.ButtonConfig
 
 @Composable
-fun AboutButtonsList(modifier: Modifier = Modifier) {
+fun AboutButtonsList(
+    onAuthorsClick: () -> Unit,
+    onTranslationClick: () -> Unit,
+    onDonationClick: () -> Unit,
+    onDependenciesClick: () -> Unit,
+    onAppLicensesClick: () -> Unit,
+    onGitHubClick: () -> Unit,
+    onPrivacyPolicyClick: () -> Unit,
+    onAppVersionClick: () -> Unit,
+    onUpdatesClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
     val firstRowButtons = listOf(
         ButtonConfig(
             icon = painterResource(R.drawable.group_filled),

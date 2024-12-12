@@ -29,6 +29,9 @@ fun AboutYouScreen(
     userGradientBackground: Boolean,
     modifier: Modifier = Modifier,
     onBackClick: () -> Unit,
+    onDonationClick: () -> Unit,
+    onGitHubClick: () -> Unit,
+    onUpdatesClick: () -> Unit
 ) {
     Scaffold(
         modifier = modifier,
@@ -76,7 +79,17 @@ fun AboutYouScreen(
                 verticalArrangement = Arrangement.spacedBy(20.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                AboutButtonsList()
+                AboutButtonsList(
+                    onAuthorsClick = { },
+                    onTranslationClick = { },
+                    onDonationClick = { onDonationClick },
+                    onDependenciesClick = { },
+                    onAppLicensesClick = { },
+                    onGitHubClick = { onGitHubClick },
+                    onPrivacyPolicyClick = { },
+                    onAppVersionClick = { },
+                    onUpdatesClick = { onUpdatesClick },
+                )
             }
         }
     }
@@ -88,7 +101,10 @@ private fun AboutYouScreenPreview() {
     SteamDexTheme {
         AboutYouScreen(
             userGradientBackground = false,
-            onBackClick = { }
+            onBackClick = { },
+            onDonationClick = { },
+            onGitHubClick = { },
+            onUpdatesClick = { }
         )
     }
 }
@@ -101,7 +117,10 @@ private fun AboutYouScreenGradientPreview() {
         AboutYouScreen(
             userGradientBackground = true,
             modifier = Modifier.gradientBackground(theme),
-            onBackClick = { }
+            onBackClick = { },
+            onDonationClick = { },
+            onGitHubClick = { },
+            onUpdatesClick = { }
         )
     }
 }
