@@ -29,6 +29,7 @@ import ict.android.steamdex.ui.preview.providers.ProfilePreviewParametersProvide
 import ict.android.steamdex.ui.screens.profile.components.CalculatorButton
 import ict.android.steamdex.ui.screens.profile.components.SettingsItem
 import ict.android.steamdex.ui.screens.profile.components.SettingsList
+import ict.android.steamdex.ui.screens.profile.components.dialog.DefaultStartingScreenDialog
 import ict.android.steamdex.ui.screens.profile.components.dialog.MaterialYouDialog
 import ict.android.steamdex.ui.screens.profile.components.dialog.PitchBlackDialog
 import ict.android.steamdex.ui.screens.profile.components.dialog.ResetDialog
@@ -59,6 +60,10 @@ fun ProfileScreen(
     var showMaterialYouDialog by remember {
         mutableStateOf(false)
     }
+    var showDefaultStartingScreenDialog by remember {
+        mutableStateOf(false)
+    }
+
     var showResetDialog by remember {
         mutableStateOf(false)
     }
@@ -74,9 +79,7 @@ fun ProfileScreen(
 
             4 -> showMaterialYouDialog = true
 
-            5 -> {
-                // TODO default starting dialog
-            }
+            5 -> showDefaultStartingScreenDialog = true
 
             6 -> showResetDialog = true
         }
@@ -141,6 +144,12 @@ fun ProfileScreen(
                 onMaterialYouDeactivateClick = {
                     onMaterialYouChange(false)
                 }
+            )
+            DefaultStartingScreenDialog(
+                showDialog = showDefaultStartingScreenDialog,
+                currentStartingScreen = uiState.defaultStartingScreen,
+                onDismissDialog = { showDefaultStartingScreenDialog = false },
+                onDefaultStartingScreenChange = onDefaultStartingScreenChange
             )
             ResetDialog(
                 showDialog = showResetDialog,

@@ -44,6 +44,7 @@
     <string name="profile_screen_material_you_dialog_title">Activate Material You</string>
     <string name="profile_screen_material_you_dialog_description">Uses the color derived from your wallpaper.
     Activating this automatically disables the gradient background</string>
+    <string name="profile_screen_default_screen_dialog_title">Default starting screen</string>
     <string name="activate_button_title">Activate</string>
     <string name="deactivate_button_title">Deactivate</string>
 </resources>
