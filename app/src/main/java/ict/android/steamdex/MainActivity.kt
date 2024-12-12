@@ -100,7 +100,9 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun SplashScreen() {
+fun SplashScreen(
+    modifier: Modifier = Modifier
+) {
     val welcomeTextAlpha = remember { Animatable(0f) }
     val titleTextAlpha = remember { Animatable(0f) }
     val logoAlpha = remember { Animatable(0f) }
@@ -133,7 +135,7 @@ fun SplashScreen() {
         )
     }
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(
                 Brush.linearGradient(
