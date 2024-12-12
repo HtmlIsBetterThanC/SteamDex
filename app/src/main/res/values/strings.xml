@@ -35,4 +35,8 @@
     <string name="home_currently_playing">In game: %1$s</string>
     <string name="text_variant_player_count">Player count: %1$s</string>
     <string name="search_button_icon_description_search">Search</string>
+    <string name="collapse_icon_description">Collapse icon</string>
+    <string name="expand_icon_description">Expand icon</string>
+    <string name="close_icon_description">Close icon</string>
+    <string name="edit_icon_description">Edit icon</string>
 </resources>

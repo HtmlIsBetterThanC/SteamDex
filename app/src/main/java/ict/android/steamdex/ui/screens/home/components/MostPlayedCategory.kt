@@ -4,6 +4,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import ict.android.steamdex.R
@@ -17,7 +21,10 @@ import ict.android.steamdex.ui.theme.SteamDexTheme
 @Composable
 fun MostPlayedCategory(
     mostPlayedGames: List<UiGames>,
-    onClick: () -> Unit,
+    editMode: Boolean,
+    isExpanded: Boolean,
+    onCategoryClick: () -> Unit,
+    onIsExpandedClick: (Boolean) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(modifier) {
@@ -25,11 +32,14 @@ fun MostPlayedCategory(
             categoryIconId = R.drawable.leaderboard,
             categoryIconDescriptionId = R.string.most_played_icon_description,
             categoryTitleId = R.string.home_most_played_category,
-            onClick = onClick
+            editMode = editMode,
+            isExpanded = isExpanded,
+            onCategoryBarClick = onCategoryClick,
+            onIsExpandedClick = onIsExpandedClick
         )
         HorizontalCarousel(
             games = mostPlayedGames,
-            large = true
+            large = isExpanded
         )
     }
 }
@@ -41,7 +51,36 @@ private fun MostPlayedPreview(
 ) {
     SteamDexTheme {
         Surface {
-            MostPlayedCategory(uiState.mostPlayedGames, {})
+            MostPlayedCategory(
+                mostPlayedGames = uiState.mostPlayedGames,
+                editMode = false,
+                isExpanded = uiState.isMostPlayedGamesCarouselExpanded,
+                onCategoryClick = {},
+                onIsExpandedClick = {}
+            )
+        }
+    }
+}
+
+@PreviewSteam
+@Composable
+private fun MostPlayedEditPreview(
+    @PreviewParameter(HomePreviewParametersProvider::class) uiState: HomeUiState
+) {
+    var isExpanded by remember {
+        mutableStateOf(false)
+    }
+    SteamDexTheme {
+        Surface {
+            MostPlayedCategory(
+                mostPlayedGames = uiState.mostPlayedGames,
+                editMode = true,
+                isExpanded = isExpanded,
+                onCategoryClick = {},
+                onIsExpandedClick = {
+                    isExpanded = it
+                }
+            )
         }
     }
 }

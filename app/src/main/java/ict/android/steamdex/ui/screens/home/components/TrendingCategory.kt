@@ -4,6 +4,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import ict.android.steamdex.R
@@ -17,7 +21,10 @@ import ict.android.steamdex.ui.theme.SteamDexTheme
 @Composable
 fun TrendingCategory(
     trendingGames: List<UiGames>,
-    onClick: () -> Unit,
+    editMode: Boolean,
+    isExpanded: Boolean,
+    onCategoryClick: () -> Unit,
+    onIsExpandedClick: (Boolean) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(modifier) {
@@ -25,9 +32,15 @@ fun TrendingCategory(
             categoryIconId = R.drawable.trending_up,
             categoryIconDescriptionId = R.string.trending_up_icon_description,
             categoryTitleId = R.string.home_trending_category,
-            onClick = onClick
+            editMode = editMode,
+            isExpanded = isExpanded,
+            onCategoryBarClick = onCategoryClick,
+            onIsExpandedClick = onIsExpandedClick
         )
-        HorizontalCarousel(trendingGames)
+        HorizontalCarousel(
+            trendingGames,
+            large = isExpanded
+        )
     }
 }
 
@@ -38,7 +51,36 @@ private fun TrendingCategoryPreview(
 ) {
     SteamDexTheme {
         Surface {
-            TrendingCategory(uiState.trendingGames, {})
+            TrendingCategory(
+                trendingGames = uiState.trendingGames,
+                editMode = false,
+                isExpanded = uiState.isTrendingGamesCarouselExpanded,
+                onCategoryClick = {},
+                onIsExpandedClick = {}
+            )
+        }
+    }
+}
+
+@PreviewSteam
+@Composable
+private fun TrendingCategoryEditPreview(
+    @PreviewParameter(HomePreviewParametersProvider::class) uiState: HomeUiState
+) {
+    var isExpanded by remember {
+        mutableStateOf(false)
+    }
+    SteamDexTheme {
+        Surface {
+            TrendingCategory(
+                trendingGames = uiState.trendingGames,
+                editMode = true,
+                isExpanded = isExpanded,
+                onCategoryClick = {},
+                onIsExpandedClick = {
+                    isExpanded = it
+                }
+            )
         }
     }
 }

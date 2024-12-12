@@ -8,17 +8,24 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
+import ict.android.steamdex.R
 import ict.android.steamdex.ui.components.BottomNavbar
 import ict.android.steamdex.ui.components.ScreenTopBar
 import ict.android.steamdex.ui.components.SearchFAB
@@ -40,12 +47,16 @@ fun HomeScreen(
     useGradientBackground: Boolean,
     onProfileClick: () -> Unit,
     onCategoryClick: (Int) -> Unit,
+    onCarouselExpandedClick: (Int, Boolean) -> Unit,
     onSearchClick: () -> Unit,
     modifier: Modifier = Modifier,
     bottomBar: @Composable () -> Unit = {}
 ) {
     // TODO implement edit mode
     val profile = uiState.profile
+    var editMode by remember {
+        mutableStateOf(false)
+    }
 
     Scaffold(
         modifier = modifier.fillMaxSize(),
@@ -57,16 +68,24 @@ fun HomeScreen(
                 onProfileClick = onProfileClick,
                 actions = {
                     PrimaryButton(
-                        { },
-                        Modifier
+                        onClick = {
+                            editMode = !editMode
+                        },
+                        modifier = Modifier
                             .size(40.dp)
                             .clip(RoundedCornerShape(10.dp))
                     ) {
-                        Icon(
-                            imageVector = Icons.Default.Edit,
-                            // TODO add contentDescription
-                            contentDescription = null
-                        )
+                        if (editMode) {
+                            Icon(
+                                imageVector = Icons.Default.Close,
+                                contentDescription = stringResource(R.string.close_icon_description)
+                            )
+                        } else {
+                            Icon(
+                                imageVector = Icons.Default.Edit,
+                                contentDescription = stringResource(R.string.edit_icon_description)
+                            )
+                        }
                     }
                 }
             )
@@ -76,7 +95,7 @@ fun HomeScreen(
             SearchFAB(onSearchClick)
         },
         containerColor =
-        if(useGradientBackground) Color.Transparent else MaterialTheme.colorScheme.background
+        if (useGradientBackground) Color.Transparent else MaterialTheme.colorScheme.background
     ) { innerPadding ->
         LazyColumn(
             modifier = Modifier.padding(innerPadding),
@@ -84,29 +103,41 @@ fun HomeScreen(
         ) {
             item {
                 MostPlayedCategory(
-                    uiState.mostPlayedGames,
-                    { onCategoryClick(Category.MostPlayed.id) }
+                    mostPlayedGames = uiState.mostPlayedGames,
+                    editMode = editMode,
+                    isExpanded = uiState.isMostPlayedGamesCarouselExpanded,
+                    onCategoryClick = { onCategoryClick(Category.MostPlayed.id) },
+                    onIsExpandedClick = { onCarouselExpandedClick(Category.MostPlayed.id, it) }
                 )
             }
 
             item {
                 TrendingCategory(
-                    uiState.trendingGames,
-                    { onCategoryClick(Category.Trending.id) }
+                    trendingGames = uiState.trendingGames,
+                    editMode = editMode,
+                    isExpanded = uiState.isTrendingGamesCarouselExpanded,
+                    onCategoryClick = { onCategoryClick(Category.Trending.id) },
+                    onIsExpandedClick = { onCarouselExpandedClick(Category.Trending.id, it) }
                 )
             }
 
             item {
                 OnSaleCategory(
-                    uiState.onSaleGames,
-                    { onCategoryClick(Category.OnSale.id) }
+                    onSaleGames = uiState.onSaleGames,
+                    editMode = editMode,
+                    isExpanded = uiState.isOnSaleGamesCarouselExpanded,
+                    onCategoryClick = { onCategoryClick(Category.OnSale.id) },
+                    onIsExpandedClick = { onCarouselExpandedClick(Category.OnSale.id, it) }
                 )
             }
 
             item {
                 PopularCategory(
-                    uiState.popularGames,
-                    { onCategoryClick(Category.Popular.id) }
+                    popularGames = uiState.popularGames,
+                    editMode = editMode,
+                    isExpanded = uiState.isPopularGamesCarouselExpanded,
+                    onCategoryClick = { onCategoryClick(Category.Popular.id) },
+                    onIsExpandedClick = { onCarouselExpandedClick(Category.Popular.id, it) }
                 )
             }
         }
@@ -132,6 +163,7 @@ private fun HomeScreenPreview(
             onCategoryClick = {},
             onSearchClick = {},
             onProfileClick = {},
+            onCarouselExpandedClick = { _: Int, _: Boolean -> },
             bottomBar = {
                 BottomNavbar(rememberNavController())
             }
@@ -144,19 +176,18 @@ private fun HomeScreenPreview(
 private fun HomeScreenGradientPreview(
     @PreviewParameter(HomePreviewParametersProvider::class) uiState: HomeUiState
 ) {
-    val theme = isSystemInDarkTheme()
-    SteamDexTheme(theme) {
+    SteamDexTheme {
         HomeScreen(
             uiState = uiState,
             useGradientBackground = true,
             onCategoryClick = {},
             onSearchClick = {},
             onProfileClick = {},
-            modifier = Modifier.gradientBackground(theme),
+            onCarouselExpandedClick = { _: Int, _: Boolean -> },
+            modifier = Modifier.gradientBackground(isSystemInDarkTheme()),
             bottomBar = {
                 BottomNavbar(rememberNavController())
             }
         )
     }
 }
-
