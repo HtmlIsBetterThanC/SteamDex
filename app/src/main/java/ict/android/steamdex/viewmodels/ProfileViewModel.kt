@@ -24,9 +24,6 @@ class ProfileViewModel @Inject constructor(private val settingsRepository: Setti
                     profile = profiles[0],
                     totalFriends = "5",
                     darkTheme = settingsRepository.getDarkTheme(),
-                    pitchBlack = settingsRepository.getPitchBlack(),
-                    materialYou = settingsRepository.getMaterialYou(),
-                    gradientBackground = settingsRepository.getGradientBackground(),
                     defaultStartingScreen = settingsRepository.getDefaultStartingScreen()
                 )
             }
@@ -45,27 +42,18 @@ class ProfileViewModel @Inject constructor(private val settingsRepository: Setti
     fun updatePitchBlack(pitchBlack: Boolean) {
         viewModelScope.launch {
             settingsRepository.updatePitchBlack(pitchBlack)
-            _uiState.update {
-                it.copy(pitchBlack = pitchBlack)
-            }
         }
     }
 
     fun updateMaterialYou(materialYou: Boolean) {
         viewModelScope.launch {
             settingsRepository.updateMaterialYou(materialYou)
-            _uiState.update {
-                it.copy(materialYou = materialYou)
-            }
         }
     }
 
     fun updateGradientBackground(gradientBackground: Boolean) {
         viewModelScope.launch {
             settingsRepository.updateGradientBackground(gradientBackground)
-            _uiState.update {
-                it.copy(gradientBackground = gradientBackground)
-            }
         }
     }
 
