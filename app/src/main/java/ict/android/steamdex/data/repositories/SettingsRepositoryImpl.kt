@@ -69,4 +69,8 @@ class SettingsRepositoryImpl @Inject constructor(private val preferences: SteamP
     override fun observeGradientBackground(): Flow<Boolean> {
         return preferences.observableGradientBackground
     }
+
+    override suspend fun resetSettings() {
+        preferences.deleteAll()
+    }
 }

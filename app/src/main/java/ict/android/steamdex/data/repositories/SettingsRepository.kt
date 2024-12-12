@@ -22,4 +22,6 @@ interface SettingsRepository {
     fun observePitchBlack(): Flow<Boolean>
     fun observeMaterialYou(): Flow<Boolean>
     fun observeGradientBackground(): Flow<Boolean>
+
+    suspend fun resetSettings()
 }
