@@ -45,6 +45,11 @@ class SteamPreferences @Inject constructor(@ApplicationContext private val conte
         GRADIENT_BACKGROUND_KEY,
         gradientBackground
     )
+    suspend fun getDefaultStartingScreen() = dataStore.getValue(DEFAULT_STARTING_SCREEN_KEY, "")
+    suspend fun setDefaultStartingScreen(screen: String) = dataStore.setValue(
+        DEFAULT_STARTING_SCREEN_KEY,
+        screen
+    )
 
     suspend fun deleteAll() {
         dataStore.edit { it.clear() }
@@ -56,5 +61,6 @@ class SteamPreferences @Inject constructor(@ApplicationContext private val conte
         private val PITCH_BLACK_KEY = booleanPreferencesKey("pitchBlack")
         private val MATERIAL_YOU_KEY = booleanPreferencesKey("materialYou")
         private val GRADIENT_BACKGROUND_KEY = booleanPreferencesKey("gradientBackground")
+        private val DEFAULT_STARTING_SCREEN_KEY = stringPreferencesKey("defaultStartingScreen")
     }
 }

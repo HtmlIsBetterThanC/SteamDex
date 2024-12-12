@@ -4,6 +4,7 @@ import ict.android.steamdex.data.preferences.SteamPreferences
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
+@Suppress("TooManyFunctions")
 class SettingsRepositoryImpl @Inject constructor(private val preferences: SteamPreferences) : SettingsRepository {
     override suspend fun setFirstTime() {
         preferences.setFistTime()
@@ -25,6 +26,10 @@ class SettingsRepositoryImpl @Inject constructor(private val preferences: SteamP
         preferences.setGradientBackground(gradientBackground)
     }
 
+    override suspend fun updateDefaultStartingScreen(screen: String) {
+        preferences.setDefaultStartingScreen(screen)
+    }
+
     override suspend fun isFirstTime(): Boolean {
         return preferences.isFirstTime()
     }
@@ -43,6 +48,10 @@ class SettingsRepositoryImpl @Inject constructor(private val preferences: SteamP
 
     override suspend fun getGradientBackground(): Boolean {
         return preferences.getGradientBackground()
+    }
+
+    override suspend fun getDefaultStartingScreen(): String {
+        return preferences.getDefaultStartingScreen()
     }
 
     override fun observeDarkTheme(): Flow<Boolean?> {

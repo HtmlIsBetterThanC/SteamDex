@@ -26,7 +26,8 @@ class ProfileViewModel @Inject constructor(private val settingsRepository: Setti
                     darkTheme = settingsRepository.getDarkTheme(),
                     pitchBlack = settingsRepository.getPitchBlack(),
                     materialYou = settingsRepository.getMaterialYou(),
-                    gradientBackground = settingsRepository.getGradientBackground()
+                    gradientBackground = settingsRepository.getGradientBackground(),
+                    defaultStartingScreen = settingsRepository.getDefaultStartingScreen()
                 )
             }
         }
@@ -64,6 +65,18 @@ class ProfileViewModel @Inject constructor(private val settingsRepository: Setti
             settingsRepository.updateGradientBackground(gradientBackground)
             _uiState.update {
                 it.copy(gradientBackground = gradientBackground)
+            }
+        }
+    }
+
+    fun updateDefaultStartingScreen(screen: Any) {
+        viewModelScope.launch {
+            val routeString = screen.javaClass.name
+            settingsRepository.updateDefaultStartingScreen(routeString)
+            _uiState.update {
+                it.copy(
+                    defaultStartingScreen = routeString
+                )
             }
         }
     }
