@@ -29,6 +29,7 @@ import ict.android.steamdex.ui.preview.providers.ProfilePreviewParametersProvide
 import ict.android.steamdex.ui.screens.profile.components.CalculatorButton
 import ict.android.steamdex.ui.screens.profile.components.SettingsItem
 import ict.android.steamdex.ui.screens.profile.components.SettingsList
+import ict.android.steamdex.ui.screens.profile.components.dialog.MaterialYouDialog
 import ict.android.steamdex.ui.screens.profile.components.dialog.PitchBlackDialog
 import ict.android.steamdex.ui.screens.profile.components.dialog.ResetDialog
 import ict.android.steamdex.ui.screens.profile.components.dialog.ThemeDialog
@@ -55,6 +56,9 @@ fun ProfileScreen(
     var showPitchBlackDialog by remember {
         mutableStateOf(false)
     }
+    var showMaterialYouDialog by remember {
+        mutableStateOf(false)
+    }
     var showResetDialog by remember {
         mutableStateOf(false)
     }
@@ -68,9 +72,7 @@ fun ProfileScreen(
 
             3 -> showPitchBlackDialog = true
 
-            4 -> {
-                // TODO material you dialog
-            }
+            4 -> showMaterialYouDialog = true
 
             5 -> {
                 // TODO default starting dialog
@@ -127,6 +129,18 @@ fun ProfileScreen(
                 onDismissDialog = { showPitchBlackDialog = false },
                 onPitchBlackActivateClick = { onPitchBlackChange(true) },
                 onPitchBlackDeactivateClick = { onPitchBlackChange(false) }
+            )
+            MaterialYouDialog(
+                showDialog = showMaterialYouDialog,
+                onDismissDialog = {
+                    showMaterialYouDialog = false
+                },
+                onMaterialYouActivateClick = {
+                    onMaterialYouChange(true)
+                },
+                onMaterialYouDeactivateClick = {
+                    onMaterialYouChange(false)
+                }
             )
             ResetDialog(
                 showDialog = showResetDialog,
