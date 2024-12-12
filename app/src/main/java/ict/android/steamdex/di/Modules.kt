@@ -1,9 +1,12 @@
 package ict.android.steamdex.di
 
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import ict.android.steamdex.data.repositories.SettingsRepository
+import ict.android.steamdex.data.repositories.SettingsRepositoryImpl
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.DefaultRequest
 import io.ktor.client.plugins.compression.ContentEncoding
@@ -64,4 +67,12 @@ object HttpClientModule {
             expectSuccess = true
         }
     }
+}
+
+@Suppress("unused")
+@Module
+@InstallIn(SingletonComponent::class)
+abstract class SettingsRepositoryModule {
+    @Binds
+    abstract fun bindsSettingsRepository(settingsRepositoryImpl: SettingsRepositoryImpl): SettingsRepository
 }
