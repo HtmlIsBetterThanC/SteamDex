@@ -9,6 +9,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.PreviewParameter
@@ -25,6 +29,7 @@ import ict.android.steamdex.ui.preview.providers.ProfilePreviewParametersProvide
 import ict.android.steamdex.ui.screens.profile.components.CalculatorButton
 import ict.android.steamdex.ui.screens.profile.components.SettingsItem
 import ict.android.steamdex.ui.screens.profile.components.SettingsList
+import ict.android.steamdex.ui.screens.profile.components.dialog.ThemeDialog
 import ict.android.steamdex.ui.theme.SteamDexTheme
 
 @Composable
@@ -42,6 +47,10 @@ fun ProfileScreen(
     bottomBar: @Composable () -> Unit = {}
 ) {
     val profile = uiState.profile
+    var showThemeDialog by remember {
+        mutableStateOf(false)
+    }
+    val onDismissDialog = { showThemeDialog = false }
     val onSettingItemClick: (item: SettingsItem) -> Unit = {
         when (it.id) {
             1 -> {
@@ -49,7 +58,7 @@ fun ProfileScreen(
             }
 
             2 -> {
-                // TODO theme dialog
+                showThemeDialog = true
             }
 
             3 -> {
@@ -69,6 +78,7 @@ fun ProfileScreen(
             }
         }
     }
+
     Scaffold(
         modifier = modifier,
         containerColor =
@@ -103,6 +113,12 @@ fun ProfileScreen(
             )
             Spacer(Modifier.height(8.dp))
             SettingsList(onSettingItemClick)
+            ThemeDialog(
+                showDialog = showThemeDialog,
+                currentTheme = uiState.darkTheme,
+                onDismissDialog = onDismissDialog,
+                onThemeChange = onThemeChange
+            )
         }
     }
 }
