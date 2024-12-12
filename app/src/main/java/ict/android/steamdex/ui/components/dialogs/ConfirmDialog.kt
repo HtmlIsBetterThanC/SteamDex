@@ -12,6 +12,7 @@ import androidx.compose.material3.AlertDialogDefaults
 import androidx.compose.material3.BasicAlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -20,6 +21,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import ict.android.steamdex.ui.components.buttons.CancelButton
 import ict.android.steamdex.ui.components.buttons.ConfirmButton
@@ -35,7 +37,9 @@ fun ConfirmDialog(
     dialogDescription: String,
     onDismissDialog: () -> Unit,
     onConfirmClick: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    confirmTextColor: Color = LocalContentColor.current,
+    cancelTextColor: Color = LocalContentColor.current
 ) {
     if (showDialog) {
         BasicAlertDialog(onDismissDialog) {
@@ -52,15 +56,15 @@ fun ConfirmDialog(
                     Spacer(Modifier.height(16.dp))
                     Text(
                         dialogDescription,
-                        style = MaterialTheme.typography.labelSmall
+                        style = MaterialTheme.typography.labelLarge
                     )
                     Spacer(Modifier.height(24.dp))
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(16.dp, Alignment.End)
                     ) {
-                        ConfirmButton(onConfirmClick)
-                        CancelButton(onDismissDialog)
+                        ConfirmButton(onConfirmClick, color = confirmTextColor)
+                        CancelButton(onDismissDialog, color = cancelTextColor)
                     }
                 }
             }
