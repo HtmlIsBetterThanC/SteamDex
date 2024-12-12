@@ -30,6 +30,7 @@ import ict.android.steamdex.ui.screens.profile.components.CalculatorButton
 import ict.android.steamdex.ui.screens.profile.components.SettingsItem
 import ict.android.steamdex.ui.screens.profile.components.SettingsList
 import ict.android.steamdex.ui.screens.profile.components.dialog.DefaultStartingScreenDialog
+import ict.android.steamdex.ui.screens.profile.components.dialog.GradientBackgroundDialog
 import ict.android.steamdex.ui.screens.profile.components.dialog.MaterialYouDialog
 import ict.android.steamdex.ui.screens.profile.components.dialog.PitchBlackDialog
 import ict.android.steamdex.ui.screens.profile.components.dialog.ResetDialog
@@ -45,6 +46,7 @@ fun ProfileScreen(
     onThemeChange: (Boolean?) -> Unit,
     onPitchBlackChange: (Boolean) -> Unit,
     onMaterialYouChange: (Boolean) -> Unit,
+    onGradientBackgroundChange: (Boolean) -> Unit,
     onDefaultStartingScreenChange: (Any) -> Unit,
     onResetSettingClick: () -> Unit,
     modifier: Modifier = Modifier,
@@ -58,6 +60,9 @@ fun ProfileScreen(
         mutableStateOf(false)
     }
     var showMaterialYouDialog by remember {
+        mutableStateOf(false)
+    }
+    var showGradientBackgroundDialog by remember {
         mutableStateOf(false)
     }
     var showDefaultStartingScreenDialog by remember {
@@ -79,9 +84,11 @@ fun ProfileScreen(
 
             4 -> showMaterialYouDialog = true
 
-            5 -> showDefaultStartingScreenDialog = true
+            5 -> showGradientBackgroundDialog = true
 
-            6 -> showResetDialog = true
+            6 -> showDefaultStartingScreenDialog = true
+
+            7 -> showResetDialog = true
         }
     }
 
@@ -145,6 +152,18 @@ fun ProfileScreen(
                     onMaterialYouChange(false)
                 }
             )
+            GradientBackgroundDialog(
+                showDialog = showGradientBackgroundDialog,
+                onDismissDialog = {
+                    showGradientBackgroundDialog = false
+                },
+                onGradientBackgroundActivateClick = {
+                    onGradientBackgroundChange(true)
+                },
+                onGradientBackgroundDeactivateClick = {
+                    onGradientBackgroundChange(false)
+                }
+            )
             DefaultStartingScreenDialog(
                 showDialog = showDefaultStartingScreenDialog,
                 currentStartingScreen = uiState.defaultStartingScreen,
@@ -176,6 +195,7 @@ private fun ProfileScreenPreview(
             onThemeChange = {},
             onPitchBlackChange = {},
             onMaterialYouChange = {},
+            onGradientBackgroundChange = {},
             onDefaultStartingScreenChange = {},
             onResetSettingClick = {},
             bottomBar = { BottomNavbar(rememberNavController()) },
@@ -197,6 +217,7 @@ private fun ProfileScreenGradientPreview(
             onThemeChange = {},
             onPitchBlackChange = {},
             onMaterialYouChange = {},
+            onGradientBackgroundChange = {},
             onDefaultStartingScreenChange = {},
             onResetSettingClick = {},
             modifier = Modifier.gradientBackground(isSystemInDarkTheme()),

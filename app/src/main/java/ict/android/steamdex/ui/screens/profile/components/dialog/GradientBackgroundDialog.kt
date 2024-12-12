@@ -15,38 +15,38 @@ import ict.android.steamdex.ui.preview.PreviewSteam
 import ict.android.steamdex.ui.theme.SteamDexTheme
 
 @Composable
-fun MaterialYouDialog(
+fun GradientBackgroundDialog(
     showDialog: Boolean,
     onDismissDialog: () -> Unit,
-    onMaterialYouActivateClick: () -> Unit,
-    onMaterialYouDeactivateClick: () -> Unit,
+    onGradientBackgroundActivateClick: () -> Unit,
+    onGradientBackgroundDeactivateClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     ActivateDialog(
         showDialog = showDialog,
-        dialogTitle = stringResource(R.string.profile_screen_material_you_dialog_title),
-        dialogDescription = stringResource(R.string.profile_screen_material_you_dialog_description),
+        dialogTitle = stringResource(R.string.profile_screen_gradient_background_dialog_title),
+        dialogDescription = stringResource(R.string.profile_screen_gradient_background_dialog_description),
         onDismissDialog = onDismissDialog,
-        onActivateClick = onMaterialYouActivateClick,
-        onDeactivateClick = onMaterialYouDeactivateClick,
+        onActivateClick = onGradientBackgroundActivateClick,
+        onDeactivateClick = onGradientBackgroundDeactivateClick,
         modifier = modifier
     )
 }
 
 @PreviewSteam
 @Composable
-private fun MaterialYouDialogPreview() {
-    var materialYou by remember {
+private fun GradientBackgroundDialogPreview() {
+    var gradientBackground by remember {
         mutableStateOf(false)
     }
 
     SteamDexTheme {
         Surface(Modifier.fillMaxSize()) {
-            MaterialYouDialog(
+            GradientBackgroundDialog(
                 showDialog = true,
                 onDismissDialog = {},
-                onMaterialYouActivateClick = { materialYou = true },
-                onMaterialYouDeactivateClick = { materialYou = false }
+                onGradientBackgroundActivateClick = { gradientBackground = true },
+                onGradientBackgroundDeactivateClick = { gradientBackground = false }
             )
         }
     }

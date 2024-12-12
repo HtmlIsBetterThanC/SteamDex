@@ -115,11 +115,16 @@ private val settingsList = listOf(
     ),
     SettingsItem(
         id = 5,
+        titleId = R.string.settings_gradient_background_title,
+        iconId = R.drawable.gradient
+    ),
+    SettingsItem(
+        id = 6,
         titleId = R.string.settings_default_startup_page_title,
         iconId = R.drawable.default_startup_page
     ),
     SettingsItem(
-        id = 6,
+        id = 7,
         titleId = R.string.settings_restore_default_title,
         iconId = R.drawable.restore_defaults
     )
