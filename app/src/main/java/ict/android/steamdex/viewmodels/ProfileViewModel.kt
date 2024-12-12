@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import ict.android.steamdex.data.repositories.SettingsRepository
+import ict.android.steamdex.ext.fromRouteToString
 import ict.android.steamdex.ui.preview.PreviewData.profiles
 import ict.android.steamdex.ui.screens.profile.ProfileUiState
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -59,7 +60,7 @@ class ProfileViewModel @Inject constructor(private val settingsRepository: Setti
 
     fun updateDefaultStartingScreen(screen: Any) {
         viewModelScope.launch {
-            val routeString = screen.javaClass.name
+            val routeString = screen.fromRouteToString()
             settingsRepository.updateDefaultStartingScreen(routeString)
             _uiState.update {
                 it.copy(

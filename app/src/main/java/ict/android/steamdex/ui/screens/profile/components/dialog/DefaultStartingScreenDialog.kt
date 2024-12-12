@@ -10,6 +10,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import ict.android.steamdex.R
+import ict.android.steamdex.ext.fromRouteToString
 import ict.android.steamdex.navigation.BottomNavbarScreens
 import ict.android.steamdex.ui.components.buttons.RadioDialog
 import ict.android.steamdex.ui.preview.PreviewSteam
@@ -24,7 +25,7 @@ fun DefaultStartingScreenDialog(
     modifier: Modifier = Modifier
 ) {
     val startingScreenListName = BottomNavbarScreens.map { stringResource(it.nameId) }
-    val startingScreenListValue = BottomNavbarScreens.map { it.route.javaClass.name }
+    val startingScreenListValue = BottomNavbarScreens.map { it.fromRouteToString() }
 
     RadioDialog(
         showDialog = showDialog,
