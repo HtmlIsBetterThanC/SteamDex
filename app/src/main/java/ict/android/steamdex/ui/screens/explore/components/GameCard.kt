@@ -1,7 +1,6 @@
 package ict.android.steamdex.ui.screens.explore.components
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -26,7 +25,6 @@ import ict.android.steamdex.ui.theme.SteamDexTheme
 
 @Composable
 fun GameCard(
-    name: String,
     currentPlayers: Double,
     iconUrl: String,
     modifier: Modifier = Modifier
@@ -58,12 +56,6 @@ fun GameCard(
         ) {
             // TODO add background color to column or remove text
             Text(
-                text = name,
-                modifier = Modifier.basicMarquee(),
-                color = MaterialTheme.colorScheme.surface,
-                style = MaterialTheme.typography.titleMedium
-            )
-            Text(
                 text = stringResource(R.string.home_currently_playing, currentPlayers),
                 color = MaterialTheme.colorScheme.primaryContainer,
                 style = MaterialTheme.typography.labelSmall
@@ -80,7 +72,6 @@ private fun GameCardPreview() {
         Surface {
             game.currentPlayers?.let {
                 GameCard(
-                    name = game.name,
                     currentPlayers = it,
                     iconUrl = game.iconUrl
                 )

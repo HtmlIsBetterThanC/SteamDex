@@ -35,7 +35,6 @@ fun HorizontalCarousel(
         // TODO what if currentPlayers is null
         game.currentPlayers?.let {
             GameCard(
-                name = game.name,
                 currentPlayers = it,
                 iconUrl = game.iconUrl,
                 modifier = Modifier
