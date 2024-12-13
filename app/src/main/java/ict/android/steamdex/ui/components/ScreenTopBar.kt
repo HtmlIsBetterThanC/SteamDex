@@ -28,6 +28,7 @@ import ict.android.steamdex.ui.theme.SteamDexTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScreenTopBar(
+    useGradientBackground: Boolean,
     profileIconUrl: String,
     profileName: String,
     profileLevel: Int,
@@ -63,7 +64,11 @@ fun ScreenTopBar(
         modifier = modifier.padding(end = 10.dp),
         actions = actions,
         expandedHeight = 80.dp,
-        colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent)
+        colors = if (useGradientBackground) {
+            TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent)
+        } else {
+            TopAppBarDefaults.topAppBarColors()
+        }
     )
 }
 
@@ -73,6 +78,7 @@ private fun ScreenTopBarPreview() {
     SteamDexTheme {
         Surface {
             ScreenTopBar(
+                useGradientBackground = false,
                 profileIconUrl = "",
                 profileName = "Profile",
                 profileLevel = 15,
@@ -88,6 +94,7 @@ private fun ScreenTopBarPreviewWithAction() {
     SteamDexTheme {
         Surface {
             ScreenTopBar(
+                useGradientBackground = false,
                 profileIconUrl = "",
                 profileName = "Profile",
                 profileLevel = 15,
