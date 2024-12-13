@@ -39,6 +39,8 @@
     <string name="profile_screen_theme_dialog_title">Theme</string>
     <string name="profile_screen_reset_dialog_title">Reset all your settings</string>
     <string name="profile_screen_reset_dialog_description">You are going to lose all your settings preferences</string>
+    <string name="activate_button_title">Activate</string>
+    <string name="deactivate_button_title">Deactivate</string>
     <string name="profile_screen_pitch_black_dialog_title">Activate Pitch Black</string>
     <string name="profile_screen_pitch_black_dialog_description">Applies full black to all backgrounds.
     Activating this automatically disables the gradient background</string>
@@ -48,6 +50,4 @@
     <string name="profile_screen_gradient_background_dialog_title">Activate Gradient background</string>
     <string name="profile_screen_gradient_background_dialog_description">Applies our gradient to all backgrounds</string>
     <string name="profile_screen_default_screen_dialog_title">Default starting screen</string>
-    <string name="activate_button_title">Activate</string>
-    <string name="deactivate_button_title">Deactivate</string>
 </resources>
