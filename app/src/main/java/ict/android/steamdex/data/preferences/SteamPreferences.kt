@@ -46,6 +46,22 @@ class SteamPreferences @Inject constructor(@ApplicationContext private val conte
         gradientBackground
     )
 
+    suspend fun getMostPlayedGamesExpanded() = dataStore.getValue(MOST_PLAYED_GAMES_EXPANDED_KEY, true)
+    suspend fun setMostPlayedGamesExpanded(expanded: Boolean) =
+        dataStore.setValue(MOST_PLAYED_GAMES_EXPANDED_KEY, expanded)
+
+    suspend fun getTrendingGamesExpanded() = dataStore.getValue(TRENDING_GAMES_EXPANDED_KEY, false)
+    suspend fun setTrendingGamesExpanded(expanded: Boolean) =
+        dataStore.setValue(TRENDING_GAMES_EXPANDED_KEY, expanded)
+
+    suspend fun getOnSaleGamesExpanded() = dataStore.getValue(ON_SALE_GAMES_EXPANDED_KEY, false)
+    suspend fun setOnSaleGamesExpanded(expanded: Boolean) =
+        dataStore.setValue(ON_SALE_GAMES_EXPANDED_KEY, expanded)
+
+    suspend fun getPopularGamesExpanded() = dataStore.getValue(POPULAR_GAMES_EXPANDED_KEY, false)
+    suspend fun setPopularGamesExpanded(expanded: Boolean) =
+        dataStore.setValue(POPULAR_GAMES_EXPANDED_KEY, expanded)
+
     suspend fun deleteAll() {
         dataStore.edit { it.clear() }
     }
@@ -56,5 +72,9 @@ class SteamPreferences @Inject constructor(@ApplicationContext private val conte
         private val PITCH_BLACK_KEY = booleanPreferencesKey("pitchBlack")
         private val MATERIAL_YOU_KEY = booleanPreferencesKey("materialYou")
         private val GRADIENT_BACKGROUND_KEY = booleanPreferencesKey("gradientBackground")
+        private val MOST_PLAYED_GAMES_EXPANDED_KEY = booleanPreferencesKey("mostPlayedGamesExpanded")
+        private val TRENDING_GAMES_EXPANDED_KEY = booleanPreferencesKey("trendingGamesExpanded")
+        private val ON_SALE_GAMES_EXPANDED_KEY = booleanPreferencesKey("onSaleGamesExpanded")
+        private val POPULAR_GAMES_EXPANDED_KEY = booleanPreferencesKey("popularGamesExpanded")
     }
 }

@@ -1,9 +1,12 @@
 package ict.android.steamdex.di
 
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import ict.android.steamdex.data.repositories.GameRepository
+import ict.android.steamdex.data.repositories.GameRepositoryImpl
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.DefaultRequest
 import io.ktor.client.plugins.compression.ContentEncoding
@@ -64,4 +67,13 @@ object HttpClientModule {
             expectSuccess = true
         }
     }
+}
+
+@Suppress("unused")
+@Module
+@InstallIn(SingletonComponent::class)
+abstract class GameRepositoryModule {
+    @Singleton
+    @Binds
+    abstract fun bindsGameRepository(gameRepositoryImpl: GameRepositoryImpl): GameRepository
 }
