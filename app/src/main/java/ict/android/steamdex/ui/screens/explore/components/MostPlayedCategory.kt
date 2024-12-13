@@ -1,4 +1,4 @@
-package ict.android.steamdex.ui.screens.home.components
+package ict.android.steamdex.ui.screens.explore.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -13,8 +13,8 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import ict.android.steamdex.R
 import ict.android.steamdex.models.ui.UiGames
 import ict.android.steamdex.ui.preview.PreviewSteam
-import ict.android.steamdex.ui.preview.providers.HomePreviewParametersProvider
-import ict.android.steamdex.ui.screens.home.HomeUiState
+import ict.android.steamdex.ui.preview.providers.ExplorePreviewParametersProvider
+import ict.android.steamdex.ui.screens.explore.ExploreUiState
 import ict.android.steamdex.ui.theme.SteamDexTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -47,7 +47,7 @@ fun MostPlayedCategory(
 @PreviewSteam
 @Composable
 private fun MostPlayedPreview(
-    @PreviewParameter(HomePreviewParametersProvider::class) uiState: HomeUiState
+    @PreviewParameter(ExplorePreviewParametersProvider::class) uiState: ExploreUiState
 ) {
     SteamDexTheme {
         Surface {
@@ -65,7 +65,7 @@ private fun MostPlayedPreview(
 @PreviewSteam
 @Composable
 private fun MostPlayedEditPreview(
-    @PreviewParameter(HomePreviewParametersProvider::class) uiState: HomeUiState
+    @PreviewParameter(ExplorePreviewParametersProvider::class) uiState: ExploreUiState
 ) {
     var isExpanded by remember {
         mutableStateOf(false)

@@ -1,4 +1,4 @@
-package ict.android.steamdex.ui.screens.home.components
+package ict.android.steamdex.ui.screens.explore.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -13,14 +13,14 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import ict.android.steamdex.R
 import ict.android.steamdex.models.ui.UiGames
 import ict.android.steamdex.ui.preview.PreviewSteam
-import ict.android.steamdex.ui.preview.providers.HomePreviewParametersProvider
-import ict.android.steamdex.ui.screens.home.HomeUiState
+import ict.android.steamdex.ui.preview.providers.ExplorePreviewParametersProvider
+import ict.android.steamdex.ui.screens.explore.ExploreUiState
 import ict.android.steamdex.ui.theme.SteamDexTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PopularCategory(
-    popularGames: List<UiGames>,
+fun TrendingCategory(
+    trendingGames: List<UiGames>,
     editMode: Boolean,
     isExpanded: Boolean,
     onCategoryClick: () -> Unit,
@@ -29,16 +29,16 @@ fun PopularCategory(
 ) {
     Column(modifier) {
         CategoryGamesBar(
-            categoryIconId = R.drawable.popular,
-            categoryIconDescriptionId = R.string.popular_icon_description,
-            categoryTitleId = R.string.home_popular_category,
+            categoryIconId = R.drawable.trending_up,
+            categoryIconDescriptionId = R.string.trending_up_icon_description,
+            categoryTitleId = R.string.home_trending_category,
             editMode = editMode,
             isExpanded = isExpanded,
             onCategoryBarClick = onCategoryClick,
             onIsExpandedClick = onIsExpandedClick
         )
         HorizontalCarousel(
-            popularGames,
+            trendingGames,
             large = isExpanded
         )
     }
@@ -46,15 +46,15 @@ fun PopularCategory(
 
 @PreviewSteam
 @Composable
-private fun PopularCategoryPreview(
-    @PreviewParameter(HomePreviewParametersProvider::class) uiState: HomeUiState
+private fun TrendingCategoryPreview(
+    @PreviewParameter(ExplorePreviewParametersProvider::class) uiState: ExploreUiState
 ) {
     SteamDexTheme {
         Surface {
-            PopularCategory(
-                popularGames = uiState.popularGames,
+            TrendingCategory(
+                trendingGames = uiState.trendingGames,
                 editMode = false,
-                isExpanded = uiState.isPopularGamesCarouselExpanded,
+                isExpanded = uiState.isTrendingGamesCarouselExpanded,
                 onCategoryClick = {},
                 onIsExpandedClick = {}
             )
@@ -64,16 +64,16 @@ private fun PopularCategoryPreview(
 
 @PreviewSteam
 @Composable
-private fun PopularCategoryEditPreview(
-    @PreviewParameter(HomePreviewParametersProvider::class) uiState: HomeUiState
+private fun TrendingCategoryEditPreview(
+    @PreviewParameter(ExplorePreviewParametersProvider::class) uiState: ExploreUiState
 ) {
     var isExpanded by remember {
         mutableStateOf(false)
     }
     SteamDexTheme {
         Surface {
-            PopularCategory(
-                popularGames = uiState.popularGames,
+            TrendingCategory(
+                trendingGames = uiState.trendingGames,
                 editMode = true,
                 isExpanded = isExpanded,
                 onCategoryClick = {},

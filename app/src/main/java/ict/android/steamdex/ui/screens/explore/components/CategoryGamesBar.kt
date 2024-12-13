@@ -1,4 +1,4 @@
-package ict.android.steamdex.ui.screens.home.components
+package ict.android.steamdex.ui.screens.explore.components
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes

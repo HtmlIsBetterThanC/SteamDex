@@ -1,12 +1,12 @@
-package ict.android.steamdex.ui.screens.home
+package ict.android.steamdex.ui.screens.explore
 
 import androidx.compose.runtime.Immutable
 import ict.android.steamdex.models.ui.UiGames
 import ict.android.steamdex.models.ui.UiProfile
 
 @Immutable
-data class HomeUiState(
-    val profile: UiProfile,
+data class ExploreUiState(
+    val profile: UiProfile = UiProfile(),
     val isMostPlayedGamesCarouselExpanded: Boolean = true,
     val isTrendingGamesCarouselExpanded: Boolean = false,
     val isOnSaleGamesCarouselExpanded: Boolean = false,

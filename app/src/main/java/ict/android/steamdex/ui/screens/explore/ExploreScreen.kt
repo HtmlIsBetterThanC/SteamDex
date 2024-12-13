@@ -1,4 +1,4 @@
-package ict.android.steamdex.ui.screens.home
+package ict.android.steamdex.ui.screens.explore
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
@@ -33,17 +33,17 @@ import ict.android.steamdex.ui.components.buttons.PrimaryButton
 import ict.android.steamdex.ui.components.modifiers.gradientBackground
 import ict.android.steamdex.ui.preview.PreviewSteam
 import ict.android.steamdex.ui.preview.PreviewSteamGradient
-import ict.android.steamdex.ui.preview.providers.HomePreviewParametersProvider
-import ict.android.steamdex.ui.screens.home.components.MostPlayedCategory
-import ict.android.steamdex.ui.screens.home.components.OnSaleCategory
-import ict.android.steamdex.ui.screens.home.components.PopularCategory
-import ict.android.steamdex.ui.screens.home.components.TrendingCategory
+import ict.android.steamdex.ui.preview.providers.ExplorePreviewParametersProvider
+import ict.android.steamdex.ui.screens.explore.components.MostPlayedCategory
+import ict.android.steamdex.ui.screens.explore.components.OnSaleCategory
+import ict.android.steamdex.ui.screens.explore.components.PopularCategory
+import ict.android.steamdex.ui.screens.explore.components.TrendingCategory
 import ict.android.steamdex.ui.theme.SteamDexTheme
 
 // TODO handles empty games list
 @Composable
-fun HomeScreen(
-    uiState: HomeUiState,
+fun ExploreScreen(
+    uiState: ExploreUiState,
     useGradientBackground: Boolean,
     onProfileClick: () -> Unit,
     onCategoryClick: (Int) -> Unit,
@@ -153,11 +153,11 @@ enum class Category(val id: Int) {
 
 @PreviewSteam
 @Composable
-private fun HomeScreenPreview(
-    @PreviewParameter(HomePreviewParametersProvider::class) uiState: HomeUiState
+private fun ExploreScreenPreview(
+    @PreviewParameter(ExplorePreviewParametersProvider::class) uiState: ExploreUiState
 ) {
     SteamDexTheme {
-        HomeScreen(
+        ExploreScreen(
             uiState = uiState,
             useGradientBackground = false,
             onCategoryClick = {},
@@ -173,11 +173,11 @@ private fun HomeScreenPreview(
 
 @PreviewSteamGradient
 @Composable
-private fun HomeScreenGradientPreview(
-    @PreviewParameter(HomePreviewParametersProvider::class) uiState: HomeUiState
+private fun ExploreScreenGradientPreview(
+    @PreviewParameter(ExplorePreviewParametersProvider::class) uiState: ExploreUiState
 ) {
     SteamDexTheme {
-        HomeScreen(
+        ExploreScreen(
             uiState = uiState,
             useGradientBackground = true,
             onCategoryClick = {},

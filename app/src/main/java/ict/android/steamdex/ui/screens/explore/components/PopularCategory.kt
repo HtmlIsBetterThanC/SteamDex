@@ -1,4 +1,4 @@
-package ict.android.steamdex.ui.screens.home.components
+package ict.android.steamdex.ui.screens.explore.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -13,14 +13,14 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import ict.android.steamdex.R
 import ict.android.steamdex.models.ui.UiGames
 import ict.android.steamdex.ui.preview.PreviewSteam
-import ict.android.steamdex.ui.preview.providers.HomePreviewParametersProvider
-import ict.android.steamdex.ui.screens.home.HomeUiState
+import ict.android.steamdex.ui.preview.providers.ExplorePreviewParametersProvider
+import ict.android.steamdex.ui.screens.explore.ExploreUiState
 import ict.android.steamdex.ui.theme.SteamDexTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun OnSaleCategory(
-    onSaleGames: List<UiGames>,
+fun PopularCategory(
+    popularGames: List<UiGames>,
     editMode: Boolean,
     isExpanded: Boolean,
     onCategoryClick: () -> Unit,
@@ -29,29 +29,32 @@ fun OnSaleCategory(
 ) {
     Column(modifier) {
         CategoryGamesBar(
-            categoryIconId = R.drawable.savings,
-            categoryIconDescriptionId = R.string.savings_icon_description,
-            categoryTitleId = R.string.home_on_sale_category,
+            categoryIconId = R.drawable.popular,
+            categoryIconDescriptionId = R.string.popular_icon_description,
+            categoryTitleId = R.string.home_popular_category,
             editMode = editMode,
             isExpanded = isExpanded,
             onCategoryBarClick = onCategoryClick,
             onIsExpandedClick = onIsExpandedClick
         )
-        HorizontalCarousel(onSaleGames, large = isExpanded)
+        HorizontalCarousel(
+            popularGames,
+            large = isExpanded
+        )
     }
 }
 
 @PreviewSteam
 @Composable
-private fun OnSaleCategoryPreview(
-    @PreviewParameter(HomePreviewParametersProvider::class) uiState: HomeUiState
+private fun PopularCategoryPreview(
+    @PreviewParameter(ExplorePreviewParametersProvider::class) uiState: ExploreUiState
 ) {
     SteamDexTheme {
         Surface {
-            OnSaleCategory(
-                onSaleGames = uiState.onSaleGames,
+            PopularCategory(
+                popularGames = uiState.popularGames,
                 editMode = false,
-                isExpanded = uiState.isOnSaleGamesCarouselExpanded,
+                isExpanded = uiState.isPopularGamesCarouselExpanded,
                 onCategoryClick = {},
                 onIsExpandedClick = {}
             )
@@ -61,18 +64,18 @@ private fun OnSaleCategoryPreview(
 
 @PreviewSteam
 @Composable
-private fun OnSaleCategoryEditPreview(
-    @PreviewParameter(HomePreviewParametersProvider::class) uiState: HomeUiState
+private fun PopularCategoryEditPreview(
+    @PreviewParameter(ExplorePreviewParametersProvider::class) uiState: ExploreUiState
 ) {
     var isExpanded by remember {
         mutableStateOf(false)
     }
     SteamDexTheme {
         Surface {
-            OnSaleCategory(
-                onSaleGames = uiState.onSaleGames,
-                editMode = false,
-                isExpanded = uiState.isOnSaleGamesCarouselExpanded,
+            PopularCategory(
+                popularGames = uiState.popularGames,
+                editMode = true,
+                isExpanded = isExpanded,
                 onCategoryClick = {},
                 onIsExpandedClick = {
                     isExpanded = it
