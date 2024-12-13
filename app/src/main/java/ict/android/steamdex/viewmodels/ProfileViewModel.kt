@@ -73,9 +73,8 @@ class ProfileViewModel @Inject constructor(private val settingsRepository: Setti
     fun resetAllSettings() {
         viewModelScope.launch {
             settingsRepository.resetSettings()
-            _uiState.update {
-                ProfileUiState()
-            }
         }
+        // TODO is it correct
+        start()
     }
 }
