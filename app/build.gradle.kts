@@ -40,6 +40,7 @@ android {
     buildFeatures {
         compose = true
         buildConfig = true
+        buildConfig = true
     }
     hilt {
         enableAggregatingTask = true
@@ -83,6 +84,10 @@ dependencies {
     implementation(libs.coil.video)
     implementation(libs.coil.network.ktor3)
     implementation(libs.coil.network.cache.control)
+
+    // HTTP Client
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.cio)
 
     // Test
     testImplementation(libs.junit)
