@@ -92,30 +92,3 @@ fun ProgressBarGamesPlayed(
     }
 }
 
-@PreviewSteam
-@Composable
-private fun ProfileAdditionalDetailsPreviewDetail() {
-    val profile = profiles.first()
-    val calculatorPreview = CalculatorUiState(
-        profile = profile,
-        todayValue = 14542,
-        currentXpToNextLevel = 239
-    )
-    SteamDexTheme {
-        Surface {
-            ProfileAdditionalDetail(
-                totalValue = calculatorPreview.profile.totalValue,
-                playedGames = calculatorPreview.profile.playedGames,
-                totalGames = calculatorPreview.profile.totalValue,
-                content = {
-                    CalculatorAdditionalDetails(
-                        totalHours = calculatorPreview.profile.totalHours,
-                        todayValue = calculatorPreview.todayValue,
-                        currentXpToNextLevel = calculatorPreview.currentXpToNextLevel,
-                    )
-                }
-            )
-        }
-    }
-}
-
