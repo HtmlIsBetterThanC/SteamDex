@@ -54,7 +54,7 @@ private fun PopularCategoryPreview(
             PopularCategory(
                 popularGames = uiState.popularGames,
                 editMode = false,
-                isExpanded = uiState.isPopularGamesCarouselExpanded,
+                isExpanded = uiState.isPopularGamesExpanded,
                 onCategoryClick = {},
                 onIsExpandedClick = {}
             )

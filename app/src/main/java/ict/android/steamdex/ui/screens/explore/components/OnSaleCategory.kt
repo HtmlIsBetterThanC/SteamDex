@@ -51,7 +51,7 @@ private fun OnSaleCategoryPreview(
             OnSaleCategory(
                 onSaleGames = uiState.onSaleGames,
                 editMode = false,
-                isExpanded = uiState.isOnSaleGamesCarouselExpanded,
+                isExpanded = uiState.isOnSaleGamesExpanded,
                 onCategoryClick = {},
                 onIsExpandedClick = {}
             )
@@ -72,7 +72,7 @@ private fun OnSaleCategoryEditPreview(
             OnSaleCategory(
                 onSaleGames = uiState.onSaleGames,
                 editMode = false,
-                isExpanded = uiState.isOnSaleGamesCarouselExpanded,
+                isExpanded = uiState.isOnSaleGamesExpanded,
                 onCategoryClick = {},
                 onIsExpandedClick = {
                     isExpanded = it

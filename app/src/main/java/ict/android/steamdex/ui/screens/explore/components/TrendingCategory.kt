@@ -54,7 +54,7 @@ private fun TrendingCategoryPreview(
             TrendingCategory(
                 trendingGames = uiState.trendingGames,
                 editMode = false,
-                isExpanded = uiState.isTrendingGamesCarouselExpanded,
+                isExpanded = uiState.isTrendingGamesExpanded,
                 onCategoryClick = {},
                 onIsExpandedClick = {}
             )

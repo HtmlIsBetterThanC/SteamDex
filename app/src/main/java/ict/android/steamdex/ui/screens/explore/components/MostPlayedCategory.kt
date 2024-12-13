@@ -54,7 +54,7 @@ private fun MostPlayedPreview(
             MostPlayedCategory(
                 mostPlayedGames = uiState.mostPlayedGames,
                 editMode = false,
-                isExpanded = uiState.isMostPlayedGamesCarouselExpanded,
+                isExpanded = uiState.isMostPlayedGamesExpanded,
                 onCategoryClick = {},
                 onIsExpandedClick = {}
             )

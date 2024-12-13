@@ -105,7 +105,7 @@ fun ExploreScreen(
                 MostPlayedCategory(
                     mostPlayedGames = uiState.mostPlayedGames,
                     editMode = editMode,
-                    isExpanded = uiState.isMostPlayedGamesCarouselExpanded,
+                    isExpanded = uiState.isMostPlayedGamesExpanded,
                     onCategoryClick = { onCategoryClick(Category.MostPlayed.id) },
                     onIsExpandedClick = { onCarouselExpandedClick(Category.MostPlayed.id, it) }
                 )
@@ -115,7 +115,7 @@ fun ExploreScreen(
                 TrendingCategory(
                     trendingGames = uiState.trendingGames,
                     editMode = editMode,
-                    isExpanded = uiState.isTrendingGamesCarouselExpanded,
+                    isExpanded = uiState.isTrendingGamesExpanded,
                     onCategoryClick = { onCategoryClick(Category.Trending.id) },
                     onIsExpandedClick = { onCarouselExpandedClick(Category.Trending.id, it) }
                 )
@@ -125,7 +125,7 @@ fun ExploreScreen(
                 OnSaleCategory(
                     onSaleGames = uiState.onSaleGames,
                     editMode = editMode,
-                    isExpanded = uiState.isOnSaleGamesCarouselExpanded,
+                    isExpanded = uiState.isOnSaleGamesExpanded,
                     onCategoryClick = { onCategoryClick(Category.OnSale.id) },
                     onIsExpandedClick = { onCarouselExpandedClick(Category.OnSale.id, it) }
                 )
@@ -135,7 +135,7 @@ fun ExploreScreen(
                 PopularCategory(
                     popularGames = uiState.popularGames,
                     editMode = editMode,
-                    isExpanded = uiState.isPopularGamesCarouselExpanded,
+                    isExpanded = uiState.isPopularGamesExpanded,
                     onCategoryClick = { onCategoryClick(Category.Popular.id) },
                     onIsExpandedClick = { onCarouselExpandedClick(Category.Popular.id, it) }
                 )
