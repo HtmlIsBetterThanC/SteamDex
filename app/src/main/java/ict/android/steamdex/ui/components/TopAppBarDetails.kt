@@ -4,6 +4,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -21,6 +22,34 @@ import ict.android.steamdex.ui.theme.SteamDexTheme
 
 @Composable
 fun TopAppBarDetails(
+    @DrawableRes firstIconId: Int,
+    @StringRes firstIconDescriptionId: Int,
+    firstTitle: String,
+    @DrawableRes secondIconId: Int,
+    @StringRes secondIconDescriptionId: Int,
+    secondTitle: String,
+    modifier: Modifier = Modifier
+) {
+    Row(
+        modifier = modifier.padding(10.dp),
+        horizontalArrangement = Arrangement.spacedBy(15.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        SingleDetail(
+            iconId = firstIconId,
+            iconDescriptionId = firstIconDescriptionId,
+            title = firstTitle,
+        )
+        SingleDetail(
+            iconId = secondIconId,
+            iconDescriptionId = secondIconDescriptionId,
+            title = secondTitle,
+        )
+    }
+}
+
+@Composable
+private fun SingleDetail(
     @DrawableRes iconId: Int,
     @StringRes iconDescriptionId: Int,
     title: String,
@@ -51,9 +80,13 @@ private fun TopAppBarDetailsPreview() {
     SteamDexTheme {
         Surface {
             TopAppBarDetails(
-                iconId = R.drawable.age,
-                iconDescriptionId = R.string.profile_age_icon_description,
-                title = "12.4 years"
+                firstIconId = R.drawable.age,
+                firstIconDescriptionId = R.string.profile_age_icon_description,
+                firstTitle = "12.4 years",
+                secondIconId = R.drawable.country_code,
+                secondIconDescriptionId = R.string.profile_country_code_description,
+                secondTitle = "IT"
+
             )
         }
     }
