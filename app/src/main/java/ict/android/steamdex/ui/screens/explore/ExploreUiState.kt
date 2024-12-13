@@ -14,5 +14,6 @@ data class ExploreUiState(
     val mostPlayedGames: List<UiGames> = emptyList(),
     val trendingGames: List<UiGames> = emptyList(),
     val onSaleGames: List<UiGames> = emptyList(),
-    val popularGames: List<UiGames> = emptyList()
+    val popularGames: List<UiGames> = emptyList(),
+    val isLoading: Boolean = false
 )
