@@ -8,6 +8,7 @@ import ict.android.steamdex.navigation.ExploreRoute
 data class ProfileUiState(
     val profile: UiProfile = UiProfile(),
     val totalFriends: String = "",
+    val language: String = "",
     val darkTheme: Boolean? = null,
     val defaultStartingScreen: Any = ExploreRoute
 )

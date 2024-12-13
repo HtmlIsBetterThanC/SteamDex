@@ -33,6 +33,7 @@ import ict.android.steamdex.ui.screens.profile.components.SettingsItem
 import ict.android.steamdex.ui.screens.profile.components.SettingsList
 import ict.android.steamdex.ui.screens.profile.components.dialog.DefaultStartingScreenDialog
 import ict.android.steamdex.ui.screens.profile.components.dialog.GradientBackgroundDialog
+import ict.android.steamdex.ui.screens.profile.components.dialog.LanguageDialog
 import ict.android.steamdex.ui.screens.profile.components.dialog.MaterialYouDialog
 import ict.android.steamdex.ui.screens.profile.components.dialog.PitchBlackDialog
 import ict.android.steamdex.ui.screens.profile.components.dialog.ResetDialog
@@ -55,6 +56,9 @@ fun ProfileScreen(
     bottomBar: @Composable () -> Unit = {}
 ) {
     val profile = uiState.profile
+    var showLanguageDialog by remember {
+        mutableStateOf(false)
+    }
     var showThemeDialog by remember {
         mutableStateOf(false)
     }
@@ -76,9 +80,7 @@ fun ProfileScreen(
     }
     val onSettingItemClick: (item: SettingsItem) -> Unit = {
         when (it.id) {
-            1 -> {
-                // TODO languages dialog
-            }
+            1 -> showLanguageDialog = true
 
             2 -> showThemeDialog = true
 
@@ -134,6 +136,14 @@ fun ProfileScreen(
             )
             Spacer(Modifier.height(8.dp))
             SettingsList(onSettingItemClick)
+            LanguageDialog(
+                showDialog = showLanguageDialog,
+                currentLanguage = uiState.language,
+                onDismissDialog = {
+                    showLanguageDialog = false
+                },
+                onLanguageChange = onLanguageChange
+            )
             ThemeDialog(
                 showDialog = showThemeDialog,
                 currentTheme = uiState.darkTheme,

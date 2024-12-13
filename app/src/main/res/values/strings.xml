@@ -50,4 +50,5 @@
     <string name="profile_screen_gradient_background_dialog_title">Activate Gradient background</string>
     <string name="profile_screen_gradient_background_dialog_description">Applies our gradient to all backgrounds</string>
     <string name="profile_screen_default_screen_dialog_title">Default starting screen</string>
+    <string name="profile_screen_language_dialog_title">Language</string>
 </resources>
