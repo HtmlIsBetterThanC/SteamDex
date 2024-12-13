@@ -13,6 +13,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.PreviewParameter
@@ -21,6 +22,7 @@ import androidx.navigation.compose.rememberNavController
 import ict.android.steamdex.R
 import ict.android.steamdex.ui.components.BottomNavbar
 import ict.android.steamdex.ui.components.ProfileAdditionalDetail
+import ict.android.steamdex.ui.components.TopAppBarDetails
 import ict.android.steamdex.ui.components.TopAppBarLarge
 import ict.android.steamdex.ui.components.modifiers.gradientBackground
 import ict.android.steamdex.ui.preview.PreviewSteam
@@ -98,14 +100,11 @@ fun ProfileScreen(
         if (useGradientBackground) Color.Transparent else MaterialTheme.colorScheme.background,
         topBar = {
             TopAppBarLarge(
-                profile = profile,
                 backEnabled = false,
-                firstIconId = R.drawable.games_number, // TODO discuss the usefulness of this data
-                secondIconId = R.drawable.friends_number,
-                firstIconDescriptionId = R.string.games_number_icon_description,
-                secondIconDescriptionId = R.string.games_number_icon_description,
-                firstDetails = profile.totalGames.toString(),
-                secondDetails = uiState.totalFriends
+                useGradientBackground = useGradientBackground,
+                profileIconUrl = profile.iconUrl,
+                profileLevel = profile.level,
+                profileName = profile.name
             )
         },
         bottomBar = bottomBar
@@ -114,8 +113,17 @@ fun ProfileScreen(
             Modifier
                 .padding(innerPadding)
                 .fillMaxSize()
-                .padding(horizontal = 10.dp)
+                .padding(horizontal = 10.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            TopAppBarDetails(
+                firstIconId = R.drawable.games_number,
+                secondIconId = R.drawable.friends_number,
+                firstTitle = profile.totalGames.toString(),
+                firstIconDescriptionId = R.string.games_number_icon_description,
+                secondIconDescriptionId = R.string.games_number_icon_description,
+                secondTitle = uiState.totalFriends
+            )
             ProfileAdditionalDetail(
                 totalValue = uiState.profile.totalValue,
                 playedGames = uiState.profile.playedGames,
