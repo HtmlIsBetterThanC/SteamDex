@@ -6,14 +6,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -22,21 +16,17 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
-import ict.android.steamdex.R
 import ict.android.steamdex.ui.components.BottomNavbar
-import ict.android.steamdex.ui.components.ScreenTopBar
 import ict.android.steamdex.ui.components.SearchFAB
-import ict.android.steamdex.ui.components.buttons.PrimaryButton
 import ict.android.steamdex.ui.components.modifiers.gradientBackground
 import ict.android.steamdex.ui.preview.PreviewSteam
 import ict.android.steamdex.ui.preview.PreviewSteamGradient
 import ict.android.steamdex.ui.preview.providers.ExplorePreviewParametersProvider
+import ict.android.steamdex.ui.screens.explore.components.ExploreTopBar
 import ict.android.steamdex.ui.screens.explore.components.MostPlayedCategory
 import ict.android.steamdex.ui.screens.explore.components.OnSaleCategory
 import ict.android.steamdex.ui.screens.explore.components.PopularCategory
@@ -70,32 +60,15 @@ fun ExploreScreen(
         Scaffold(
             modifier = modifier.fillMaxSize(),
             topBar = {
-                ScreenTopBar(
-                    profileIconUrl = profile.iconUrl,
-                    profileName = profile.name,
-                    profileLevel = profile.level,
+                ExploreTopBar(
+                    useGradientBackground = useGradientBackground,
+                    editMode = editMode,
+                    iconUrl = profile.iconUrl,
+                    name = profile.name,
+                    level = profile.level,
                     onProfileClick = onProfileClick,
-                    actions = {
-                        PrimaryButton(
-                            onClick = {
-                                editMode = !editMode
-                            },
-                            modifier = Modifier
-                                .size(40.dp)
-                                .clip(RoundedCornerShape(10.dp))
-                        ) {
-                            if (editMode) {
-                                Icon(
-                                    imageVector = Icons.Default.Close,
-                                    contentDescription = stringResource(R.string.close_icon_description)
-                                )
-                            } else {
-                                Icon(
-                                    imageVector = Icons.Default.Edit,
-                                    contentDescription = stringResource(R.string.edit_icon_description)
-                                )
-                            }
-                        }
+                    onEditClick = {
+                        editMode = !editMode
                     }
                 )
             },
