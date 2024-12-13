@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
@@ -40,9 +41,9 @@ fun ScreenTopBar(
 ) {
     TopAppBar(
         title = {
-            // TODO make clickable area bigger
             Row(
                 Modifier
+                    .fillMaxWidth()
                     .padding(16.dp)
                     .clickable { onProfileClick() },
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
