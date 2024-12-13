@@ -39,8 +39,7 @@ fun SteamAsyncImage(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                // TODO is it good in most cases?
-                CircularProgressIndicator(Modifier.padding(bottom = 16.dp))
+                CircularProgressIndicator()
             }
         }
 
