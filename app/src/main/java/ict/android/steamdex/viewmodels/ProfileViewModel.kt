@@ -32,6 +32,15 @@ class ProfileViewModel @Inject constructor(private val settingsRepository: Setti
         }
     }
 
+    fun updateLanguage(language: String) {
+        // TODO implement language change
+        viewModelScope.launch {
+            _uiState.update {
+                it.copy(language = language)
+            }
+        }
+    }
+
     fun updateDarkTheme(darkTheme: Boolean?) {
         viewModelScope.launch {
             settingsRepository.updateDarkTheme(darkTheme)

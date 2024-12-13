@@ -40,7 +40,7 @@ fun NavigationHost(
                 }
             }
             val onLanguageChange = { lang: String ->
-                // TODO implement language change
+                viewModel.updateLanguage(lang)
             }
             val onThemeChange = { darkTheme: Boolean? ->
                 viewModel.updateDarkTheme(darkTheme)
