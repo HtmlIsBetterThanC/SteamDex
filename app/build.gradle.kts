@@ -58,12 +58,6 @@ dependencies {
     // Serialization
     implementation(libs.kotlinx.serialization.json)
 
-    // Navigation
-    implementation(libs.androidx.navigation.compose)
-
-    // Serialization
-    implementation(libs.kotlinx.serialization.json)
-
     // Image loader
     implementation(libs.coil.compose)
     implementation(libs.coil.video)
