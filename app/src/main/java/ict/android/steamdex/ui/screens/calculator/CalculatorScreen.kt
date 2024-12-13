@@ -32,7 +32,6 @@ fun CalculatorScreen(
     uiState: CalculatorUiState,
     useGradientBackground: Boolean,
     onBackClick: () -> Unit,
-
     onGameClick: (Long) -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -60,7 +59,6 @@ fun CalculatorScreen(
             verticalArrangement = Arrangement.spacedBy(10.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-
             TopAppBarDetails(
                 firstIconId = R.drawable.age,
                 firstIconDescriptionId = R.string.profile_age_icon_description,
@@ -69,7 +67,6 @@ fun CalculatorScreen(
                 secondIconDescriptionId = R.string.profile_country_code_description,
                 secondTitle = uiState.profile.countryCode,
             )
-
 
             ProfileAdditionalDetail(
                 totalValue = uiState.profile.totalValue,
