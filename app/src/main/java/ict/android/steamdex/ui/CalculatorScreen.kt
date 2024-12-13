@@ -32,7 +32,7 @@ fun CalculatorScreen(
     uiState: CalculatorUiState,
     useGradientBackground: Boolean,
     onBackClick: () -> Unit,
-    
+
     onGameClick: (Long) -> Unit,
     modifier: Modifier = Modifier
 ) {
