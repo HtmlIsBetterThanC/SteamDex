@@ -11,21 +11,31 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import ict.android.steamdex.R
 import ict.android.steamdex.ui.components.buttons.icons.BackArrowButton
 import ict.android.steamdex.ui.components.modifiers.gradientBackground
 import ict.android.steamdex.ui.preview.PreviewSteam
 import ict.android.steamdex.ui.preview.PreviewSteamGradient
 import ict.android.steamdex.ui.screens.about.components.AboutButtonsList
 import ict.android.steamdex.ui.screens.about.components.AppLogo
+import ict.android.steamdex.ui.screens.about.components.dialogs.AppLicenseDialog
+import ict.android.steamdex.ui.screens.about.components.dialogs.AppVersionDialog
+import ict.android.steamdex.ui.screens.about.components.dialogs.AuthorsDialog
+import ict.android.steamdex.ui.screens.about.components.dialogs.PrivacyPolicyDialog
 import ict.android.steamdex.ui.theme.SteamDexTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AboutYouScreen(
+fun AboutAppScreen(
     userGradientBackground: Boolean,
     modifier: Modifier = Modifier,
     onBackClick: () -> Unit,
@@ -33,6 +43,7 @@ fun AboutYouScreen(
     onGitHubClick: () -> Unit,
     onUpdatesClick: () -> Unit
 ) {
+    var showDialog by remember { mutableStateOf(true) }
     Scaffold(
         modifier = modifier,
         topBar = {
@@ -80,7 +91,7 @@ fun AboutYouScreen(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 AboutButtonsList(
-                    onAuthorsClick = { },
+                    onAuthorsClick = { showDialog = true },
                     onTranslationClick = { },
                     onDonationClick = onDonationClick,
                     onDependenciesClick = { },
@@ -91,6 +102,30 @@ fun AboutYouScreen(
                     onUpdatesClick = onUpdatesClick,
                 )
             }
+            AuthorsDialog(
+                showDialog = showDialog,
+                onDismissDialog = { showDialog = false },
+                dialogTitle = stringResource(R.string.dialog_title_authors),
+                dialogDescription = stringResource(R.string.dialog_description_authors_list),
+            )
+            AppLicenseDialog(
+                showDialog = showDialog,
+                onDismissDialog = { showDialog = false },
+                dialogTitle = stringResource(R.string.dialog_title_app_license),
+                dialogDescription = stringResource(R.string.dialog_description_app_license),
+            )
+            PrivacyPolicyDialog(
+                showDialog = showDialog,
+                onDismissDialog = { showDialog = false },
+                dialogTitle = stringResource(R.string.dialog_title_privacy_policy),
+                dialogDescription = stringResource(R.string.dialog_description_privacy_policy),
+            )
+            AppVersionDialog(
+                showDialog = showDialog,
+                onDismissDialog = { showDialog = false },
+                dialogTitle = stringResource(R.string.dialog_title_app_version),
+                dialogDescription = stringResource(R.string.dialog_description_app_version),
+            )
         }
     }
 }
@@ -99,7 +134,7 @@ fun AboutYouScreen(
 @Composable
 private fun AboutYouScreenPreview() {
     SteamDexTheme {
-        AboutYouScreen(
+        AboutAppScreen(
             userGradientBackground = false,
             onBackClick = { },
             onDonationClick = { },
@@ -114,7 +149,7 @@ private fun AboutYouScreenPreview() {
 private fun AboutYouScreenGradientPreview() {
     val theme = isSystemInDarkTheme()
     SteamDexTheme(theme) {
-        AboutYouScreen(
+        AboutAppScreen(
             userGradientBackground = true,
             modifier = Modifier.gradientBackground(theme),
             onBackClick = { },
