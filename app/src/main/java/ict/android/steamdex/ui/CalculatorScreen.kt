@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.layout
@@ -17,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import ict.android.steamdex.R
 import ict.android.steamdex.ui.components.HeaderGameList
 import ict.android.steamdex.ui.components.ProfileAdditionalDetail
+import ict.android.steamdex.ui.components.TopAppBarDetails
 import ict.android.steamdex.ui.components.TopAppBarLarge
 import ict.android.steamdex.ui.components.modifiers.gradientBackground
 import ict.android.steamdex.ui.preview.PreviewSteam
@@ -30,6 +32,7 @@ fun CalculatorScreen(
     uiState: CalculatorUiState,
     useGradientBackground: Boolean,
     onBackClick: () -> Unit,
+    
     onGameClick: (Long) -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -40,14 +43,11 @@ fun CalculatorScreen(
         if (useGradientBackground) Color.Transparent else MaterialTheme.colorScheme.background,
         topBar = {
             TopAppBarLarge(
-                profile = profile,
                 backEnabled = true,
-                firstIconId = R.drawable.age,
-                secondIconId = R.drawable.country_code,
-                firstIconDescriptionId = R.string.profile_age_icon_description,
-                secondIconDescriptionId = R.string.profile_country_code_description,
-                firstDetails = profile.age,
-                secondDetails = profile.countryCode,
+                useGradientBackground = useGradientBackground,
+                profileIconUrl = uiState.profile.iconUrl,
+                profileName = uiState.profile.name,
+                profileLevel = uiState.profile.level,
                 onBackClick = onBackClick
             )
         }
@@ -57,8 +57,20 @@ fun CalculatorScreen(
                 .padding(innerPadding)
                 .fillMaxSize()
                 .padding(10.dp),
-            verticalArrangement = Arrangement.spacedBy(10.dp)
+            verticalArrangement = Arrangement.spacedBy(10.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
+
+            TopAppBarDetails(
+                firstIconId = R.drawable.age,
+                firstIconDescriptionId = R.string.profile_age_icon_description,
+                firstTitle = uiState.profile.age,
+                secondIconId = R.drawable.country_code,
+                secondIconDescriptionId = R.string.profile_country_code_description,
+                secondTitle = uiState.profile.countryCode,
+            )
+
+
             ProfileAdditionalDetail(
                 totalValue = uiState.profile.totalValue,
                 playedGames = uiState.profile.playedGames,
