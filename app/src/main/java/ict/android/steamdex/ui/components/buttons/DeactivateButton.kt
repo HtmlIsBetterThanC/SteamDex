@@ -13,14 +13,14 @@ import ict.android.steamdex.ui.preview.PreviewSteam
 import ict.android.steamdex.ui.theme.SteamDexTheme
 
 @Composable
-fun ConfirmButton(
+fun DeactivateButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     color: Color = LocalContentColor.current
 ) {
     TextButton(onClick, modifier) {
         Text(
-            stringResource(R.string.confirm_button_title),
+            stringResource(R.string.deactivate_button_title),
             color = color
         )
     }
@@ -28,10 +28,10 @@ fun ConfirmButton(
 
 @PreviewSteam
 @Composable
-private fun ConfirmButtonPreview() {
+private fun DeactivateButtonPreview() {
     SteamDexTheme {
         Surface {
-            ConfirmButton({})
+            DeactivateButton({})
         }
     }
 }
