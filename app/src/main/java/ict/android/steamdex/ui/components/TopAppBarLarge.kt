@@ -13,10 +13,12 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import ict.android.steamdex.ui.components.buttons.icons.BackArrowButton
 import ict.android.steamdex.ui.preview.PreviewData.profiles
@@ -27,6 +29,7 @@ import ict.android.steamdex.ui.theme.SteamDexTheme
 @Composable
 fun TopAppBarLarge(
     backEnabled: Boolean,
+    useGradientBackground: Boolean,
     profileIconUrl: String,
     profileName: String,
     profileLevel: Int,
@@ -85,7 +88,12 @@ fun TopAppBarLarge(
                 )
             }
         },
-        expandedHeight = 80.dp
+        expandedHeight = 80.dp,
+        colors = if (useGradientBackground) {
+            TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent)
+        } else {
+            TopAppBarDefaults.topAppBarColors()
+        }
     )
 }
 
@@ -97,6 +105,7 @@ private fun TopAppBarLargePreview() {
         Surface {
             TopAppBarLarge(
                 backEnabled = false,
+                useGradientBackground = false,
                 profileIconUrl = profile.iconUrl,
                 profileName = profile.name,
                 profileLevel = profile.level
@@ -113,6 +122,7 @@ private fun TopAppBarLargeBackEnablePreview() {
         Surface {
             TopAppBarLarge(
                 backEnabled = true,
+                useGradientBackground = false,
                 profileIconUrl = profile.iconUrl,
                 profileName = profile.name,
                 profileLevel = profile.level
