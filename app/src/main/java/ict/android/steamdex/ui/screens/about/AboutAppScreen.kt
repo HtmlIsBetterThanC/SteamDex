@@ -95,10 +95,10 @@ fun AboutAppScreen(
                     onTranslationClick = { },
                     onDonationClick = onDonationClick,
                     onDependenciesClick = { },
-                    onAppLicensesClick = { },
+                    onAppLicensesClick = { showDialog = true },
                     onGitHubClick = onGitHubClick,
-                    onPrivacyPolicyClick = { },
-                    onAppVersionClick = { },
+                    onPrivacyPolicyClick = { showDialog = true },
+                    onAppVersionClick = { showDialog = true },
                     onUpdatesClick = onUpdatesClick,
                 )
             }
