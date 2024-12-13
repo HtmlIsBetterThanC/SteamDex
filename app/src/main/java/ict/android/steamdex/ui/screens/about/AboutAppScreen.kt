@@ -37,13 +37,17 @@ import ict.android.steamdex.ui.theme.SteamDexTheme
 @Composable
 fun AboutAppScreen(
     userGradientBackground: Boolean,
+    authors: String,
+    privacyPolicy: String,
+    appLicense: String,
     modifier: Modifier = Modifier,
     onBackClick: () -> Unit,
     onDonationClick: () -> Unit,
     onGitHubClick: () -> Unit,
     onUpdatesClick: () -> Unit
 ) {
-    var showDialog by remember { mutableStateOf(true) }
+    var showDialog by remember { mutableStateOf(false) }
+    var showAppLicenseDialog by remember { mutableStateOf(false) }
     Scaffold(
         modifier = modifier,
         topBar = {
@@ -91,7 +95,7 @@ fun AboutAppScreen(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 AboutButtonsList(
-                    onAuthorsClick = { showDialog = true },
+                    onAuthorsClick = { showAppLicenseDialog = true },
                     onTranslationClick = { },
                     onDonationClick = onDonationClick,
                     onDependenciesClick = { },
@@ -102,6 +106,7 @@ fun AboutAppScreen(
                     onUpdatesClick = onUpdatesClick,
                 )
             }
+            // TODO remove all the dialogTitle and put them in their function
             AuthorsDialog(
                 showDialog = showDialog,
                 onDismissDialog = { showDialog = false },
@@ -109,10 +114,9 @@ fun AboutAppScreen(
                 dialogDescription = stringResource(R.string.dialog_description_authors_list),
             )
             AppLicenseDialog(
-                showDialog = showDialog,
-                onDismissDialog = { showDialog = false },
-                dialogTitle = stringResource(R.string.dialog_title_app_license),
-                dialogDescription = stringResource(R.string.dialog_description_app_license),
+                showDialog = showAppLicenseDialog,
+                onDismissDialog = { showAppLicenseDialog = false },
+                license = appLicense,
             )
             PrivacyPolicyDialog(
                 showDialog = showDialog,
@@ -136,6 +140,9 @@ private fun AboutYouScreenPreview() {
     SteamDexTheme {
         AboutAppScreen(
             userGradientBackground = false,
+            authors = "Mario Mario and Luigi Mario",
+            privacyPolicy = "We are stilling all o your data",
+            appLicense = "GPL v.3",
             onBackClick = { },
             onDonationClick = { },
             onGitHubClick = { },
@@ -151,6 +158,9 @@ private fun AboutYouScreenGradientPreview() {
     SteamDexTheme(theme) {
         AboutAppScreen(
             userGradientBackground = true,
+            authors = "Mario Mario and Luigi Mario",
+            privacyPolicy = "We are stilling all o your data",
+            appLicense = "GPL v.3",
             modifier = Modifier.gradientBackground(theme),
             onBackClick = { },
             onDonationClick = { },
