@@ -131,6 +131,7 @@ object PreviewData {
             price = "0",
             currentPlayers = 817.141,
             ratings = 86.62,
+            hoursPlayed = 150.0,
             genres = listOf("Action", "Free to play")
         ),
         UiGames(
@@ -145,6 +146,7 @@ object PreviewData {
             price = "0",
             currentPlayers = 333.253,
             ratings = 81.27,
+            hoursPlayed = 15.0,
             genres = listOf("Action", "Strategy", "Free to play")
         ),
         UiGames(
@@ -159,6 +161,7 @@ object PreviewData {
             price = "0",
             currentPlayers = 359.693,
             ratings = 58.87,
+            hoursPlayed = 100.0,
             genres = listOf("Action", "Adventure", "Massively Multiplayer", "Free to play")
         ),
         UiGames(
@@ -173,6 +176,7 @@ object PreviewData {
             price = "0",
             currentPlayers = 214.281,
             ratings = 80.29,
+            hoursPlayed = 8.2,
             genres = listOf("Action", "Adventure", "Massively Multiplayer", "RPG", "Early Access")
         ),
         UiGames(
@@ -187,6 +191,7 @@ object PreviewData {
             price = "0",
             currentPlayers = 200.081,
             ratings = 75.15,
+            hoursPlayed = 1000.0,
             genres = listOf("Action", "Free To Play")
         ),
         UiGames(
@@ -201,6 +206,7 @@ object PreviewData {
             price = "0",
             currentPlayers = 140.793,
             ratings = 69.70,
+            hoursPlayed = 750.3,
             genres = listOf("Action", "Adventure", "Massively Multiplayer")
         ),
         UiGames(
@@ -229,6 +235,7 @@ object PreviewData {
             price = "29,98€",
             currentPlayers = 92.764,
             ratings = 86.61,
+            hoursPlayed = 0.0,
             genres = listOf("Action", "Adventure")
         ),
         UiGames(
@@ -243,6 +250,7 @@ object PreviewData {
             price = "39,99€",
             currentPlayers = 71.383,
             ratings = 86.67,
+            hoursPlayed = 2.0,
             genres = listOf("Action", "Adventure", "Indie", "Massively Multiplayer", "RPG")
         ),
         UiGames(
@@ -257,6 +265,7 @@ object PreviewData {
             price = "0",
             currentPlayers = 66.070,
             ratings = 67.35,
+            hoursPlayed = 88.8,
             genres = listOf("Action", "Adventure", "Free To Play")
         ),
     )
