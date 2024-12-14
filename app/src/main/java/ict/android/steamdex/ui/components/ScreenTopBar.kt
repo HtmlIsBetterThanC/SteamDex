@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
@@ -28,6 +29,7 @@ import ict.android.steamdex.ui.theme.SteamDexTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScreenTopBar(
+    useGradientBackground: Boolean,
     profileIconUrl: String,
     profileName: String,
     profileLevel: Int,
@@ -39,9 +41,9 @@ fun ScreenTopBar(
 ) {
     TopAppBar(
         title = {
-            // TODO make clickable area bigger
             Row(
                 Modifier
+                    .fillMaxWidth()
                     .padding(16.dp)
                     .clickable { onProfileClick() },
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
@@ -63,7 +65,11 @@ fun ScreenTopBar(
         modifier = modifier.padding(end = 10.dp),
         actions = actions,
         expandedHeight = 80.dp,
-        colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent)
+        colors = if (useGradientBackground) {
+            TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent)
+        } else {
+            TopAppBarDefaults.topAppBarColors()
+        }
     )
 }
 
@@ -73,6 +79,7 @@ private fun ScreenTopBarPreview() {
     SteamDexTheme {
         Surface {
             ScreenTopBar(
+                useGradientBackground = false,
                 profileIconUrl = "",
                 profileName = "Profile",
                 profileLevel = 15,
@@ -88,6 +95,7 @@ private fun ScreenTopBarPreviewWithAction() {
     SteamDexTheme {
         Surface {
             ScreenTopBar(
+                useGradientBackground = false,
                 profileIconUrl = "",
                 profileName = "Profile",
                 profileLevel = 15,
