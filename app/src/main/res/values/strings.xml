@@ -22,4 +22,8 @@
     <string name="header_time_parameter">Time</string>
     <string name="header_title_parameter">Title</string>
     <string name="search_icon_description">Search icon</string>
+    <string name="wishlist_button">Wishlist</string>
+    <string name="follow_button">Follow</string>
+    <string name="ignore_button">Ignore</string>
+    <string name="watch_button">Watch</string>
 </resources>
