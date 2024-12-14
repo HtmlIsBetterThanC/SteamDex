@@ -1,6 +1,6 @@
 package ict.android.steamdex.ui.preview
 
-import ict.android.steamdex.models.ui.UiGames
+import ict.android.steamdex.models.ui.UiGame
 import ict.android.steamdex.models.ui.UiProfile
 import ict.android.steamdex.models.ui.UiPublisher
 import kotlinx.datetime.LocalDate
@@ -119,7 +119,7 @@ object PreviewData {
     )
 
     val games = listOf(
-        UiGames(
+        UiGame(
             id = gamesNameAndId[0].first,
             name = gamesNameAndId[0].second,
             iconUrl = "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/" +
@@ -134,7 +134,7 @@ object PreviewData {
             hoursPlayed = 150.0,
             genres = listOf("Action", "Free to play")
         ),
-        UiGames(
+        UiGame(
             id = gamesNameAndId[1].first,
             name = gamesNameAndId[1].second,
             iconUrl = "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/" +
@@ -149,7 +149,7 @@ object PreviewData {
             hoursPlayed = 15.0,
             genres = listOf("Action", "Strategy", "Free to play")
         ),
-        UiGames(
+        UiGame(
             id = gamesNameAndId[2].first,
             name = gamesNameAndId[2].second,
             iconUrl = "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/" +
@@ -164,7 +164,7 @@ object PreviewData {
             hoursPlayed = 100.0,
             genres = listOf("Action", "Adventure", "Massively Multiplayer", "Free to play")
         ),
-        UiGames(
+        UiGame(
             id = gamesNameAndId[3].first,
             name = gamesNameAndId[3].second,
             iconUrl = "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/" +
@@ -179,7 +179,7 @@ object PreviewData {
             hoursPlayed = 8.2,
             genres = listOf("Action", "Adventure", "Massively Multiplayer", "RPG", "Early Access")
         ),
-        UiGames(
+        UiGame(
             id = gamesNameAndId[4].first,
             name = gamesNameAndId[4].second,
             iconUrl = "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/" +
@@ -194,7 +194,7 @@ object PreviewData {
             hoursPlayed = 1000.0,
             genres = listOf("Action", "Free To Play")
         ),
-        UiGames(
+        UiGame(
             id = gamesNameAndId[5].first,
             name = gamesNameAndId[5].second,
             iconUrl = "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/" +
@@ -209,7 +209,7 @@ object PreviewData {
             hoursPlayed = 750.3,
             genres = listOf("Action", "Adventure", "Massively Multiplayer")
         ),
-        UiGames(
+        UiGame(
             id = gamesNameAndId[6].first,
             name = gamesNameAndId[6].second,
             iconUrl = "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/" +
@@ -223,7 +223,7 @@ object PreviewData {
             ratings = 81.84,
             genres = listOf("Adventure, Casual", "Simulation", "Strategy", "Free To Play")
         ),
-        UiGames(
+        UiGame(
             id = gamesNameAndId[7].first,
             name = gamesNameAndId[7].second,
             iconUrl = "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/" +
@@ -238,7 +238,7 @@ object PreviewData {
             hoursPlayed = 0.0,
             genres = listOf("Action", "Adventure")
         ),
-        UiGames(
+        UiGame(
             id = gamesNameAndId[8].first,
             name = gamesNameAndId[8].second,
             iconUrl = "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/" +
@@ -253,7 +253,7 @@ object PreviewData {
             hoursPlayed = 2.0,
             genres = listOf("Action", "Adventure", "Indie", "Massively Multiplayer", "RPG")
         ),
-        UiGames(
+        UiGame(
             id = gamesNameAndId[9].first,
             name = gamesNameAndId[9].second,
             iconUrl = "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/" +
