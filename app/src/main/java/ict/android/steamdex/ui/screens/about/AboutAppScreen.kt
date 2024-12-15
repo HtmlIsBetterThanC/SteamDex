@@ -40,6 +40,7 @@ fun AboutAppScreen(
     authors: String,
     privacyPolicy: String,
     appLicense: String,
+    appVersion: String,
     modifier: Modifier = Modifier,
     onBackClick: () -> Unit,
     onDonationClick: () -> Unit,
@@ -106,12 +107,10 @@ fun AboutAppScreen(
                     onUpdatesClick = onUpdatesClick,
                 )
             }
-            // TODO remove all the dialogTitle and put them in their function
             AuthorsDialog(
                 showDialog = showDialog,
                 onDismissDialog = { showDialog = false },
-                dialogTitle = stringResource(R.string.dialog_title_authors),
-                dialogDescription = stringResource(R.string.dialog_description_authors_list),
+                authors = authors
             )
             AppLicenseDialog(
                 showDialog = showAppLicenseDialog,
@@ -121,14 +120,12 @@ fun AboutAppScreen(
             PrivacyPolicyDialog(
                 showDialog = showDialog,
                 onDismissDialog = { showDialog = false },
-                dialogTitle = stringResource(R.string.dialog_title_privacy_policy),
-                dialogDescription = stringResource(R.string.dialog_description_privacy_policy),
+                privacyPolicy = privacyPolicy
             )
             AppVersionDialog(
                 showDialog = showDialog,
                 onDismissDialog = { showDialog = false },
-                dialogTitle = stringResource(R.string.dialog_title_app_version),
-                dialogDescription = stringResource(R.string.dialog_description_app_version),
+                version = appVersion
             )
         }
     }
@@ -140,9 +137,10 @@ private fun AboutYouScreenPreview() {
     SteamDexTheme {
         AboutAppScreen(
             userGradientBackground = false,
-            authors = "Mario Mario and Luigi Mario",
-            privacyPolicy = "We are stilling all o your data",
-            appLicense = "GPL v.3",
+            authors = stringResource(R.string.dialog_description_authors_list),
+            privacyPolicy = stringResource(R.string.dialog_description_privacy_policy),
+            appLicense = stringResource(R.string.dialog_description_privacy_policy),
+            appVersion = stringResource(R.string.dialog_description_app_version),
             onBackClick = { },
             onDonationClick = { },
             onGitHubClick = { },
@@ -158,9 +156,10 @@ private fun AboutYouScreenGradientPreview() {
     SteamDexTheme(theme) {
         AboutAppScreen(
             userGradientBackground = true,
-            authors = "Mario Mario and Luigi Mario",
-            privacyPolicy = "We are stilling all o your data",
-            appLicense = "GPL v.3",
+            authors = stringResource(R.string.dialog_description_authors_list),
+            privacyPolicy = stringResource(R.string.dialog_description_privacy_policy),
+            appLicense = stringResource(R.string.dialog_description_privacy_policy),
+            appVersion = stringResource(R.string.dialog_description_app_version),
             modifier = Modifier.gradientBackground(theme),
             onBackClick = { },
             onDonationClick = { },

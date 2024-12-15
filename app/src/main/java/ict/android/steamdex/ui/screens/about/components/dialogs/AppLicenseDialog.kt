@@ -34,7 +34,7 @@ private fun AppLicenseDialogPreview() {
             AppLicenseDialog(
                 showDialog = true,
                 onDismissDialog = {},
-                license = "GPL v.3"
+                license = stringResource(R.string.app_license_gpl_v_3)
             )
         }
     }
