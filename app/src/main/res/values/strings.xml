@@ -38,4 +38,9 @@
     <string name="follow_button">Follow</string>
     <string name="ignore_button">Ignore</string>
     <string name="watch_button">Watch</string>
+    <string name="reviews_button_label">Reviews</string>
+    <string name="in_game_counter">In-game</string>
+    <string name="game_screen_info">Game info</string>
+    <string name="game_screen_store">Store</string>
+    <string name="game_screen_hub">Hub</string>
 </resources>

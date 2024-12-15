@@ -1,4 +1,4 @@
-package ict.android.steamdex.ui.screens.components
+package ict.android.steamdex.ui.screens.game.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

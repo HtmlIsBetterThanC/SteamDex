@@ -1,37 +1,52 @@
 package ict.android.steamdex.ui.screens.game
 
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.layout
 import androidx.compose.ui.tooling.preview.PreviewParameter
-import ict.android.steamdex.ui.components.buttons.SecondaryButton
+import androidx.compose.ui.unit.dp
 import ict.android.steamdex.R
 import ict.android.steamdex.ui.components.ScreenTopBar
+import ict.android.steamdex.ui.components.SteamAsyncImage
 import ict.android.steamdex.ui.preview.PreviewSteam
-import ict.android.steamdex.ui.screens.components.AssistiveChipsRow
+import ict.android.steamdex.ui.screens.game.components.AssistiveChipsRow
+import ict.android.steamdex.ui.screens.game.components.GameTitleHeader
+import ict.android.steamdex.ui.screens.game.components.PrimaryButtonRow
+import ict.android.steamdex.ui.screens.game.components.SecondaryButtonRow
 import ict.android.steamdex.ui.theme.SteamDexTheme
 
 @Composable
 fun GameScreen(
     uiState: GameUiState,
-    onClickWhislist: () -> Unit,
+    gameThumbnailUrl: String,
+    onClickWhitelist: () -> Unit,
     onClickFollow: () -> Unit,
     onClickIgnore: () -> Unit,
     onClickWatch: () -> Unit,
     onProfileClick: () -> Unit,
+    onClickReviews: () -> Unit,
+    onClickInGame: () -> Unit,
+    onClickGameInfo: () -> Unit,
+    onClickStore: () -> Unit,
+    onClickHub: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Scaffold(
         modifier = modifier,
         topBar = {
             ScreenTopBar(
+                backEnabled = true,
                 useGradientBackground = true,
                 profileIconUrl = uiState.profile.iconUrl,
                 profileName = uiState.profile.name,
@@ -43,14 +58,56 @@ fun GameScreen(
         Column(
             modifier = Modifier
                 .padding(innerPadding)
-                .fillMaxWidth(),
+                .padding(10.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             AssistiveChipsRow(
-                onClickWhislist = onClickWhislist,
+                onClickWhislist = onClickWhitelist,
                 onClickFollow = onClickFollow,
                 onClickIgnore = onClickIgnore,
                 onClickWatch = onClickWatch
+            )
+            SteamAsyncImage(
+                model = gameThumbnailUrl,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(200.dp)
+                    .clip(RoundedCornerShape(10.dp))
+                    .border(2.dp, Color.Red) // TODO remove this border
+            )
+            GameTitleHeader(
+                gameTitle = uiState.game.name,
+                modifier = Modifier.layout { measurable, constraints ->
+                    val placeable = measurable.measure(
+                        constraints.copy(
+                            maxWidth = constraints.maxWidth + 20.dp.roundToPx(),
+                        )
+                    )
+                    layout(placeable.width, placeable.height) {
+                        placeable.place((0).dp.roundToPx(), 0)
+                    }
+                }
+            )
+            PrimaryButtonRow(
+                leftButtonIconId = R.drawable.gamepad,
+                rightButtonIconId = R.drawable.gamepad,
+                leftButtonLabel = R.string.reviews_button_label,
+                rightButtonLabel = R.string.in_game_counter,
+                leftButtonValue = uiState.game.ratings ?: "--",
+                rightButtonValue = uiState.game.currentPlayers ?: 0,
+                onClickLeftButton = onClickReviews,
+                onClickRightButton = onClickInGame,
+            )
+
+
+            SecondaryButtonRow(
+                firstLabel = R.string.game_screen_info,
+                secondLabel = R.string.game_screen_store,
+                thirdLabel = R.string.game_screen_hub,
+                onClickFirst = onClickGameInfo,
+                onClickSecond = onClickStore,
+                onClickThird = onClickHub,
             )
         }
     }
@@ -64,11 +121,17 @@ private fun GameScreenPreview(
     SteamDexTheme {
         GameScreen(
             uiState = uiState,
-            onClickWhislist = {},
+            gameThumbnailUrl = "",
+            onClickWhitelist = {},
             onClickFollow = {},
             onClickIgnore = {},
             onClickWatch = {},
-            onProfileClick = {}
+            onProfileClick = {},
+            onClickReviews = {},
+            onClickInGame = {},
+            onClickGameInfo = {},
+            onClickStore = {},
+            onClickHub = {}
         )
     }
 }
