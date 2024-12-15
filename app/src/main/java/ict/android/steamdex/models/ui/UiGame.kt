@@ -5,7 +5,7 @@ import kotlinx.datetime.LocalDate
 
 // TODO maybe also add languages and franchise
 @Immutable
-data class UiGames(
+data class UiGame(
     val id: Long,
     val name: String,
     val iconUrl: String,
@@ -17,6 +17,5 @@ data class UiGames(
     val currentPlayers: Double? = null,
     val ratings: Double? = null,
     val hoursPlayed: Double? = null,
-    // TODO might remove this
     val genres: List<String> = emptyList()
 )

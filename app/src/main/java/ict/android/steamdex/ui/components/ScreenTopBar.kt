@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -21,20 +22,24 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import ict.android.steamdex.ui.components.buttons.icons.BackArrowButton
 import ict.android.steamdex.ui.preview.PreviewSteam
 import ict.android.steamdex.ui.theme.SteamDexTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScreenTopBar(
+    backEnabled: Boolean,
     useGradientBackground: Boolean,
     profileIconUrl: String,
     profileName: String,
     profileLevel: Int,
     onProfileClick: () -> Unit,
     modifier: Modifier = Modifier,
+    onBackClick: () -> Unit = {},
     actions:
     @Composable
     (RowScope.() -> Unit) = {}
@@ -48,7 +53,12 @@ fun ScreenTopBar(
                     .clickable { onProfileClick() },
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                SteamAsyncImage(profileIconUrl, Modifier.size(40.dp))
+                SteamAsyncImage(
+                    profileIconUrl,
+                    Modifier
+                        .size(40.dp)
+                        .clip(CircleShape)
+                )
                 Column {
                     Text(
                         profileName,
@@ -63,6 +73,7 @@ fun ScreenTopBar(
             }
         },
         modifier = modifier.padding(end = 10.dp),
+        navigationIcon = { if (backEnabled) BackArrowButton(onBackClick) },
         actions = actions,
         expandedHeight = 80.dp,
         colors = if (useGradientBackground) {
@@ -79,6 +90,7 @@ private fun ScreenTopBarPreview() {
     SteamDexTheme {
         Surface {
             ScreenTopBar(
+                backEnabled = false,
                 useGradientBackground = false,
                 profileIconUrl = "",
                 profileName = "Profile",
@@ -95,6 +107,7 @@ private fun ScreenTopBarPreviewWithAction() {
     SteamDexTheme {
         Surface {
             ScreenTopBar(
+                backEnabled = false,
                 useGradientBackground = false,
                 profileIconUrl = "",
                 profileName = "Profile",
@@ -111,6 +124,23 @@ private fun ScreenTopBarPreviewWithAction() {
                         )
                     }
                 }
+            )
+        }
+    }
+}
+
+@PreviewSteam
+@Composable
+private fun ScreenTopBarWithBack() {
+    SteamDexTheme {
+        Surface {
+            ScreenTopBar(
+                backEnabled = true,
+                useGradientBackground = false,
+                profileIconUrl = "",
+                profileName = "Profile",
+                profileLevel = 15,
+                onProfileClick = { }
             )
         }
     }

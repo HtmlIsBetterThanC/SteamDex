@@ -17,10 +17,10 @@ object ExploreRoute
 object LibraryRoute
 
 @Serializable
-data class GameRoute(val id: Int)
+data class GameRoute(val id: Long)
 
 @Serializable
-data class PublisherRoute(val id: Int)
+data class PublisherRoute(val id: Long)
 
 @Serializable
 object ProfileRoute

@@ -4,7 +4,11 @@ import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.content.res.Configuration.UI_MODE_TYPE_NORMAL
 import androidx.compose.ui.tooling.preview.Preview
 
-@Preview(name = "Light", group = "Theme", showBackground = true)
+@Preview(
+    name = "Light",
+    group = "Theme",
+    showBackground = true
+)
 @Preview(
     name = "Dark",
     group = "Theme",
@@ -12,6 +16,16 @@ import androidx.compose.ui.tooling.preview.Preview
     uiMode = UI_MODE_NIGHT_YES or UI_MODE_TYPE_NORMAL
 )
 annotation class PreviewSteam
+
+@Preview(name = "Light", group = "Gradient", showBackground = true)
+@Preview(
+    name = "Dark",
+    group = "Gradient",
+    showBackground = true,
+    uiMode = UI_MODE_NIGHT_YES or UI_MODE_TYPE_NORMAL
+)
+annotation class PreviewSteamGradient
+
 
 @Preview(name = "80%", group = "Font", fontScale = 0.80f)
 @Preview(name = "100%", group = "Font", fontScale = 1.0f)
