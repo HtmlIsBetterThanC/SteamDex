@@ -41,11 +41,11 @@ fun AboutAppScreen(
     privacyPolicy: String,
     appLicense: String,
     appVersion: String,
-    modifier: Modifier = Modifier,
     onBackClick: () -> Unit,
     onDonationClick: () -> Unit,
     onGitHubClick: () -> Unit,
-    onUpdatesClick: () -> Unit
+    onUpdatesClick: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     var showDialog by remember { mutableStateOf(false) }
     var showAppLicenseDialog by remember { mutableStateOf(false) }
@@ -160,11 +160,11 @@ private fun AboutYouScreenGradientPreview() {
             privacyPolicy = stringResource(R.string.dialog_description_privacy_policy),
             appLicense = stringResource(R.string.dialog_description_privacy_policy),
             appVersion = stringResource(R.string.dialog_description_app_version),
-            modifier = Modifier.gradientBackground(theme),
             onBackClick = { },
             onDonationClick = { },
             onGitHubClick = { },
-            onUpdatesClick = { }
+            onUpdatesClick = { },
+            modifier = Modifier.gradientBackground(theme)
         )
     }
 }
