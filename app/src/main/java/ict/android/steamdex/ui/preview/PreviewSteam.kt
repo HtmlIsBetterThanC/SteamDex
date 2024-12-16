@@ -26,7 +26,6 @@ annotation class PreviewSteam
 )
 annotation class PreviewSteamGradient
 
-
 @Preview(name = "80%", group = "Font", fontScale = 0.80f)
 @Preview(name = "100%", group = "Font", fontScale = 1.0f)
 @Preview(name = "130%", group = "Font", fontScale = 1.3f)
