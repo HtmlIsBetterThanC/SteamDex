@@ -46,27 +46,28 @@ fun AboutAppScreen(
 ) {
     var showDialog by remember { mutableStateOf(false) }
     var showAppLicenseDialog by remember { mutableStateOf(false) }
+
     Scaffold(
         modifier = modifier,
         topBar = {
             TopAppBar(
                 title = {},
                 navigationIcon = {
-                    BackArrowButton(
-                        onClick = onBackClick
-                    )
+                    BackArrowButton(onBackClick)
                 },
                 colors =
-                TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color.Transparent,
-                    scrolledContainerColor = Color.Transparent
-                )
-
+                if (userGradientBackground) {
+                    TopAppBarDefaults.topAppBarColors(
+                        containerColor = Color.Transparent,
+                        scrolledContainerColor = Color.Transparent
+                    )
+                } else {
+                    TopAppBarDefaults.topAppBarColors()
+                }
             )
         },
         containerColor =
         if (userGradientBackground) Color.Transparent else MaterialTheme.colorScheme.background
-
     ) { innerPadding ->
         Column(
             modifier = Modifier
@@ -100,7 +101,7 @@ fun AboutAppScreen(
                     onGitHubClick = onGitHubClick,
                     onPrivacyPolicyClick = { showDialog = true },
                     onAppVersionClick = { showDialog = true },
-                    onUpdatesClick = onUpdatesClick,
+                    onUpdatesClick = onUpdatesClick
                 )
             }
             AuthorsDialog(
@@ -111,7 +112,7 @@ fun AboutAppScreen(
             AppLicenseDialog(
                 showDialog = showAppLicenseDialog,
                 onDismissDialog = { showAppLicenseDialog = false },
-                license = appLicense,
+                license = appLicense
             )
             PrivacyPolicyDialog(
                 showDialog = showDialog,
@@ -120,7 +121,7 @@ fun AboutAppScreen(
             )
             AppVersionDialog(
                 showDialog = showDialog,
-                onDismissDialog = { showDialog = false },
+                onDismissDialog = { showDialog = false }
             )
         }
     }
