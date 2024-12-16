@@ -21,6 +21,7 @@ import ict.android.steamdex.ui.components.ScreenTopBar
 import ict.android.steamdex.ui.components.SteamAsyncImage
 import ict.android.steamdex.ui.preview.PreviewSteam
 import ict.android.steamdex.ui.screens.game.components.AssistiveChipsRow
+import ict.android.steamdex.ui.screens.game.components.GameChart
 import ict.android.steamdex.ui.screens.game.components.GameTitleHeader
 import ict.android.steamdex.ui.screens.game.components.PrimaryButtonRow
 import ict.android.steamdex.ui.screens.game.components.SecondaryButtonRow
@@ -90,19 +91,19 @@ fun GameScreen(
                 }
             )
             PrimaryButtonRow(
-                leftButtonIconId = R.drawable.gamepad,
+                leftButtonIconId = R.drawable.gamepad, // TODO put the right icon
                 rightButtonIconId = R.drawable.gamepad,
                 leftButtonLabel = R.string.reviews_button_label,
                 rightButtonLabel = R.string.in_game_counter,
-                leftButtonValue = uiState.game.ratings ?: "--",
+                leftButtonValue = "${uiState.game.ratings ?: "--.--"}%",
                 rightButtonValue = uiState.game.currentPlayers ?: 0,
                 onClickLeftButton = onClickReviews,
                 onClickRightButton = onClickInGame,
             )
-
+            GameChart()
 
             SecondaryButtonRow(
-                firstLabel = R.string.game_screen_info,
+                firstLabel = R.string.game_screen_info, // TODO put the info icon
                 secondLabel = R.string.game_screen_store,
                 thirdLabel = R.string.game_screen_hub,
                 onClickFirst = onClickGameInfo,

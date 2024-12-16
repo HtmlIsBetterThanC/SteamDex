@@ -29,7 +29,7 @@ fun PrimaryButtonRow(
     @StringRes leftButtonLabel: Int,
     @StringRes rightButtonLabel: Int,
     leftButtonValue: Any,
-    rightButtonValue: Any,
+    rightButtonValue: Number,
     onClickLeftButton: () -> Unit,
     onClickRightButton: () -> Unit,
     modifier: Modifier = Modifier,
@@ -45,7 +45,7 @@ fun PrimaryButtonRow(
             content = {
                 GamePrimaryButtonContent(
                     iconId = leftButtonIconId,
-                    value = "$leftButtonValue%",
+                    value = leftButtonValue,
                     label = leftButtonLabel
                 )
             }
