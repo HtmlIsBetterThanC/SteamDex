@@ -43,7 +43,7 @@ fun GameScreen(
     onClickStore: () -> Unit,
     onClickHub: () -> Unit,
     charHorizontalAxisData: List<Number>,
-    charVerticalAxixData: List<Number>,
+    charVerticalAxisData: List<Number>,
     modifier: Modifier = Modifier
 ) {
     Scaffold(
@@ -105,7 +105,7 @@ fun GameScreen(
             )
             LineChart(
                 horizontalAxisData = charHorizontalAxisData,
-                verticalAxisData = charVerticalAxixData
+                verticalAxisData = charVerticalAxisData
             )
 
             SecondaryButtonRow(
