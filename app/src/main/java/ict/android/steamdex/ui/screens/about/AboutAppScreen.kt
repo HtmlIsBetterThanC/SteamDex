@@ -39,7 +39,9 @@ fun AboutAppScreen(
     privacyPolicy: String,
     appLicense: String,
     onBackClick: () -> Unit,
+    onTranslationClick: () -> Unit,
     onDonationClick: () -> Unit,
+    onDependenciesClick: () -> Unit,
     onGitHubClick: () -> Unit,
     onUpdatesClick: () -> Unit,
     modifier: Modifier = Modifier
@@ -96,9 +98,9 @@ fun AboutAppScreen(
             ) {
                 AboutButtonsList(
                     onAuthorsClick = { showAuthorsDialog = true },
-                    onTranslationClick = { },
+                    onTranslationClick = onTranslationClick,
                     onDonationClick = onDonationClick,
-                    onDependenciesClick = { },
+                    onDependenciesClick = onDependenciesClick,
                     onAppLicensesClick = { showLicenseDialog = true },
                     onGitHubClick = onGitHubClick,
                     onPrivacyPolicyClick = { showPrivacyDialog = true },
@@ -139,7 +141,9 @@ private fun AboutYouScreenPreview() {
             privacyPolicy = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             appLicense = "GPL v.3",
             onBackClick = { },
+            onTranslationClick = {},
             onDonationClick = { },
+            onDependenciesClick = {},
             onGitHubClick = { },
             onUpdatesClick = { }
         )
@@ -156,7 +160,9 @@ private fun AboutYouScreenGradientPreview() {
             privacyPolicy = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             appLicense = "GPL v.3",
             onBackClick = { },
+            onTranslationClick = {},
             onDonationClick = { },
+            onDependenciesClick = {},
             onGitHubClick = { },
             onUpdatesClick = { },
             modifier = Modifier.gradientBackground(isSystemInDarkTheme())
