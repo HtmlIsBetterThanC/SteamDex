@@ -10,6 +10,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.EaseInOut
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -21,6 +24,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -30,8 +35,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -40,6 +47,7 @@ import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import dagger.hilt.android.AndroidEntryPoint
 import ict.android.steamdex.ui.theme.SteamDexTheme
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
 
@@ -106,6 +114,7 @@ fun SplashScreen(
     val welcomeTextAlpha = remember { Animatable(0f) }
     val titleTextAlpha = remember { Animatable(0f) }
     val logoAlpha = remember { Animatable(0f) }
+    val logoRotation = remember { Animatable(0f) }
 
     LaunchedEffect(Unit) {
         logoAlpha.animateTo(
@@ -116,6 +125,16 @@ fun SplashScreen(
                 easing = EaseInOut
             )
         )
+
+        launch {
+            logoRotation.animateTo(
+                targetValue = 360f,
+                animationSpec = infiniteRepeatable(
+                    animation = tween(2000, easing = LinearEasing),
+                    repeatMode = RepeatMode.Restart
+                )
+            )
+        }
 
         welcomeTextAlpha.animateTo(
             targetValue = 1f,
@@ -154,6 +173,16 @@ fun SplashScreen(
             modifier = Modifier.padding(16.dp)
         ) {
             Spacer(modifier = Modifier.height(36.dp))
+
+            Icon(
+                painter = painterResource(id = R.drawable.logo_2),
+                contentDescription = "SteamDex Logo",
+                modifier = Modifier
+                    .size(100.dp)
+                    .alpha(logoAlpha.value)
+                    .rotate(logoRotation.value),
+                tint = Color.Unspecified
+            )
 
             Text(
                 text = "Greetings! Welcome to",
