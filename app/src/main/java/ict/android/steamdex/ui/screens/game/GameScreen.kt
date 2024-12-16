@@ -142,7 +142,7 @@ private fun GameScreenPreview(
             onClickStore = {},
             onClickHub = {},
             charHorizontalAxisData = year,
-            charVerticalAxixData = priceHistory
+            charVerticalAxisData = priceHistory
         )
     }
 }
