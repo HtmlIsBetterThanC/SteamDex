@@ -9,6 +9,7 @@ import ict.android.steamdex.navigation.graphs.aboutGraph
 @Composable
 fun NavigationHost(
     navController: NavHostController,
+    useGradientBackground: Boolean,
     modifier: Modifier = Modifier,
     startDestination: Any = LoginRoute
 ) {
