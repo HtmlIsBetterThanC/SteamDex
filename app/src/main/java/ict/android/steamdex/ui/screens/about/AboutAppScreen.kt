@@ -60,14 +60,10 @@ fun AboutAppScreen(
                     BackArrowButton(onBackClick)
                 },
                 colors =
-                if (userGradientBackground) {
-                    TopAppBarDefaults.topAppBarColors(
-                        containerColor = Color.Transparent,
-                        scrolledContainerColor = Color.Transparent
-                    )
-                } else {
-                    TopAppBarDefaults.topAppBarColors()
-                }
+                TopAppBarDefaults.topAppBarColors(
+                    containerColor = Color.Transparent,
+                    scrolledContainerColor = Color.Transparent
+                )
             )
         },
         containerColor =
