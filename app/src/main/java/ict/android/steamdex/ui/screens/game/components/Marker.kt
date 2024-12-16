@@ -16,7 +16,7 @@
 
 // palesemente copiato dalla sua repository perche non ho ancora le competenze per fare cose del genere
 
-package ict.android.steamdex.ui.screens.game
+package ict.android.steamdex.ui.screens.game.components
 
 import android.text.Layout
 import androidx.compose.material3.MaterialTheme

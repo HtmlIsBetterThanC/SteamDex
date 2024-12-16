@@ -21,7 +21,6 @@ import com.patrykandpatrick.vico.core.cartesian.data.CartesianChartModelProducer
 import com.patrykandpatrick.vico.core.cartesian.data.lineSeries
 import com.patrykandpatrick.vico.core.cartesian.layer.LineCartesianLayer
 import ict.android.steamdex.ui.preview.PreviewSteam
-import ict.android.steamdex.ui.screens.game.rememberMarker
 import ict.android.steamdex.ui.theme.SteamDexTheme
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
