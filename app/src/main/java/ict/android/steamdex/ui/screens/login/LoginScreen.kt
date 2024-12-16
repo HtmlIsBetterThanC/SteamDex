@@ -39,7 +39,7 @@ fun LoginScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            LogoAppIcon(Modifier.size(240.dp))
+            LogoAppIcon()
 
             Column(
                 modifier = Modifier.padding(top = 60.dp),

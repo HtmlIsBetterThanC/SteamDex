@@ -1,4 +1,5 @@
 package ict.android.steamdex.ui.screens.login.components
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -15,11 +16,10 @@ import ict.android.steamdex.ui.theme.SteamDexTheme
 fun LogoAppIcon(
     modifier: Modifier = Modifier
 ) {
-    // TODO use icon without background
     AsyncImage(
-        model = R.mipmap.ic_launcher_round,
+        model = R.drawable.steamdex_logo,
         contentDescription = stringResource(R.string.app_icon_description),
-        modifier = modifier.clip(RoundedCornerShape(50.dp))
+        modifier = modifier.size(240.dp)
     )
 }
 
