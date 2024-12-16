@@ -40,7 +40,6 @@ android {
     buildFeatures {
         compose = true
         buildConfig = true
-        buildConfig = true
     }
     hilt {
         enableAggregatingTask = true
@@ -64,6 +63,12 @@ dependencies {
     // Serialization
     implementation(libs.kotlinx.serialization.json)
 
+    // Image loader
+    implementation(libs.coil.compose)
+    implementation(libs.coil.video)
+    implementation(libs.coil.network.ktor3)
+    implementation(libs.coil.network.cache.control)
+
     // DI
     ksp(libs.hilt.android.compiler)
     implementation(libs.hilt.android)
@@ -78,16 +83,6 @@ dependencies {
     implementation(libs.ktor.client.encoding)
     implementation(libs.ktor.client.content.negotiation)
     implementation(libs.ktor.serialization.kotlinx.json)
-
-    // Image loader
-    implementation(libs.coil.compose)
-    implementation(libs.coil.video)
-    implementation(libs.coil.network.ktor3)
-    implementation(libs.coil.network.cache.control)
-
-    // HTTP Client
-    implementation(libs.ktor.client.core)
-    implementation(libs.ktor.client.cio)
 
     // Test
     testImplementation(libs.junit)
