@@ -1,13 +1,17 @@
 package ict.android.steamdex.ui.screens.game
 
+import GamePreviewParameterProvider
 import androidx.compose.foundation.border
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -19,7 +23,9 @@ import androidx.compose.ui.unit.dp
 import ict.android.steamdex.R
 import ict.android.steamdex.ui.components.ScreenTopBar
 import ict.android.steamdex.ui.components.SteamAsyncImage
+import ict.android.steamdex.ui.components.modifiers.gradientBackground
 import ict.android.steamdex.ui.preview.PreviewSteam
+import ict.android.steamdex.ui.preview.PreviewSteamGradient
 import ict.android.steamdex.ui.screens.game.components.AssistiveChipsRow
 import ict.android.steamdex.ui.screens.game.components.GameTitleHeader
 import ict.android.steamdex.ui.screens.game.components.LineChart
@@ -28,9 +34,11 @@ import ict.android.steamdex.ui.screens.game.components.SecondaryButtonRow
 import ict.android.steamdex.ui.screens.game.components.generateRandomFloats
 import ict.android.steamdex.ui.theme.SteamDexTheme
 
+@Suppress("LongParameterList")
 @Composable
 fun GameScreen(
     uiState: GameUiState,
+    useGradientBackground: Boolean,
     gameThumbnailUrl: String,
     onClickWhitelist: () -> Unit,
     onClickFollow: () -> Unit,
@@ -51,12 +59,24 @@ fun GameScreen(
         topBar = {
             ScreenTopBar(
                 backEnabled = true,
-                useGradientBackground = true,
+                useGradientBackground = useGradientBackground,
                 profileIconUrl = uiState.profile.iconUrl,
                 profileName = uiState.profile.name,
                 profileLevel = uiState.profile.level,
                 onProfileClick = onProfileClick,
             )
+        },
+        containerColor =
+        if (useGradientBackground) {
+            Color.Transparent
+        } else {
+            MaterialTheme.colorScheme.background
+        },
+        contentColor =
+        if (useGradientBackground) {
+            MaterialTheme.colorScheme.onBackground
+        } else {
+            contentColorFor(MaterialTheme.colorScheme.background)
         }
     ) { innerPadding ->
         Column(
@@ -130,6 +150,7 @@ private fun GameScreenPreview(
     SteamDexTheme {
         GameScreen(
             uiState = uiState,
+            useGradientBackground = false,
             gameThumbnailUrl = "",
             onClickWhitelist = {},
             onClickFollow = {},
@@ -143,6 +164,35 @@ private fun GameScreenPreview(
             onClickHub = {},
             charHorizontalAxisData = year,
             charVerticalAxisData = priceHistory
+        )
+    }
+}
+
+@PreviewSteamGradient
+@Composable
+private fun GameScreenGradientPreview(
+    @PreviewParameter(GamePreviewParameterProvider::class) uiState: GameUiState
+) {
+    val year = (1..365).toList()
+    val priceHistory = generateRandomFloats(365, 9.99f, 69.99f)
+    SteamDexTheme {
+        GameScreen(
+            uiState = uiState,
+            useGradientBackground = true,
+            gameThumbnailUrl = uiState.game.iconUrl,
+            onClickWhitelist = {},
+            onClickFollow = {},
+            onClickIgnore = {},
+            onClickWatch = {},
+            onProfileClick = {},
+            onClickReviews = {},
+            onClickInGame = {},
+            onClickGameInfo = {},
+            onClickStore = {},
+            onClickHub = {},
+            charHorizontalAxisData = year,
+            charVerticalAxisData = priceHistory,
+            modifier = Modifier.gradientBackground(isSystemInDarkTheme())
         )
     }
 }

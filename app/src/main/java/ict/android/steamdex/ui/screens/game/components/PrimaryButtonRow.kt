@@ -86,6 +86,7 @@ fun GamePrimaryButtonContent(
         ) {
             Text(
                 text = value.toString(),
+                // TODO change color
                 color = MaterialTheme.colorScheme.primary,
                 style = MaterialTheme.typography.headlineSmall
             )
