@@ -69,7 +69,7 @@ internal fun rememberMarker(
             minWidth = TextComponent.MinWidth.fixed(40.dp),
         )
     val indicatorFrontComponent =
-        rememberShapeComponent(fill(MaterialTheme.colorScheme.surface), CorneredShape.Pill)
+        rememberShapeComponent(fill(MaterialTheme.colorScheme.primaryContainer), CorneredShape.Pill)
     val indicatorCenterComponent = rememberShapeComponent(shape = CorneredShape.Pill)
     val indicatorRearComponent = rememberShapeComponent(shape = CorneredShape.Pill)
     val indicator =

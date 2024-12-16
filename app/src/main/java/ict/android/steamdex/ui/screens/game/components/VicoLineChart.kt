@@ -14,7 +14,6 @@ import com.patrykandpatrick.vico.compose.cartesian.layer.rememberLine
 import com.patrykandpatrick.vico.compose.cartesian.layer.rememberLineCartesianLayer
 import com.patrykandpatrick.vico.compose.cartesian.rememberCartesianChart
 import com.patrykandpatrick.vico.compose.cartesian.rememberVicoZoomState
-import com.patrykandpatrick.vico.compose.common.data.rememberExtraLambda
 import com.patrykandpatrick.vico.compose.common.fill
 import com.patrykandpatrick.vico.core.cartesian.axis.HorizontalAxis
 import com.patrykandpatrick.vico.core.cartesian.axis.VerticalAxis
@@ -28,7 +27,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlin.random.Random
 
-/*TESTING PART START*/
+/*
+* Vico charts library URL:
+* https://github.com/patrykandpatrick/vico/tree/master
+*/
+
+/*TESTING PART START  TODO remove this */
 
 fun generateRandomFloats(
     count: Int,
@@ -52,12 +56,10 @@ fun generateRandomInt(
         )
     }
 }
-private val year = (1..365).toList()
-private val playersHistory = generateRandomInt(365, 20000, 1_100_000)
-private val priceHistory = generateRandomFloats(50, 9.99f, 69.99f)
 
-// position of the persist marker in the chart, yes it is a float because fuck it
-private const val PERSISTENT_MARKER_X = 6f
+private val year = (1..365).toList()
+private val priceHistory = generateRandomFloats(365, 9.99f, 69.99f)
+private val playersHistory = generateRandomInt(365, 20000, 1_100_000)
 
 fun main() {
     println(playersHistory)
@@ -67,14 +69,16 @@ fun main() {
 
 @Composable
 internal fun LineChart(
-    graphXAxis: List<Number>,
+    // horizontals and verticals collections should have the same amount of data
+    horizontalAxisData: List<Number>,
+    verticalAxisData: List<Number>,
     modifier: Modifier = Modifier
 ) {
     val modelProducer = remember { CartesianChartModelProducer() }
     LaunchedEffect(Unit) {
         withContext(Dispatchers.Default) {
             modelProducer.runTransaction {
-                lineSeries { series(year, graphXAxis) }
+                lineSeries { series(horizontalAxisData, verticalAxisData) }
             }
         }
     }
@@ -83,6 +87,9 @@ internal fun LineChart(
         modifier = modifier
     )
 }
+
+// position of the persist marker in the chart, yes it is a float because fuck it
+private const val PERSISTENT_MARKER_X = 6f
 
 @Composable
 private fun VicoLineChart(
@@ -97,6 +104,7 @@ private fun VicoLineChart(
             rememberLineCartesianLayer(
                 LineCartesianLayer.LineProvider.series(
                     LineCartesianLayer.rememberLine(
+                        // cannot use MaterialTheme.colorScheme cuz it's not composable
                         remember { LineCartesianLayer.LineFill.single(fill(Color(0xFF0096F4))) }
                     )
                 )
@@ -110,31 +118,26 @@ private fun VicoLineChart(
             ),
             marker = marker,
             layerPadding = cartesianLayerPadding(),
-            persistentMarkers = rememberExtraLambda(marker) { marker at PERSISTENT_MARKER_X }
+            // don't think the persistent marker is useful
+            // persistentMarkers = rememberExtraLambda(marker) { marker at PERSISTENT_MARKER_X }
 
         ),
         modelProducer = modelProducer,
         modifier = modifier,
         zoomState = rememberVicoZoomState(zoomEnabled = true)
     )
-} // vlc
-
-@Composable
-fun GameChart(
-    modifier: Modifier = Modifier
-) {
-    LineChart(
-        graphXAxis = priceHistory,
-        modifier = modifier
-    )
 }
 
+// preview sometimes works other doesn't idk why
 @PreviewSteam
 @Composable
 private fun VicoLineChartPreview() {
     SteamDexTheme {
         Surface {
-            GameChart()
+            LineChart(
+                horizontalAxisData = year,
+                verticalAxisData = priceHistory
+            )
         }
     }
 }

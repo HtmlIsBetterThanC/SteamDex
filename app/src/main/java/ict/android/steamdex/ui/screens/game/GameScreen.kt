@@ -21,10 +21,11 @@ import ict.android.steamdex.ui.components.ScreenTopBar
 import ict.android.steamdex.ui.components.SteamAsyncImage
 import ict.android.steamdex.ui.preview.PreviewSteam
 import ict.android.steamdex.ui.screens.game.components.AssistiveChipsRow
-import ict.android.steamdex.ui.screens.game.components.GameChart
 import ict.android.steamdex.ui.screens.game.components.GameTitleHeader
+import ict.android.steamdex.ui.screens.game.components.LineChart
 import ict.android.steamdex.ui.screens.game.components.PrimaryButtonRow
 import ict.android.steamdex.ui.screens.game.components.SecondaryButtonRow
+import ict.android.steamdex.ui.screens.game.components.generateRandomFloats
 import ict.android.steamdex.ui.theme.SteamDexTheme
 
 @Composable
@@ -41,6 +42,8 @@ fun GameScreen(
     onClickGameInfo: () -> Unit,
     onClickStore: () -> Unit,
     onClickHub: () -> Unit,
+    charHorizontalAxisData: List<Number>,
+    charVerticalAxixData: List<Number>,
     modifier: Modifier = Modifier
 ) {
     Scaffold(
@@ -100,7 +103,10 @@ fun GameScreen(
                 onClickLeftButton = onClickReviews,
                 onClickRightButton = onClickInGame,
             )
-            GameChart()
+            LineChart(
+                horizontalAxisData = charHorizontalAxisData,
+                verticalAxisData = charVerticalAxixData
+            )
 
             SecondaryButtonRow(
                 firstLabel = R.string.game_screen_info, // TODO put the info icon
@@ -119,6 +125,8 @@ fun GameScreen(
 private fun GameScreenPreview(
     @PreviewParameter(GamePreviewParameterProvider::class) uiState: GameUiState
 ) {
+    val year = (1..365).toList()
+    val priceHistory = generateRandomFloats(365, 9.99f, 69.99f)
     SteamDexTheme {
         GameScreen(
             uiState = uiState,
@@ -132,7 +140,9 @@ private fun GameScreenPreview(
             onClickInGame = {},
             onClickGameInfo = {},
             onClickStore = {},
-            onClickHub = {}
+            onClickHub = {},
+            charHorizontalAxisData = year,
+            charVerticalAxixData = priceHistory
         )
     }
 }
