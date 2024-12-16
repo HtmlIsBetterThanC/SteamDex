@@ -36,12 +36,8 @@
     <string name="activate_button_title">Activate</string>
     <string name="deactivate_button_title">Deactivate</string>
     <string name="dialog_title_authors">Authors</string>
-    <string name="dialog_description_authors_list">Ethan Wetherfield\nLila Ashcroft\nMarcus Haverstone\nAmelia Crowell\nJack Elridge\nCharlotte Windmere\nOliver Blackthorn\nSophia Fairmont\nJames Holloway\nEvelyn Redwyne\nHenry Winslow\nClara Thornfield\nLucas Greystone\nGrace Bellamy\nNathaniel Harwick\nIsla Winterbourne\nTheodore Ashenford\nVictoria Langley\nSamuel Ravensdale\nEmily Whitestone</string>
-    <string name="dialog_description_app_license">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
     <string name="dialog_title_app_license">App License</string>
     <string name="dialog_title_privacy_policy">Privacy Policy</string>
-    <string name="dialog_description_privacy_policy">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
     <string name="dialog_title_app_version">App Version</string>
-    <string name="dialog_description_app_version">The version of your app is: 1.0</string>
-    <string name="app_license_gpl_v_3">GPL v.3</string>
+    <string name="dialog_description_app_version">The version of this app is: %1$s</string>
 </resources>

@@ -34,7 +34,7 @@ private fun AuthorsDialogPreview() {
             AuthorsDialog(
                 showDialog = true,
                 onDismissDialog = {},
-                authors = stringResource(R.string.dialog_description_authors_list)
+                authors = "Mario Mario and Luigi Mario"
             )
         }
     }

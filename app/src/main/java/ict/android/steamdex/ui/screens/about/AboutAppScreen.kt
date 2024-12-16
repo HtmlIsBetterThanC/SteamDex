@@ -18,9 +18,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import ict.android.steamdex.R
 import ict.android.steamdex.ui.components.buttons.icons.BackArrowButton
 import ict.android.steamdex.ui.components.modifiers.gradientBackground
 import ict.android.steamdex.ui.preview.PreviewSteam
@@ -40,7 +38,6 @@ fun AboutAppScreen(
     authors: String,
     privacyPolicy: String,
     appLicense: String,
-    appVersion: String,
     onBackClick: () -> Unit,
     onDonationClick: () -> Unit,
     onGitHubClick: () -> Unit,
@@ -85,7 +82,6 @@ fun AboutAppScreen(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                // TODO -> Create light-themed Icon
                 AppLogo()
             }
             Column(
@@ -125,7 +121,6 @@ fun AboutAppScreen(
             AppVersionDialog(
                 showDialog = showDialog,
                 onDismissDialog = { showDialog = false },
-                version = appVersion
             )
         }
     }
@@ -137,10 +132,9 @@ private fun AboutYouScreenPreview() {
     SteamDexTheme {
         AboutAppScreen(
             userGradientBackground = false,
-            authors = stringResource(R.string.dialog_description_authors_list),
-            privacyPolicy = stringResource(R.string.dialog_description_privacy_policy),
-            appLicense = stringResource(R.string.dialog_description_privacy_policy),
-            appVersion = stringResource(R.string.dialog_description_app_version),
+            authors = "Mario Mario and Luigi Mario",
+            privacyPolicy = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            appLicense = "GPL v.3",
             onBackClick = { },
             onDonationClick = { },
             onGitHubClick = { },
@@ -152,19 +146,17 @@ private fun AboutYouScreenPreview() {
 @PreviewSteamGradient
 @Composable
 private fun AboutYouScreenGradientPreview() {
-    val theme = isSystemInDarkTheme()
-    SteamDexTheme(theme) {
+    SteamDexTheme {
         AboutAppScreen(
             userGradientBackground = true,
-            authors = stringResource(R.string.dialog_description_authors_list),
-            privacyPolicy = stringResource(R.string.dialog_description_privacy_policy),
-            appLicense = stringResource(R.string.dialog_description_privacy_policy),
-            appVersion = stringResource(R.string.dialog_description_app_version),
+            authors = "Mario Mario and Luigi Mario",
+            privacyPolicy = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            appLicense = "GPL v.3",
             onBackClick = { },
             onDonationClick = { },
             onGitHubClick = { },
             onUpdatesClick = { },
-            modifier = Modifier.gradientBackground(theme)
+            modifier = Modifier.gradientBackground(isSystemInDarkTheme())
         )
     }
 }
