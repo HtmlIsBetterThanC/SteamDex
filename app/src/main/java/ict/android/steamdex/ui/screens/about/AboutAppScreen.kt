@@ -44,8 +44,10 @@ fun AboutAppScreen(
     onUpdatesClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    var showDialog by remember { mutableStateOf(false) }
-    var showAppLicenseDialog by remember { mutableStateOf(false) }
+    var showAuthorsDialog by remember { mutableStateOf(false) }
+    var showLicenseDialog by remember { mutableStateOf(false) }
+    var showPrivacyDialog by remember { mutableStateOf(false) }
+    var showVersionDialog by remember { mutableStateOf(false) }
 
     Scaffold(
         modifier = modifier,
@@ -93,35 +95,35 @@ fun AboutAppScreen(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 AboutButtonsList(
-                    onAuthorsClick = { showAppLicenseDialog = true },
+                    onAuthorsClick = { showAuthorsDialog = true },
                     onTranslationClick = { },
                     onDonationClick = onDonationClick,
                     onDependenciesClick = { },
-                    onAppLicensesClick = { showDialog = true },
+                    onAppLicensesClick = { showLicenseDialog = true },
                     onGitHubClick = onGitHubClick,
-                    onPrivacyPolicyClick = { showDialog = true },
-                    onAppVersionClick = { showDialog = true },
+                    onPrivacyPolicyClick = { showPrivacyDialog = true },
+                    onAppVersionClick = { showVersionDialog = true },
                     onUpdatesClick = onUpdatesClick
                 )
             }
             AuthorsDialog(
-                showDialog = showDialog,
-                onDismissDialog = { showDialog = false },
+                showDialog = showAuthorsDialog,
+                onDismissDialog = { showAuthorsDialog = false },
                 authors = authors
             )
             AppLicenseDialog(
-                showDialog = showAppLicenseDialog,
-                onDismissDialog = { showAppLicenseDialog = false },
+                showDialog = showLicenseDialog,
+                onDismissDialog = { showLicenseDialog = false },
                 license = appLicense
             )
             PrivacyPolicyDialog(
-                showDialog = showDialog,
-                onDismissDialog = { showDialog = false },
+                showDialog = showPrivacyDialog,
+                onDismissDialog = { showPrivacyDialog = false },
                 privacyPolicy = privacyPolicy
             )
             AppVersionDialog(
-                showDialog = showDialog,
-                onDismissDialog = { showDialog = false }
+                showDialog = showVersionDialog,
+                onDismissDialog = { showVersionDialog = false }
             )
         }
     }
