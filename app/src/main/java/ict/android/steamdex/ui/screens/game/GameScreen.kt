@@ -39,7 +39,8 @@ import ict.android.steamdex.ui.theme.SteamDexTheme
 fun GameScreen(
     uiState: GameUiState,
     useGradientBackground: Boolean,
-    gameThumbnailUrl: String,
+    charHorizontalAxisData: List<Number>,
+    charVerticalAxisData: List<Number>,
     onClickWhitelist: () -> Unit,
     onClickFollow: () -> Unit,
     onClickIgnore: () -> Unit,
@@ -50,8 +51,6 @@ fun GameScreen(
     onClickGameInfo: () -> Unit,
     onClickStore: () -> Unit,
     onClickHub: () -> Unit,
-    charHorizontalAxisData: List<Number>,
-    charVerticalAxisData: List<Number>,
     modifier: Modifier = Modifier
 ) {
     Scaffold(
@@ -93,7 +92,7 @@ fun GameScreen(
                 onClickWatch = onClickWatch
             )
             SteamAsyncImage(
-                model = gameThumbnailUrl,
+                model = uiState.game.name,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
@@ -151,7 +150,6 @@ private fun GameScreenPreview(
         GameScreen(
             uiState = uiState,
             useGradientBackground = false,
-            gameThumbnailUrl = "",
             onClickWhitelist = {},
             onClickFollow = {},
             onClickIgnore = {},
@@ -179,7 +177,6 @@ private fun GameScreenGradientPreview(
         GameScreen(
             uiState = uiState,
             useGradientBackground = true,
-            gameThumbnailUrl = uiState.game.iconUrl,
             onClickWhitelist = {},
             onClickFollow = {},
             onClickIgnore = {},
