@@ -37,13 +37,8 @@ SteamDEX is an application that integrates with the Steam API to provide detaile
 
 Get a glimpse of SteamDEX in action:
 
-![Screenshot 1](./assets/screenshots/screenshot1.png)
-
-![Screenshot 2](./assets/screenshots/screenshot2.png)
-
-![Screenshot 3](./assets/screenshots/screenshot3.png)
-
-*(Replace these placeholders with your GIFs or screenshots)*
+![Screenshot 1](https://i.ibb.co/gT4mr2D/Immagine-2024-12-17-222155.png) ![Screenshot 2](https://i.ibb.co/z5grS8G/Immagine-2024-12-17-222508.png) 
+![Screenshot 3](https://i.ibb.co/stfbmgk/Screenshot-2024-12-17-214711.png) ![Screenshot 4](https://i.ibb.co/CwZTLt2/Screenshot-2024-12-17-231821.png)
 
 ---
 
