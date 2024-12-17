@@ -11,7 +11,7 @@ import androidx.compose.material3.carousel.rememberCarouselState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import ict.android.steamdex.models.ui.UiGames
+import ict.android.steamdex.models.ui.UiGame
 import ict.android.steamdex.ui.preview.PreviewData.games
 import ict.android.steamdex.ui.preview.PreviewSteam
 import ict.android.steamdex.ui.theme.SteamDexTheme
@@ -19,7 +19,7 @@ import ict.android.steamdex.ui.theme.SteamDexTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HorizontalCarousel(
-    games: List<UiGames>,
+    games: List<UiGame>,
     modifier: Modifier = Modifier,
     state: CarouselState = rememberCarouselState { games.count() },
     large: Boolean = false

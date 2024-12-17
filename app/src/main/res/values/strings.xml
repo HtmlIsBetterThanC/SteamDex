@@ -49,4 +49,5 @@
     <string name="profile_screen_reset_dialog_description">You are going to lose all your settings preferences</string>
     <string name="activate_button_title">Activate</string>
     <string name="deactivate_button_title">Deactivate</string>
+    <string name="search_icon_description">Search icon</string>
 </resources>

@@ -31,6 +31,7 @@ fun ExploreTopBar(
     modifier: Modifier = Modifier
 ) {
     ScreenTopBar(
+        backEnabled = false,
         useGradientBackground = useGradientBackground,
         profileIconUrl = iconUrl,
         profileName = name,

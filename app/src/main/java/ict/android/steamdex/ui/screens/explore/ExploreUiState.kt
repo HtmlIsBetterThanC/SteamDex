@@ -1,7 +1,7 @@
 package ict.android.steamdex.ui.screens.explore
 
 import androidx.compose.runtime.Immutable
-import ict.android.steamdex.models.ui.UiGames
+import ict.android.steamdex.models.ui.UiGame
 import ict.android.steamdex.models.ui.UiProfile
 
 @Immutable
@@ -11,9 +11,9 @@ data class ExploreUiState(
     val isTrendingGamesExpanded: Boolean = false,
     val isOnSaleGamesExpanded: Boolean = false,
     val isPopularGamesExpanded: Boolean = false,
-    val mostPlayedGames: List<UiGames> = emptyList(),
-    val trendingGames: List<UiGames> = emptyList(),
-    val onSaleGames: List<UiGames> = emptyList(),
-    val popularGames: List<UiGames> = emptyList(),
+    val mostPlayedGames: List<UiGame> = emptyList(),
+    val trendingGames: List<UiGame> = emptyList(),
+    val onSaleGames: List<UiGame> = emptyList(),
+    val popularGames: List<UiGame> = emptyList(),
     val isLoading: Boolean = false
 )

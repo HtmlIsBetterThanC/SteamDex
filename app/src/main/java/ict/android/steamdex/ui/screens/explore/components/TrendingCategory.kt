@@ -11,7 +11,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import ict.android.steamdex.R
-import ict.android.steamdex.models.ui.UiGames
+import ict.android.steamdex.models.ui.UiGame
 import ict.android.steamdex.ui.preview.PreviewSteam
 import ict.android.steamdex.ui.preview.providers.ExplorePreviewParametersProvider
 import ict.android.steamdex.ui.screens.explore.ExploreUiState
@@ -20,7 +20,7 @@ import ict.android.steamdex.ui.theme.SteamDexTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TrendingCategory(
-    trendingGames: List<UiGames>,
+    trendingGames: List<UiGame>,
     editMode: Boolean,
     isExpanded: Boolean,
     onCategoryClick: () -> Unit,
