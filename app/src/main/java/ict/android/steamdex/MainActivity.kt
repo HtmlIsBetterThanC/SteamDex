@@ -1,12 +1,12 @@
 package ict.android.steamdex
 
 import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
 import android.os.Bundle
 import android.view.View
 import android.view.animation.OvershootInterpolator
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
@@ -14,7 +14,6 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import dagger.hilt.android.AndroidEntryPoint
 import ict.android.steamdex.ui.theme.SteamDexTheme
 
 class MainActivity : ComponentActivity() {
@@ -28,28 +27,20 @@ class MainActivity : ComponentActivity() {
                 !viewModel.isReady.value
             }
             setOnExitAnimationListener { screen ->
-                val zoomX = ObjectAnimator.ofFloat(
-                    screen.iconView,
-                    View.SCALE_X,
-                    0.4f,
-                    0.0f
-                )
-                zoomX.interpolator = OvershootInterpolator()
-                zoomX.duration = 500L
-                zoomX.doOnEnd { screen.remove() }
+                val scaleX = PropertyValuesHolder.ofFloat(View.SCALE_X, 0.4f, 0.0f)
+                val scaleY = PropertyValuesHolder.ofFloat(View.SCALE_Y, 0.4f, 0.0f)
 
-                val zoomY = ObjectAnimator.ofFloat(
+                val scaleAnimator = ObjectAnimator.ofPropertyValuesHolder(
                     screen.iconView,
-                    View.SCALE_Y,
-                    0.4f,
-                    0.0f
-                )
-                zoomY.interpolator = OvershootInterpolator()
-                zoomY.duration = 500L
-                zoomY.doOnEnd { screen.remove() }
+                    scaleX,
+                    scaleY
+                ).apply {
+                    interpolator = OvershootInterpolator()
+                    duration = 500L
+                    doOnEnd { screen.remove() }
+                }
 
-                zoomX.start()
-                zoomY.start()
+                scaleAnimator.start()
             }
         }
 
@@ -58,20 +49,8 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
-                ) {
-                    @AndroidEntryPoint
-                    class MainActivity : ComponentActivity() {
-                        override fun onCreate(savedInstanceState: Bundle?) {
-                            super.onCreate(savedInstanceState)
-                            enableEdgeToEdge()
-                            setContent {
-                                SplashScreen()
-                            }
-                        }
-                    }
-                }
+                ) { }
             }
         }
     }
 }
-
