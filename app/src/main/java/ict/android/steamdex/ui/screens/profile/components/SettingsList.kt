@@ -125,9 +125,19 @@ private val settingsList = listOf(
     ),
     SettingsItem(
         id = 7,
+        titleId = R.string.settings_about_title,
+        iconId = R.drawable.info
+    ),
+    SettingsItem(
+        id = 8,
         titleId = R.string.settings_restore_default_title,
         iconId = R.drawable.restore_defaults
-    )
+    ),
+    SettingsItem(
+        id = 9,
+        titleId = R.string.settings_logout_title,
+        iconId = R.drawable.logout
+    ),
 )
 
 @PreviewSteam
