@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="https://i.ibb.co/wzGfrJp/banner-steamdex.png" alt="SteamDex">
-</p>
+![SteamDex](https://i.ibb.co/wzGfrJp/banner-steamdex.png)
 
 **<h1 align="center">🎮 SteamDex</h1>**
 <p align="center">
