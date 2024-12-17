@@ -34,6 +34,7 @@ import ict.android.steamdex.ui.screens.profile.components.SettingsList
 import ict.android.steamdex.ui.screens.profile.components.dialog.DefaultStartingScreenDialog
 import ict.android.steamdex.ui.screens.profile.components.dialog.GradientBackgroundDialog
 import ict.android.steamdex.ui.screens.profile.components.dialog.LanguageDialog
+import ict.android.steamdex.ui.screens.profile.components.dialog.LogoutDialog
 import ict.android.steamdex.ui.screens.profile.components.dialog.MaterialYouDialog
 import ict.android.steamdex.ui.screens.profile.components.dialog.PitchBlackDialog
 import ict.android.steamdex.ui.screens.profile.components.dialog.ResetDialog
@@ -51,7 +52,9 @@ fun ProfileScreen(
     onMaterialYouChange: (Boolean) -> Unit,
     onGradientBackgroundChange: (Boolean) -> Unit,
     onDefaultStartingScreenChange: (Any) -> Unit,
+    onAboutClick: () -> Unit,
     onResetSettingClick: () -> Unit,
+    onLogoutClick: () -> Unit,
     modifier: Modifier = Modifier,
     bottomBar: @Composable () -> Unit = {}
 ) {
@@ -78,6 +81,10 @@ fun ProfileScreen(
     var showResetDialog by remember {
         mutableStateOf(false)
     }
+
+    var showLogoutDialog by remember {
+        mutableStateOf(false)
+    }
     val onSettingItemClick: (item: SettingsItem) -> Unit = {
         when (it.id) {
             1 -> showLanguageDialog = true
@@ -92,7 +99,11 @@ fun ProfileScreen(
 
             6 -> showDefaultStartingScreenDialog = true
 
-            7 -> showResetDialog = true
+            7 -> onAboutClick()
+
+            8 -> showResetDialog = true
+
+            9 -> showLogoutDialog = true
         }
     }
 
@@ -195,6 +206,11 @@ fun ProfileScreen(
                 },
                 onConfirmDialog = onResetSettingClick
             )
+            LogoutDialog(
+                showDialog = showLogoutDialog,
+                onDismissDialog = { showLogoutDialog = false },
+                onConfirmDialog = onLogoutClick
+            )
         }
     }
 }
@@ -215,8 +231,10 @@ private fun ProfileScreenPreview(
             onMaterialYouChange = {},
             onGradientBackgroundChange = {},
             onDefaultStartingScreenChange = {},
+            onAboutClick = {},
             onResetSettingClick = {},
-            bottomBar = { BottomNavbar(rememberNavController()) },
+            onLogoutClick = {},
+            bottomBar = { BottomNavbar(rememberNavController()) }
         )
     }
 }
@@ -237,7 +255,9 @@ private fun ProfileScreenGradientPreview(
             onMaterialYouChange = {},
             onGradientBackgroundChange = {},
             onDefaultStartingScreenChange = {},
+            onAboutClick = {},
             onResetSettingClick = {},
+            onLogoutClick = {},
             modifier = Modifier.gradientBackground(isSystemInDarkTheme()),
             bottomBar = { BottomNavbar(rememberNavController()) }
         )

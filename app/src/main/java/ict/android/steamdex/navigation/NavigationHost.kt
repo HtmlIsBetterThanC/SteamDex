@@ -59,6 +59,14 @@ fun NavigationHost(
             val onDefaultStartingScreenChange = { startingScreen: Any ->
                 viewModel.updateDefaultStartingScreen(startingScreen)
             }
+
+            val onAboutClick = {
+                navController.navigate(AboutGraphRoute) {
+                    launchSingleTop = true
+                }
+            }
+
+            val onLogoutClick = {}
             val onResetSettingClick = {
                 viewModel.resetAllSettings()
             }
@@ -77,7 +85,9 @@ fun NavigationHost(
                 onMaterialYouChange = onMaterialYouChange,
                 onGradientBackgroundChange = onGradientBackgroundChange,
                 onDefaultStartingScreenChange = onDefaultStartingScreenChange,
+                onAboutClick = onAboutClick,
                 onResetSettingClick = onResetSettingClick,
+                onLogoutClick = onLogoutClick,
                 bottomBar = {
                     BottomNavbar(navController)
                 }
