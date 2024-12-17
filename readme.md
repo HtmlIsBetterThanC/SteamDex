@@ -1,6 +1,6 @@
-![SteamDex](https://i.ibb.co/wzGfrJp/banner-steamdex.png)
+<img src="https://i.ibb.co/QcyJp6K/banner-steamdex-final.png" alt="SteamDex" width="100%">
 
-**<h1 align="center">🎮 SteamDex</h1>**
+**<h1 align="center">🎮 SteamDEX</h1>**
 <p align="center">
   <a href="https://github.com/HtmlIsBetterThanC/SteamDex/releases/latest">
     <img alt="GitHub Downloads" src="https://img.shields.io/github/downloads/HtmlIsBetterThanC/SteamDex/total?style=for-the-badge">
@@ -14,13 +14,13 @@
 </p>
 
 <br>
-Unlock your Steam journey with <b>SteamDex</b>, an intuitive app to explore and analyze your Steam library and stats.
+Unlock your Steam journey with <b>SteamDEX</b>, an intuitive app to explore and analyze your Steam library and stats.
 
 ---
 
 ### **❓ About**
 
-SteamDex is an application that integrates with the Steam API to provide detailed insights into your gaming activity, library, and stats.
+SteamDEX is an application that integrates with the Steam API to provide detailed insights into your gaming activity, library, and stats.
 
 ### **💪 Features**
 
@@ -35,7 +35,7 @@ SteamDex is an application that integrates with the Steam API to provide detaile
 
 ### **📸 Screenshot**
 
-Get a glimpse of SteamDex in action:
+Get a glimpse of SteamDEX in action:
 
 ![Screenshot 1](./assets/screenshots/screenshot1.png)
 
@@ -49,7 +49,7 @@ Get a glimpse of SteamDex in action:
 
 ### **🔽 Download**
 
-You can download the latest version of SteamDex at [steamdex.app/download](https://steamdex.app/download) or from [GitHub releases](https://github.com/HtmlIsBetterThanC/SteamDex).
+You can download the latest version of SteamDEX at [steamdex.app/download](https://steamdex.app/download) or from [GitHub releases](https://github.com/HtmlIsBetterThanC/SteamDex).
 
 ---
 
@@ -57,21 +57,21 @@ You can download the latest version of SteamDex at [steamdex.app/download](https
 
 #### **📙 Contributing**
 
-We appreciate contributions to SteamDex! You can find the contribution guidelines [here](CONTRIBUTING.md).
+We appreciate contributions to SteamDEX! You can find the contribution guidelines [here](CONTRIBUTING.md).
 
 #### **🛠️ Building**
 
-To build SteamDex from source, follow the instructions in our [documentation](/docs).
+To build SteamDEX from source, follow the instructions in our [documentation](/docs).
 
 #### **📄 Documentation**
 
-Full documentation for SteamDex is available [here](/docs).
+Full documentation for SteamDEX is available [here](/docs).
 
 ---
 
 ### **⚖️ License**
 
-SteamDex is licensed under the MIT license. See the [license file](LICENSE) for details. You are free to use, modify, and distribute the app under the terms of the license.
+SteamDEX is licensed under the MIT license. See the [license file](LICENSE) for details. You are free to use, modify, and distribute the app under the terms of the license.
 
 ---
 
