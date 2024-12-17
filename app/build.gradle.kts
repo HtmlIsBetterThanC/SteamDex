@@ -73,6 +73,9 @@ dependencies {
     implementation(libs.ktor.client.core)
     implementation(libs.ktor.client.cio)
 
+    // Chrome Custom Tab
+    implementation(libs.androidx.browser)
+
     // Test
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
