@@ -7,8 +7,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
-import ict.android.steamdex.navigation.NavigationHost
 import dagger.hilt.android.AndroidEntryPoint
+import ict.android.steamdex.navigation.NavigationHost
 import ict.android.steamdex.ui.theme.SteamDexTheme
 
 @AndroidEntryPoint

@@ -25,18 +25,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import ict.android.steamdex.ui.components.buttons.icons.BackArrowButton
 import ict.android.steamdex.ui.preview.PreviewSteam
 import ict.android.steamdex.ui.theme.SteamDexTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScreenTopBar(
+    backEnabled: Boolean,
     useGradientBackground: Boolean,
     profileIconUrl: String,
     profileName: String,
     profileLevel: Int,
     onProfileClick: () -> Unit,
     modifier: Modifier = Modifier,
+    onBackClick: () -> Unit = {},
     actions:
     @Composable
     (RowScope.() -> Unit) = {}
@@ -69,7 +72,8 @@ fun ScreenTopBar(
                 }
             }
         },
-        modifier = modifier.padding(end = 10.dp),
+        modifier = modifier,
+        navigationIcon = { if (backEnabled) BackArrowButton(onBackClick) },
         actions = actions,
         expandedHeight = 80.dp,
         colors = if (useGradientBackground) {
@@ -86,6 +90,7 @@ private fun ScreenTopBarPreview() {
     SteamDexTheme {
         Surface {
             ScreenTopBar(
+                backEnabled = false,
                 useGradientBackground = false,
                 profileIconUrl = "",
                 profileName = "Profile",
@@ -102,6 +107,7 @@ private fun ScreenTopBarPreviewWithAction() {
     SteamDexTheme {
         Surface {
             ScreenTopBar(
+                backEnabled = false,
                 useGradientBackground = false,
                 profileIconUrl = "",
                 profileName = "Profile",
@@ -118,6 +124,23 @@ private fun ScreenTopBarPreviewWithAction() {
                         )
                     }
                 }
+            )
+        }
+    }
+}
+
+@PreviewSteam
+@Composable
+private fun ScreenTopBarWithBack() {
+    SteamDexTheme {
+        Surface {
+            ScreenTopBar(
+                backEnabled = true,
+                useGradientBackground = false,
+                profileIconUrl = "",
+                profileName = "Profile",
+                profileLevel = 15,
+                onProfileClick = { }
             )
         }
     }
