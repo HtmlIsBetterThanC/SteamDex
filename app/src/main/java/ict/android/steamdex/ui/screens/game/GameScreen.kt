@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -57,43 +56,42 @@ fun GameScreen(
     onBackClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    if (uiState.isLoading) {
-        Row(
-            Modifier
-                .fillMaxWidth()
-                .background(if (useGradientBackground) Color.Transparent else MaterialTheme.colorScheme.background)
-                .safeContentPadding(),
-            horizontalArrangement = Arrangement.Center
-        ) {
-            CircularProgressIndicator()
+    Scaffold(
+        modifier = modifier,
+        topBar = {
+            ScreenTopBar(
+                backEnabled = true,
+                useGradientBackground = useGradientBackground,
+                profileIconUrl = uiState.profile.iconUrl,
+                profileName = uiState.profile.name,
+                profileLevel = uiState.profile.level,
+                onProfileClick = onProfileClick,
+                onBackClick = onBackClick
+            )
+        },
+        containerColor =
+        if (useGradientBackground) {
+            Color.Transparent
+        } else {
+            MaterialTheme.colorScheme.background
+        },
+        contentColor =
+        if (useGradientBackground) {
+            MaterialTheme.colorScheme.onBackground
+        } else {
+            contentColorFor(MaterialTheme.colorScheme.background)
         }
-    } else {
-        Scaffold(
-            modifier = modifier,
-            topBar = {
-                ScreenTopBar(
-                    backEnabled = true,
-                    useGradientBackground = useGradientBackground,
-                    profileIconUrl = uiState.profile.iconUrl,
-                    profileName = uiState.profile.name,
-                    profileLevel = uiState.profile.level,
-                    onProfileClick = onProfileClick,
-                    onBackClick = onBackClick
-                )
-            },
-            containerColor =
-            if (useGradientBackground) {
-                Color.Transparent
-            } else {
-                MaterialTheme.colorScheme.background
-            },
-            contentColor =
-            if (useGradientBackground) {
-                MaterialTheme.colorScheme.onBackground
-            } else {
-                contentColorFor(MaterialTheme.colorScheme.background)
+    ) { innerPadding ->
+        if (uiState.isLoading) {
+            Row(
+                Modifier
+                    .fillMaxWidth()
+                    .padding(innerPadding),
+                horizontalArrangement = Arrangement.Center
+            ) {
+                CircularProgressIndicator()
             }
-        ) { innerPadding ->
+        } else {
             Column(
                 modifier = Modifier
                     .padding(innerPadding)
