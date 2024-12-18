@@ -19,17 +19,10 @@
     <string name="profile_additional_details_today_value">Today\'s value:</string>
     // -----
     <string name="progress_bar_fixed_xp">/500 XP to next level</string>
-    <string name="friends_number_icon_description">Total number of friend on Steam</string>
-    <string name="games_number_icon_description">Total number of games on Steam</string>
-    <string name="profile_total_value">Total value:</string>
-    <string name="button_calculator">Calculator</string>
-    <string name="progress_bar_out_of">out of</string>
-    <string name="progress_bar_games_played">games played</string>
     <string name="button_icon_calculator">Calculator</string>
     <string name="friends_number_icon_description">Total number of friend on Steam</string>
     <string name="games_number_icon_description">Total number of games on Steam</string>
     <string name="profile_total_value">Total value:</string>
-    <string name="calculator_preview_total_value">Total value:</string>
     <string name="button_calculator">Calculator</string>
     <string name="progress_bar_out_of">out of</string>
     <string name="progress_bar_games_played">games played</string>
@@ -103,17 +96,6 @@
     <string name="expand_icon_description">Expand icon</string>
     <string name="close_icon_description">Close icon</string>
     <string name="edit_icon_description">Edit icon</string>
-    <string name="app_icon_description">App icon</string>
-    <string name="profile_screen_theme_system">System</string>
-    <string name="profile_screen_theme_dark">Dark</string>
-    <string name="profile_screen_theme_light">Light</string>
-    <string name="profile_screen_theme_dialog_title">Theme</string>
-    <string name="profile_screen_reset_dialog_title">Reset all your settings</string>
-    <string name="profile_screen_reset_dialog_description">You are going to lose all your settings preferences</string>
-    <string name="activate_button_title">Activate</string>
-    <string name="deactivate_button_title">Deactivate</string>
-    <string name="header_title_parameter">Title</string>
-    <string name="search_icon_description">Search icon</string>
     <string name="wishlist_button">Wishlist</string>
     <string name="follow_button">Follow</string>
     <string name="ignore_button">Ignore</string>
@@ -125,4 +107,7 @@
     <string name="game_screen_hub">Hub</string>
     <string name="library_screen_all_games">All games (%1$s)</string>
     <string name="library_screen_game_card_hours_played">%1$s Hours played</string>
+    <string name="welcome_text">Welcome to</string>
+    <string name="loginScreen_login_button_text">Sign in through </string>
+    <string name="steam">Steam</string>
 </resources>
