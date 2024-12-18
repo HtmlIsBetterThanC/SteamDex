@@ -7,11 +7,9 @@
     <img alt="GitHub Downloads" src="https://img.shields.io/github/downloads/HtmlIsBetterThanC/SteamDex/total?style=for-the-badge">
     <img alt="GitHub Release" src="https://img.shields.io/github/v/release/HtmlIsBetterThanC/SteamDex?style=for-the-badge">
   </a>
-  <img alt="MIT License" src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge">
+  <img alt="LICENSE" src="https://img.shields.io/badge/LICENSE-blue.svg?style=for-the-badge">
   <img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/HtmlIsBetterThanC/SteamDex/release.yml?style=for-the-badge"><img src=https://img.shields.io/badge/Android-46ae55?style=for-the-badge&logo=android&logoColor=white />
   <br>
-  <img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white">
-  <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black">
 </p>
 
 <br>
@@ -45,7 +43,7 @@ Get a glimpse of SteamDEX in action:
 
 ### **🔽 Download**
 
-You can download the latest version of SteamDEX at [steamdex.app/download](https://steamdex.app/download) or from [GitHub releases](https://github.com/HtmlIsBetterThanC/SteamDex).
+You can download the latest version of SteamDEX at [steamdex.app/download](https://github.com/HtmlIsBetterThanC/SteamDex) or from [GitHub releases](https://github.com/HtmlIsBetterThanC/SteamDex).
 
 ---
 
