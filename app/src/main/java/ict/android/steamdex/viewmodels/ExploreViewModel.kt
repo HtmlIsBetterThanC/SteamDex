@@ -4,8 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import ict.android.steamdex.data.repositories.GameRepository
+import ict.android.steamdex.data.repositories.ProfileRepository
 import ict.android.steamdex.models.mappers.toUiModel
-import ict.android.steamdex.ui.preview.PreviewData.profiles
 import ict.android.steamdex.ui.screens.explore.ExploreUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -14,7 +14,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ExploreViewModel @Inject constructor(private val gameRepository: GameRepository) : ViewModel() {
+class ExploreViewModel @Inject constructor(
+    private val profileRepository: ProfileRepository,
+    private val gameRepository: GameRepository
+) : ViewModel() {
     private val _uiState: MutableStateFlow<ExploreUiState> = MutableStateFlow(ExploreUiState())
     val uiState = _uiState.asStateFlow()
 
@@ -25,7 +28,7 @@ class ExploreViewModel @Inject constructor(private val gameRepository: GameRepos
         viewModelScope.launch {
             _uiState.update {
                 ExploreUiState(
-                    profile = profiles[0],
+                    profile = profileRepository.getProfile().toUiModel(),
                     isMostPlayedGamesExpanded = gameRepository.isMostPlayedGamesExpanded(),
                     isTrendingGamesExpanded = gameRepository.isTrendingGamesExpanded(),
                     isOnSaleGamesExpanded = gameRepository.isOnSaleGamesExpanded(),

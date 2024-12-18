@@ -1,11 +1,12 @@
 package ict.android.steamdex.ui.screens.explore
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -47,7 +48,9 @@ fun ExploreScreen(
 ) {
     if (uiState.isLoading) {
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxSize().background(
+                if (useGradientBackground) Color.Transparent else MaterialTheme.colorScheme.background
+            ).safeContentPadding(),
             horizontalArrangement = Arrangement.Center
         ) {
             CircularProgressIndicator()
