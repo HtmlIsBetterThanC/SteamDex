@@ -1,20 +1,20 @@
 package ict.android.steamdex.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import ict.android.steamdex.navigation.graphs.aboutGraph
 import ict.android.steamdex.ui.components.BottomNavbar
-import ict.android.steamdex.ui.preview.PreviewData.games
-import ict.android.steamdex.ui.preview.PreviewData.profiles
-import ict.android.steamdex.ui.screens.calculator.CalculatorScreen
-import ict.android.steamdex.ui.screens.calculator.CalculatorUiState
-import ict.android.steamdex.ui.screens.home.HomeScreen
-import ict.android.steamdex.ui.screens.home.HomeUiState
-import ict.android.steamdex.ui.screens.login.LoginScreen
+import ict.android.steamdex.ui.screens.explore.Category
+import ict.android.steamdex.ui.screens.explore.ExploreScreen
 import ict.android.steamdex.ui.screens.profile.ProfileScreen
-import ict.android.steamdex.ui.screens.profile.ProfileUiState
+import ict.android.steamdex.viewmodels.ExploreViewModel
+import ict.android.steamdex.viewmodels.ProfileViewModel
 
 @Composable
 fun NavigationHost(
@@ -28,61 +28,114 @@ fun NavigationHost(
         modifier = modifier,
         startDestination = startDestination
     ) {
-        fadeComposable<LoginRoute> {
-            val onLogin = {
-                navController.navigate(ExploreRoute)
-            }
-            LoginScreen(
-                onLogin = onLogin,
-                useGradientBackground = useGradientBackground
-            )
-        }
+        fadeComposable<LoginRoute> { }
         fadeComposable<ExploreRoute> {
-            val onProfileClick = {}
-            HomeScreen(
-                uiState = HomeUiState(
-                    profile = profiles[0],
-                    mostPlayedGames = games,
-                    trendingGames = games,
-                    onSaleGames = games.subList(0, 3),
-                    popularGames = games.subList(3, games.size - 1)
-                ),
-                useGradientBackground = useGradientBackground,
+            val viewModel = hiltViewModel<ExploreViewModel>()
+            val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
+            val onProfileClick = {
+                navController.navigate(ProfileRoute)
+            }
+
+            val onCategoryClick = { categoryId: Int ->
+            }
+
+            val onCarouselExpandedClick = { categoryId: Int, expanded: Boolean ->
+                when (categoryId) {
+                    Category.MostPlayed.id -> viewModel.updateMostPlayedGamesExpanded(expanded)
+                    Category.Trending.id -> viewModel.updateTrendingGamesExpanded(expanded)
+                    Category.OnSale.id -> viewModel.updateOnSaleGamesExpanded(expanded)
+                    Category.Popular.id -> viewModel.updatePopularGamesExpanded(expanded)
+                }
+            }
+
+            val onSearchClick = {
+            }
+
+            LaunchedEffect(null) {
+                viewModel.start()
+            }
+
+            ExploreScreen(
+                uiState = uiState,
+                useGradientBackground = false,
                 onProfileClick = onProfileClick,
-                onCategoryClick = {},
-                onSearchClick = {},
-                bottomBar = { BottomNavbar(navController) }
+                onCategoryClick = onCategoryClick,
+                onCarouselExpandedClick = onCarouselExpandedClick,
+                onSearchClick = onSearchClick,
+                bottomBar = {
+                    BottomNavbar(navController)
+                }
             )
         }
         fadeComposable<LibraryRoute> { }
         fadeComposable<GameRoute> { }
         fadeComposable<PublisherRoute> { }
         fadeComposable<ProfileRoute> {
-            val onCalculatorClick = { navController.navigate(CalculatorRoute) }
+            val viewModel = hiltViewModel<ProfileViewModel>()
+            val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
+            val onCalculatorClick = {
+                navController.navigate(CalculatorRoute) {
+                    launchSingleTop = true
+                    restoreState = true
+                }
+            }
+            val onLanguageChange = { lang: String ->
+                viewModel.updateLanguage(lang)
+            }
+            val onThemeChange = { darkTheme: Boolean? ->
+                viewModel.updateDarkTheme(darkTheme)
+            }
+            val onPitchBlackChange = { pitchBlack: Boolean ->
+                viewModel.updatePitchBlack(pitchBlack)
+                viewModel.updateGradientBackground(false)
+            }
+            val onMaterialYouChange = { materialYou: Boolean ->
+                viewModel.updateMaterialYou(materialYou)
+                viewModel.updateGradientBackground(false)
+            }
+            val onGradientBackgroundChange = { gradientBackground: Boolean ->
+                viewModel.updateGradientBackground(gradientBackground)
+            }
+            val onDefaultStartingScreenChange = { startingScreen: Any ->
+                viewModel.updateDefaultStartingScreen(startingScreen)
+            }
+
+            val onAboutClick = {
+                navController.navigate(AboutGraphRoute) {
+                    launchSingleTop = true
+                }
+            }
+
+            val onLogoutClick = {}
+            val onResetSettingClick = {
+                viewModel.resetAllSettings()
+            }
+
+            LaunchedEffect(null) {
+                viewModel.start()
+            }
+
             ProfileScreen(
-                uiState = ProfileUiState(
-                    profile = profiles[1],
-                    totalFriends = "45"
-                ),
+                uiState = uiState,
                 useGradientBackground = useGradientBackground,
                 onCalculatorClick = onCalculatorClick,
-                onSettingsItemClick = { },
-                bottomBar = { BottomNavbar(navController) }
+                onLanguageChange = onLanguageChange,
+                onThemeChange = onThemeChange,
+                onPitchBlackChange = onPitchBlackChange,
+                onMaterialYouChange = onMaterialYouChange,
+                onGradientBackgroundChange = onGradientBackgroundChange,
+                onDefaultStartingScreenChange = onDefaultStartingScreenChange,
+                onAboutClick = onAboutClick,
+                onResetSettingClick = onResetSettingClick,
+                onLogoutClick = onLogoutClick,
+                bottomBar = {
+                    BottomNavbar(navController)
+                }
             )
         }
-        fadeComposable<CalculatorRoute> {
-            val onBackClick: () -> Unit = { navController.navigateUp() }
-            CalculatorScreen(
-                uiState = CalculatorUiState(
-                    profile = profiles[1],
-                    todayValue = 14542,
-                    currentXpToNextLevel = 239
-                ),
-                useGradientBackground = useGradientBackground,
-                onBackClick = onBackClick,
-                onGameClick = {}
-            )
-        }
-        aboutGraph(navController)
+        fadeComposable<CalculatorRoute> { }
+        aboutGraph(navController, useGradientBackground)
     }
 }

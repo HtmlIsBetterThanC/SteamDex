@@ -23,7 +23,7 @@ fun CloseButton(
     IconButton(onClick) {
         Icon(
             imageVector = Icons.Default.Close,
-            contentDescription = stringResource(R.string.back_arrow_icon_description),
+            contentDescription = stringResource(R.string.close_icon_description),
             modifier = modifier,
             tint = tint
         )

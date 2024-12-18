@@ -34,12 +34,12 @@ fun CalculatorButton(
             ) {
                 Icon(
                     painter = painterResource(R.drawable.calculate),
-                    contentDescription = stringResource(R.string.button_icon_calculator),
+                    contentDescription = stringResource(R.string.calculate_icon_description),
                     modifier = Modifier.size(40.dp),
                     tint = MaterialTheme.colorScheme.onSurface
                 )
                 Text(
-                    text = stringResource(R.string.button_calculator),
+                    text = stringResource(R.string.profile_screen_button_calculator_title),
                     modifier = Modifier,
                     color = MaterialTheme.colorScheme.onSurface,
                     style = MaterialTheme.typography.bodyLarge

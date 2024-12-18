@@ -2,12 +2,9 @@ package ict.android.steamdex.ui.screens.profile.components
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -37,10 +34,13 @@ fun SettingsList(
     onItemClick: (item: SettingsItem) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    LazyColumn(
-        modifier = modifier
-    ) {
-        items(settingsList) { item -> SettingItemRow(item, onItemClick) }
+    LazyColumn(modifier) {
+        items(settingsList) { item ->
+            SettingItemRow(
+                item = item,
+                onItemClick = onItemClick
+            )
+        }
     }
 }
 
@@ -56,10 +56,9 @@ fun SettingItemRow(
         modifier = modifier
             .fillMaxWidth()
             .clickable { onItemClick(item) }
-            .background(Color.Transparent)
             .padding(vertical = 10.dp),
-        // If the items of the list reappear, just remove the settings and put them back on
-        colors = ListItemDefaults.colors(
+        colors =
+        ListItemDefaults.colors(
             containerColor = Color.Transparent,
             headlineColor = MaterialTheme.colorScheme.onSurface,
             leadingIconColor = MaterialTheme.colorScheme.onSurfaceVariant
@@ -67,14 +66,14 @@ fun SettingItemRow(
         leadingContent = {
             Icon(
                 painter = painterResource(item.iconId),
-                contentDescription = null,
+                contentDescription = null
             )
         },
         trailingContent = {
             Icon(
                 imageVector = Icons.Default.PlayArrow,
                 contentDescription = stringResource(
-                    R.string.settings_play_arrow_icon_description,
+                    R.string.play_arrow_icon_description,
                     title
                 ),
                 modifier = Modifier.size(12.dp)
@@ -87,7 +86,7 @@ fun SettingItemRow(
 
 @Immutable
 data class SettingsItem(
-    val name: String,
+    val id: Int,
     @StringRes val titleId: Int,
     @DrawableRes val iconId: Int
 )
@@ -95,48 +94,58 @@ data class SettingsItem(
 @Stable
 private val settingsList = listOf(
     SettingsItem(
-        "language",
-        R.string.settings_language_title,
-        R.drawable.language
+        id = 1,
+        titleId = R.string.profile_screen_settings_language_title,
+        iconId = R.drawable.language
     ),
     SettingsItem(
-        "theme",
-        R.string.settings_theme_title,
-        R.drawable.theme
+        id = 2,
+        titleId = R.string.profile_screen_settings_theme_title,
+        iconId = R.drawable.theme
     ),
     SettingsItem(
-        "pitchBlack",
-        R.string.settings_pitch_black_title,
-        R.drawable.pitch_black
+        id = 3,
+        titleId = R.string.profile_screen_settings_pitch_black_title,
+        iconId = R.drawable.pitch_black
     ),
     SettingsItem(
-        "materialYou",
-        R.string.settings_material_you_title,
-        R.drawable.material_you
+        id = 4,
+        titleId = R.string.profile_screen_settings_material_you_title,
+        iconId = R.drawable.material_you
     ),
     SettingsItem(
-        "defaultStartupPage",
-        R.string.settings_default_startup_page_title,
-        R.drawable.default_startup_page
+        id = 5,
+        titleId = R.string.profile_screen_settings_gradient_background_title,
+        iconId = R.drawable.gradient
     ),
     SettingsItem(
-        "restoreDefault",
-        R.string.settings_restore_default_title,
-        R.drawable.restore_defaults
-    )
+        id = 6,
+        titleId = R.string.profile_screen_settings_default_startup_page_title,
+        iconId = R.drawable.default_startup_page
+    ),
+    SettingsItem(
+        id = 7,
+        titleId = R.string.profile_screen_settings_about_title,
+        iconId = R.drawable.info
+    ),
+    SettingsItem(
+        id = 8,
+        titleId = R.string.profile_screen_settings_restore_default_title,
+        iconId = R.drawable.restore_defaults
+    ),
+    SettingsItem(
+        id = 9,
+        titleId = R.string.profile_screen_settings_logout_title,
+        iconId = R.drawable.logout
+    ),
 )
 
 @PreviewSteam
 @PreviewSteamFontSize
 @Composable
-fun SettingsListPreview() {
+private fun SettingsListPreview() {
     SteamDexTheme {
-        Surface(
-            Modifier
-                .background(MaterialTheme.colorScheme.background)
-                .safeContentPadding()
-                .fillMaxSize()
-        ) {
+        Surface {
             SettingsList({})
         }
     }

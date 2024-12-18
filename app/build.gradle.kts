@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.google.ksp)
     alias(libs.plugins.hilt.android)
+    alias(libs.plugins.aboutlibraries)
 }
 
 android {
@@ -39,6 +40,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     hilt {
         enableAggregatingTask = true
@@ -55,6 +57,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.core.splashscreen)
 
     // Navigation
     implementation(libs.androidx.navigation.compose)
@@ -82,6 +85,10 @@ dependencies {
     implementation(libs.ktor.client.encoding)
     implementation(libs.ktor.client.content.negotiation)
     implementation(libs.ktor.serialization.kotlinx.json)
+
+    // About libraries
+    implementation(libs.aboutlibraries.core)
+    implementation(libs.aboutlibraries.compose)
 
     // Test
     testImplementation(libs.junit)
