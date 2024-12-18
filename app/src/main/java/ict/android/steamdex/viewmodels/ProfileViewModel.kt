@@ -3,9 +3,10 @@ package ict.android.steamdex.viewmodels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import ict.android.steamdex.data.repositories.ProfileRepository
 import ict.android.steamdex.data.repositories.SettingsRepository
 import ict.android.steamdex.ext.fromRouteToString
-import ict.android.steamdex.ui.preview.PreviewData.profiles
+import ict.android.steamdex.models.mappers.toUiModel
 import ict.android.steamdex.ui.screens.profile.ProfileUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -14,7 +15,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ProfileViewModel @Inject constructor(private val settingsRepository: SettingsRepository) : ViewModel() {
+class ProfileViewModel @Inject constructor(
+    private val profileRepository: ProfileRepository,
+    private val settingsRepository: SettingsRepository
+) : ViewModel() {
     private val _uiState: MutableStateFlow<ProfileUiState> = MutableStateFlow(ProfileUiState())
     val uiState = _uiState.asStateFlow()
 
@@ -22,9 +26,8 @@ class ProfileViewModel @Inject constructor(private val settingsRepository: Setti
         viewModelScope.launch {
             _uiState.update {
                 it.copy(
-                    // TODO get from api client
-                    profile = profiles[0],
-                    totalFriends = "5",
+                    profile = profileRepository.getProfile().toUiModel(),
+                    totalFriends = profileRepository.getNumberOfFriends().toString(),
                     darkTheme = settingsRepository.getDarkTheme(),
                     defaultStartingScreen = settingsRepository.getDefaultStartingScreen()
                 )
