@@ -69,6 +69,10 @@ dependencies {
     implementation(libs.coil.network.ktor3)
     implementation(libs.coil.network.cache.control)
 
+    // Line Charts
+    implementation(libs.vico.compose)
+    implementation(libs.vico.compose.m3)
+
     // DI
     ksp(libs.hilt.android.compiler)
     implementation(libs.hilt.android)
@@ -93,12 +97,4 @@ dependencies {
     testImplementation(libs.ktor.client.mock)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-
-    // Vico - charts
-    implementation(libs.vico.compose)
-    implementation(libs.vico.compose.m2)
-    implementation(libs.vico.compose.m3)
-    implementation(libs.vico.core)
-    implementation(libs.vico.views)
-
 }
