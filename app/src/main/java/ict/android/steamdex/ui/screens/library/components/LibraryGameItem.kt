@@ -43,7 +43,7 @@ fun LibraryGameItem(
                 )
                 Text(
                     text = stringResource(
-                        R.string.libray_screen_game_card_hours_played,
+                        R.string.library_screen_game_card_hours_played,
                         hoursPlayed
                     ),
                     color = MaterialTheme.colorScheme.primaryContainer,

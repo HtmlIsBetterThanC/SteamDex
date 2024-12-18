@@ -1,13 +1,11 @@
 package ict.android.steamdex.navigation
 
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import ict.android.steamdex.navigation.graphs.aboutGraph
 import ict.android.steamdex.ui.components.BottomNavbar
-import ict.android.steamdex.ui.components.modifiers.gradientBackground
 import ict.android.steamdex.ui.preview.PreviewData.games
 import ict.android.steamdex.ui.preview.PreviewData.profiles
 import ict.android.steamdex.ui.screens.library.LibraryScreen

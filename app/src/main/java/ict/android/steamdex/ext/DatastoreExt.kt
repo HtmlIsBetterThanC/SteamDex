@@ -10,7 +10,7 @@ fun <T> DataStore<Preferences>.observeValue(key: Preferences.Key<T>) = data.map 
 
 suspend fun <T> DataStore<Preferences>.getValue(
     key: Preferences.Key<T>,
-    default: T? = null,
+    default: T,
 ) = observeValue(key).first() ?: default
 
 suspend fun <T> DataStore<Preferences>.setValue(
