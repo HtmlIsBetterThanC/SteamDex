@@ -76,6 +76,9 @@ dependencies {
     // Chrome Custom Tab
     implementation(libs.androidx.browser)
 
+    // EncryptedSharedPreferences
+    implementation(libs.androidx.security.crypto)
+
     // Test
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
