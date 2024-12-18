@@ -73,7 +73,7 @@ fun SettingItemRow(
             Icon(
                 imageVector = Icons.Default.PlayArrow,
                 contentDescription = stringResource(
-                    R.string.settings_play_arrow_icon_description,
+                    R.string.play_arrow_icon_description,
                     title
                 ),
                 modifier = Modifier.size(12.dp)
@@ -95,47 +95,47 @@ data class SettingsItem(
 private val settingsList = listOf(
     SettingsItem(
         id = 1,
-        titleId = R.string.settings_language_title,
+        titleId = R.string.profile_screen_settings_language_title,
         iconId = R.drawable.language
     ),
     SettingsItem(
         id = 2,
-        titleId = R.string.settings_theme_title,
+        titleId = R.string.profile_screen_settings_theme_title,
         iconId = R.drawable.theme
     ),
     SettingsItem(
         id = 3,
-        titleId = R.string.settings_pitch_black_title,
+        titleId = R.string.profile_screen_settings_pitch_black_title,
         iconId = R.drawable.pitch_black
     ),
     SettingsItem(
         id = 4,
-        titleId = R.string.settings_material_you_title,
+        titleId = R.string.profile_screen_settings_material_you_title,
         iconId = R.drawable.material_you
     ),
     SettingsItem(
         id = 5,
-        titleId = R.string.settings_gradient_background_title,
+        titleId = R.string.profile_screen_settings_gradient_background_title,
         iconId = R.drawable.gradient
     ),
     SettingsItem(
         id = 6,
-        titleId = R.string.settings_default_startup_page_title,
+        titleId = R.string.profile_screen_settings_default_startup_page_title,
         iconId = R.drawable.default_startup_page
     ),
     SettingsItem(
         id = 7,
-        titleId = R.string.settings_about_title,
+        titleId = R.string.profile_screen_settings_about_title,
         iconId = R.drawable.info
     ),
     SettingsItem(
         id = 8,
-        titleId = R.string.settings_restore_default_title,
+        titleId = R.string.profile_screen_settings_restore_default_title,
         iconId = R.drawable.restore_defaults
     ),
     SettingsItem(
         id = 9,
-        titleId = R.string.settings_logout_title,
+        titleId = R.string.profile_screen_settings_logout_title,
         iconId = R.drawable.logout
     ),
 )
