@@ -73,7 +73,7 @@ class MainActivity : ComponentActivity() {
                     navController = navController,
                     useGradientBackground = useGradientBackground,
                     modifier = navModifier,
-                    startDestination = ExploreRoute
+                    //startDestination = ExploreRoute
                 )
             }
         }

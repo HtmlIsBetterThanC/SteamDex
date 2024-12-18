@@ -9,6 +9,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.toRoute
+import ict.android.steamdex.ApiLink
 import ict.android.steamdex.navigation.graphs.aboutGraph
 import ict.android.steamdex.ui.components.BottomNavbar
 import ict.android.steamdex.ui.preview.PreviewData.profiles
@@ -40,9 +41,18 @@ fun NavigationHost(
         startDestination = startDestination
     ) {
         slideInComposable<LoginRoute> {
+            val onSuccessLogin = {
+                /*navController.navigate(ExploreRoute) {
+                    popUpTo(LoginRoute) {
+                        inclusive = true
+                    }
+                }*/
+            }
+
             LoginScreen(
-                url = "https://optimal-frank-spider.ngrok-free.app/",
-                useGradientBackground = useGradientBackground
+                url = "${ApiLink}login",
+                useGradientBackground = useGradientBackground,
+                onSuccessfulLogin = onSuccessLogin
             )
         }
 

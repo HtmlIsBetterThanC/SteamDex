@@ -77,6 +77,18 @@ dependencies {
     // Serialization
     implementation(libs.kotlinx.serialization.json)
 
+    // Navigation
+    implementation(libs.androidx.navigation.compose)
+
+    // Serialization
+    implementation(libs.kotlinx.serialization.json)
+
+    // Navigation
+    implementation(libs.androidx.navigation.compose)
+
+    // Serialization
+    implementation(libs.kotlinx.serialization.json)
+
     // Image loader
     implementation(libs.coil.compose)
     implementation(libs.coil.video)
@@ -105,9 +117,6 @@ dependencies {
     // About libraries
     implementation(libs.aboutlibraries.core)
     implementation(libs.aboutlibraries.compose)
-
-    // Chrome Custom Tab
-    implementation(libs.androidx.browser)
 
     // Test
     testImplementation(libs.junit)

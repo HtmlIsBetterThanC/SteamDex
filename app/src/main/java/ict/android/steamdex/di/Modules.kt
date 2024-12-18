@@ -5,6 +5,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import ict.android.steamdex.ApiLink
 import ict.android.steamdex.data.repositories.GameRepository
 import ict.android.steamdex.data.repositories.GameRepositoryImpl
 import ict.android.steamdex.data.repositories.ProfileRepository
@@ -64,7 +65,7 @@ object HttpClientModule {
                 deflate(0.9F)
             }
             install(DefaultRequest) {
-                url("https://optimal-frank-spider.ngrok-free.app/")
+                url(ApiLink)
                 header("Accept", "*/*")
                 header("Referer", "")
                 header("ngrok-skip-browser-warning", "yes")
