@@ -78,7 +78,7 @@ fun NavigationHost(
 
             ProfileScreen(
                 uiState = uiState,
-                useGradientBackground = false,
+                useGradientBackground = useGradientBackground,
                 onCalculatorClick = onCalculatorClick,
                 onLanguageChange = onLanguageChange,
                 onThemeChange = onThemeChange,
