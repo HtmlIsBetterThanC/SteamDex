@@ -2,17 +2,17 @@ package ict.android.steamdex.data.repositories
 
 import ict.android.steamdex.data.preferences.SteamPreferences
 import ict.android.steamdex.di.IoDispatcher
-import ict.android.steamdex.models.mappers.toNetworkModel
 import ict.android.steamdex.models.network.NetworkGame
-import ict.android.steamdex.ui.preview.PreviewData.games
 import io.ktor.client.HttpClient
+import io.ktor.client.call.body
+import io.ktor.client.request.get
 import jakarta.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 
 class GameRepositoryImpl @Inject constructor(
     private val preferences: SteamPreferences,
+    private val httpClient: HttpClient,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ) : GameRepository {
     override suspend fun isMostPlayedGamesExpanded(): Boolean {
@@ -49,26 +49,25 @@ class GameRepositoryImpl @Inject constructor(
 
     override suspend fun getMostPlayedGames(): List<NetworkGame> {
         return withContext(ioDispatcher) {
-            delay(5000L)
-            return@withContext games.map { it.toNetworkModel() }
+            return@withContext httpClient.get("games/mostplayed").body()
         }
     }
 
     override suspend fun getTrendingGames(): List<NetworkGame> {
         return withContext(ioDispatcher) {
-            return@withContext games.subList(3, games.size).map { it.toNetworkModel() }
+            return@withContext httpClient.get("games/trending").body()
         }
     }
 
     override suspend fun getOnSaleGames(): List<NetworkGame> {
         return withContext(ioDispatcher) {
-            return@withContext games.subList(0, 4).map { it.toNetworkModel() }
+            return@withContext httpClient.get("games/onsale").body()
         }
     }
 
     override suspend fun getPopularGames(): List<NetworkGame> {
         return withContext(ioDispatcher) {
-            return@withContext games.map { it.toNetworkModel() }
+            return@withContext httpClient.get("games/popular").body()
         }
     }
 
@@ -77,6 +76,8 @@ class GameRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getGame(id: Long): NetworkGame {
-        TODO("Not yet implemented")
+        return withContext(ioDispatcher) {
+            return@withContext httpClient.get("game/$id").body()
+        }
     }
 }

@@ -36,3 +36,7 @@ fun UiGame.toNetworkModel(): NetworkGame {
         genres = genres
     )
 }
+
+fun List<NetworkGame>.toUiModel() = this.map { it.toUiModel() }
+
+fun List<UiGame>.toNetworkModel() = this.map { it.toNetworkModel() }

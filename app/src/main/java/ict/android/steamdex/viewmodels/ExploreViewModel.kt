@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import ict.android.steamdex.data.repositories.GameRepository
-import ict.android.steamdex.ui.preview.PreviewData.games
+import ict.android.steamdex.models.mappers.toUiModel
 import ict.android.steamdex.ui.preview.PreviewData.profiles
 import ict.android.steamdex.ui.screens.explore.ExploreUiState
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -30,10 +30,10 @@ class ExploreViewModel @Inject constructor(private val gameRepository: GameRepos
                     isTrendingGamesExpanded = gameRepository.isTrendingGamesExpanded(),
                     isOnSaleGamesExpanded = gameRepository.isOnSaleGamesExpanded(),
                     isPopularGamesExpanded = gameRepository.isPopularGamesExpanded(),
-                    mostPlayedGames = games,
-                    trendingGames = games.subList(2, 5),
-                    onSaleGames = games.subList(0, 3),
-                    popularGames = games.subList(3, games.size - 1),
+                    mostPlayedGames = gameRepository.getMostPlayedGames().toUiModel(),
+                    trendingGames = gameRepository.getTrendingGames().toUiModel(),
+                    onSaleGames = gameRepository.getOnSaleGames().toUiModel(),
+                    popularGames = gameRepository.getPopularGames().toUiModel(),
                     isLoading = false
                 )
             }
