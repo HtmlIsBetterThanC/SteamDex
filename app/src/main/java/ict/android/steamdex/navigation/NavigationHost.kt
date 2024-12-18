@@ -15,6 +15,9 @@ import ict.android.steamdex.ui.screens.explore.ExploreScreen
 import ict.android.steamdex.ui.screens.profile.ProfileScreen
 import ict.android.steamdex.viewmodels.ExploreViewModel
 import ict.android.steamdex.viewmodels.ProfileViewModel
+import ict.android.steamdex.ui.components.BottomNavbar
+import ict.android.steamdex.ui.screens.library.LibraryScreen
+import ict.android.steamdex.viewmodels.LibraryViewModel
 
 @Composable
 fun NavigationHost(
@@ -69,6 +72,38 @@ fun NavigationHost(
             )
         }
         fadeComposable<LibraryRoute> { }
+        fadeComposable<ExploreRoute> { }
+        fadeComposable<LibraryRoute> {
+            val viewModel = hiltViewModel<LibraryViewModel>()
+            val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
+            val onProfileClick = {
+                navController.navigate(ProfileRoute) {
+                    launchSingleTop = true
+                }
+            }
+            val onGameClick = { id: Long ->
+                navController.navigate(GameRoute(id)) {
+                    launchSingleTop = true
+                }
+            }
+            val onSearchClick = {}
+
+            LaunchedEffect(null) {
+                viewModel.start()
+            }
+
+            LibraryScreen(
+                uiState = uiState,
+                useGradientBackground = false,
+                onProfileClick = onProfileClick,
+                onGameClick = onGameClick,
+                onSearchClick = onSearchClick,
+                bottomBar = {
+                    BottomNavbar(navController)
+                }
+            )
+        }
         fadeComposable<GameRoute> { }
         fadeComposable<PublisherRoute> { }
         fadeComposable<ProfileRoute> {
