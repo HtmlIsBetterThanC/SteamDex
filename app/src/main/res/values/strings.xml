@@ -24,10 +24,6 @@
     <string name="header_price_parameter">Price</string>
     <string name="header_time_parameter">Time</string>
     <string name="header_title_parameter">Title</string>
-    <string name="search_icon_description">Search icon</string>
-    <string name="app_icon_description">App icon</string>
-    <string name="activate_button_title">Activate</string>
-    <string name="deactivate_button_title">Deactivate</string>
     <string name="dependencies_screen_dependencies_title">Dependencies</string>
     <string name="about_screen_dialog_title_authors">Authors</string>
     <string name="about_screen_dialog_title_app_license">App License</string>
@@ -43,7 +39,6 @@
     <string name="about_screen_privacy_policy_title">Privacy Policy</string>
     <string name="about_screen_app_version_title">App Version</string>
     <string name="about_screen_updates_title">Updates</string>
-    <string name="close_icon_description">Close icon</string>
     <string name="profile_screen_pitch_black_dialog_title">Activate Pitch Black</string>
     <string name="profile_screen_pitch_black_dialog_description">Applies full black to all backgrounds.
     Activating this automatically disables the gradient background</string>
@@ -65,11 +60,32 @@
     <string name="profile_screen_settings_restore_default_title">Restore Default</string>
     <string name="profile_screen_settings_about_title">About this app</string>
     <string name="profile_screen_settings_logout_title">Logout</string>
+    <string name="profile_screen_button_calculator_title">Calculator</string>
+    <string name="most_played_icon_description">Histogram icon</string>
+    <string name="explore_screen_most_played_category_title">Most played</string>
+    <string name="trending_up_icon_description">Arrow line that goes up icon</string>
+    <string name="trailing_icon_description">Trending icon</string>
+    <string name="explore_screen_trending_category_title">Trending</string>
+    <string name="savings_icon_description">Ping savings icon</string>
+    <string name="explore_screen_on_sale_category_title">On sale</string>
+    <string name="popular_icon_description">Popular games icon</string>
+    <string name="explore_screen_popular_category_title">Popular games</string>
+    <string name="card_icon_image_carousel">Image carousel</string>
+    <string name="explore_screen_currently_playing">In game: %1$s</string>
+    <string name="text_variant_player_count">Player count: %1$s</string>
+    <string name="search_button_icon_description_search">Search</string>
+    <string name="collapse_icon_description">Collapse icon</string>
+    <string name="expand_icon_description">Expand icon</string>
+    <string name="close_icon_description">Close icon</string>
+    <string name="edit_icon_description">Edit icon</string>
+    <string name="app_icon_description">App icon</string>
     <string name="profile_screen_theme_system">System</string>
     <string name="profile_screen_theme_dark">Dark</string>
     <string name="profile_screen_theme_light">Light</string>
     <string name="profile_screen_theme_dialog_title">Theme</string>
     <string name="profile_screen_reset_dialog_title">Reset all your settings</string>
     <string name="profile_screen_reset_dialog_description">You are going to lose all your settings preferences</string>
-    <string name="profile_screen_button_calculator_title">Calculator</string>
+    <string name="activate_button_title">Activate</string>
+    <string name="deactivate_button_title">Deactivate</string>
+    <string name="search_icon_description">Search icon</string>
 </resources>
