@@ -1,15 +1,17 @@
 package ict.android.steamdex.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import ict.android.steamdex.navigation.graphs.aboutGraph
 import ict.android.steamdex.ui.components.BottomNavbar
-import ict.android.steamdex.ui.preview.PreviewData.games
-import ict.android.steamdex.ui.preview.PreviewData.profiles
 import ict.android.steamdex.ui.screens.library.LibraryScreen
-import ict.android.steamdex.ui.screens.library.LibraryUiState
+import ict.android.steamdex.viewmodels.LibraryViewModel
 
 @Composable
 fun NavigationHost(
@@ -25,6 +27,9 @@ fun NavigationHost(
         fadeComposable<LoginRoute> { }
         fadeComposable<ExploreRoute> { }
         fadeComposable<LibraryRoute> {
+            val viewModel = hiltViewModel<LibraryViewModel>()
+            val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
             val onProfileClick = {
                 navController.navigate(ProfileRoute) {
                     launchSingleTop = true
@@ -37,11 +42,12 @@ fun NavigationHost(
             }
             val onSearchClick = {}
 
+            LaunchedEffect(null) {
+                viewModel.start()
+            }
+
             LibraryScreen(
-                uiState = LibraryUiState(
-                    games = games,
-                    profile = profiles[0]
-                ),
+                uiState = uiState,
                 useGradientBackground = false,
                 onProfileClick = onProfileClick,
                 onGameClick = onGameClick,

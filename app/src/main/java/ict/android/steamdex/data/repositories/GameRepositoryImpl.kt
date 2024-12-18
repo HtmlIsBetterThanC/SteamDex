@@ -72,7 +72,9 @@ class GameRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getOwnedGames(): List<NetworkGame> {
-        TODO("Not yet implemented")
+        return withContext(ioDispatcher) {
+            return@withContext httpClient.get("games/owned").body()
+        }
     }
 
     override suspend fun getGame(id: Long): NetworkGame {
