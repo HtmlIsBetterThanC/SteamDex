@@ -33,5 +33,19 @@
     <string name="profile_screen_reset_dialog_description">You are going to lose all your settings preferences</string>
     <string name="activate_button_title">Activate</string>
     <string name="deactivate_button_title">Deactivate</string>
-    <string name="close_icon_description">Close icon</string>
+    <string name="dependencies_screen_dependencies_title">Dependencies</string>
+    <string name="about_screen_dialog_title_authors">Authors</string>
+    <string name="about_screen_dialog_title_app_license">App License</string>
+    <string name="about_screen_dialog_title_privacy_policy">Privacy Policy</string>
+    <string name="about_screen_dialog_title_app_version">App Version</string>
+    <string name="about_screen_dialog_description_app_version">The version of this app is: %1$s</string>
+    <string name="about_screen_authors_title">Authors</string>
+    <string name="about_screen_translation_title">Translation</string>
+    <string name="about_screen_donations_title">Donations</string>
+    <string name="about_screen_dependencies_title">Dependencies</string>
+    <string name="about_screen_app_licenses_title">App Licenses</string>
+    <string name="about_screen_github_title">GitHub</string>
+    <string name="about_screen_privacy_policy_title">Privacy Policy</string>
+    <string name="about_screen_app_version_title">App Version</string>
+    <string name="about_screen_updates_title">Updates</string>
 </resources>

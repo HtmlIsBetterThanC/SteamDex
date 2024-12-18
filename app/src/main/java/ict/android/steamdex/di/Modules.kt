@@ -1,17 +1,11 @@
 package ict.android.steamdex.di
 
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import ict.android.steamdex.data.repositories.GameRepository
-import ict.android.steamdex.data.repositories.GameRepositoryImpl
-import ict.android.steamdex.data.repositories.ProfileRepository
-import ict.android.steamdex.data.repositories.ProfileRepositoryImpl
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.DefaultRequest
-import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.plugins.compression.ContentEncoding
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.request.header
@@ -62,35 +56,12 @@ object HttpClientModule {
                 deflate(0.9F)
             }
             install(DefaultRequest) {
-                url("https://optimal-frank-spider.ngrok-free.app/")
                 header("Accept", "*/*")
                 header("Referer", "")
-                header("ngrok-skip-browser-warning", "yes")
-            }
-            install(HttpTimeout) {
-                requestTimeoutMillis = 25000
             }
 
             // TODO implement custom exceptions
             expectSuccess = true
         }
     }
-}
-
-@Suppress("unused")
-@Module
-@InstallIn(SingletonComponent::class)
-abstract class GameRepositoryModule {
-    @Singleton
-    @Binds
-    abstract fun bindsGameRepository(gameRepositoryImpl: GameRepositoryImpl): GameRepository
-}
-
-@Suppress("unused")
-@Module
-@InstallIn(SingletonComponent::class)
-abstract class ProfileRepositoryModule {
-    @Singleton
-    @Binds
-    abstract fun bindsProfileRepository(profileRepositoryImpl: ProfileRepositoryImpl): ProfileRepository
 }

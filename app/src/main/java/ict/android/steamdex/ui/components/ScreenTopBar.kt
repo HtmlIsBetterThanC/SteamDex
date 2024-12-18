@@ -72,7 +72,7 @@ fun ScreenTopBar(
                 }
             }
         },
-        modifier = modifier,
+        modifier = modifier.padding(end = 10.dp),
         navigationIcon = { if (backEnabled) BackArrowButton(onBackClick) },
         actions = actions,
         expandedHeight = 80.dp,
