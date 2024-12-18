@@ -15,6 +15,7 @@
     <string name="friends_number_icon_description">Total number of friend on Steam</string>
     <string name="games_number_icon_description">Total number of games on Steam</string>
     <string name="profile_total_value">Total value:</string>
+    <string name="calculator_preview_total_value">Total value:</string>
     <string name="button_calculator">Calculator</string>
     <string name="progress_bar_out_of">out of</string>
     <string name="progress_bar_games_played">games played</string>
@@ -23,7 +24,6 @@
     <string name="header_price_hour_parameter">Price / Hour</string>
     <string name="header_price_parameter">Price</string>
     <string name="header_time_parameter">Time</string>
-    <string name="header_title_parameter">Title</string>
     <string name="dependencies_screen_dependencies_title">Dependencies</string>
     <string name="about_screen_dialog_title_authors">Authors</string>
     <string name="about_screen_dialog_title_app_license">App License</string>
@@ -87,9 +87,17 @@
     <string name="profile_screen_reset_dialog_description">You are going to lose all your settings preferences</string>
     <string name="activate_button_title">Activate</string>
     <string name="deactivate_button_title">Deactivate</string>
-    <string name="close_icon_description">Close icon</string>
+    <string name="header_title_parameter">Title</string>
+    <string name="search_icon_description">Search icon</string>
+    <string name="wishlist_button">Wishlist</string>
+    <string name="follow_button">Follow</string>
+    <string name="ignore_button">Ignore</string>
+    <string name="watch_button">Watch</string>
+    <string name="reviews_button_label">Reviews</string>
+    <string name="in_game_counter">In-game</string>
+    <string name="game_screen_info">Game info</string>
+    <string name="game_screen_store">Store</string>
+    <string name="game_screen_hub">Hub</string>
     <string name="library_screen_all_games">All games (%1$s)</string>
     <string name="library_screen_game_card_hours_played">%1$s Hours played</string>
-    <string name="play_arrow_icon_description">Play arrow icon</string>
-    <string name="search_icon_description">Search icon</string>
 </resources>

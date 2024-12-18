@@ -48,7 +48,7 @@ fun ProfileAdditionalDetail(
 }
 
 @Composable
-fun ProgressBarGamesPlayed(
+private fun ProgressBarGamesPlayed(
     gamesPlayed: Int,
     totalGames: Int,
     modifier: Modifier = Modifier,
