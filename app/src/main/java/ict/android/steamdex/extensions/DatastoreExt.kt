@@ -1,4 +1,4 @@
-package ict.android.steamdex.ext
+package ict.android.steamdex.extensions
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences

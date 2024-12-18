@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import ict.android.steamdex.data.repositories.ProfileRepository
 import ict.android.steamdex.data.repositories.SettingsRepository
-import ict.android.steamdex.ext.fromRouteToString
+import ict.android.steamdex.extensions.fromRouteToString
 import ict.android.steamdex.models.mappers.toUiModel
 import ict.android.steamdex.ui.screens.profile.ProfileUiState
 import kotlinx.coroutines.flow.MutableStateFlow

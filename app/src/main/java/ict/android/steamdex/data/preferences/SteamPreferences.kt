@@ -8,10 +8,10 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import dagger.hilt.android.qualifiers.ApplicationContext
-import ict.android.steamdex.ext.getValue
-import ict.android.steamdex.ext.observeValue
-import ict.android.steamdex.ext.setValue
-import ict.android.steamdex.ext.toNullableBoolean
+import ict.android.steamdex.extensions.getValue
+import ict.android.steamdex.extensions.observeValue
+import ict.android.steamdex.extensions.setValue
+import ict.android.steamdex.extensions.toNullableBoolean
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 import javax.inject.Singleton

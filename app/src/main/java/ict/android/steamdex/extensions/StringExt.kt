@@ -1,4 +1,4 @@
-package ict.android.steamdex.ext
+package ict.android.steamdex.extensions
 
 fun String.toNullableBoolean(): Boolean? {
     if (this == "null") return null

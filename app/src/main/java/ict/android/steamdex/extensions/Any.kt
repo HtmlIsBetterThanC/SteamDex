@@ -1,3 +1,3 @@
-package ict.android.steamdex.ext
+package ict.android.steamdex.extensions
 
 fun Any.fromRouteToString() = this.javaClass.toGenericString()
