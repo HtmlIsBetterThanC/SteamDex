@@ -24,6 +24,6 @@ fun NavigationHost(
         fadeComposable<PublisherRoute> { }
         fadeComposable<ProfileRoute> { }
         fadeComposable<CalculatorRoute> { }
-        aboutGraph(navController)
+        aboutGraph(navController, false)
     }
 }

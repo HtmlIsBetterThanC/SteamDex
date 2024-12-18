@@ -20,8 +20,8 @@ fun AppVersionDialog(
 ) {
     InformationDialog(
         showDialog = showDialog,
-        dialogTitle = stringResource(R.string.dialog_title_app_version),
-        dialogDescription = stringResource(R.string.dialog_description_app_version, version),
+        dialogTitle = stringResource(R.string.about_screen_dialog_title_app_version),
+        dialogDescription = stringResource(R.string.about_screen_dialog_description_app_version, version),
         onDismissDialog = onDismissDialog,
         modifier = modifier
     )

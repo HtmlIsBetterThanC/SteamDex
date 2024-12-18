@@ -4,6 +4,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import ict.android.steamdex.R
 import ict.android.steamdex.ui.screens.about.ButtonConfig
 
@@ -23,21 +24,21 @@ fun AboutButtonsList(
     val firstRowButtons = listOf(
         ButtonConfig(
             icon = painterResource(R.drawable.group_filled),
-            text = "Authors",
+            text = stringResource(R.string.about_screen_authors_title),
             onClick = onAuthorsClick,
             buttonColor = MaterialTheme.colorScheme.secondaryContainer
 
         ),
         ButtonConfig(
             icon = painterResource(R.drawable.translate),
-            text = "Translation",
+            text = stringResource(R.string.about_screen_translation_title),
             onClick = onTranslationClick,
             buttonColor = MaterialTheme.colorScheme.secondaryContainer
 
         ),
         ButtonConfig(
             icon = painterResource(R.drawable.volunteer_activism),
-            text = "Donations",
+            text = stringResource(R.string.about_screen_donations_title),
             onClick = onDonationClick,
             buttonColor = MaterialTheme.colorScheme.tertiaryContainer
 
@@ -46,20 +47,20 @@ fun AboutButtonsList(
     val secondRowButtons = listOf(
         ButtonConfig(
             icon = painterResource(R.drawable.contract),
-            text = "Dependencies",
+            text = stringResource(R.string.about_screen_dependencies_title),
             onClick = onDependenciesClick,
             buttonColor = MaterialTheme.colorScheme.secondaryContainer
 
         ),
         ButtonConfig(
             icon = painterResource(R.drawable.article),
-            text = "App Licenses",
+            text = stringResource(R.string.about_screen_app_licenses_title),
             onClick = onAppLicensesClick,
             buttonColor = MaterialTheme.colorScheme.secondaryContainer
         ),
         ButtonConfig(
-            icon = painterResource(R.drawable.github_mark_1),
-            text = "GitHub",
+            icon = painterResource(R.drawable.github),
+            text = stringResource(R.string.about_screen_github_title),
             onClick = onGitHubClick,
             buttonColor = MaterialTheme.colorScheme.tertiaryContainer
         )
@@ -67,19 +68,19 @@ fun AboutButtonsList(
     val thirdRowButtons = listOf(
         ButtonConfig(
             icon = painterResource(R.drawable.visibility),
-            text = "Privacy Policy",
+            text = stringResource(R.string.about_screen_privacy_policy_title),
             onClick = onPrivacyPolicyClick,
             buttonColor = MaterialTheme.colorScheme.secondaryContainer
         ),
         ButtonConfig(
             icon = painterResource(R.drawable.security_update_warning),
-            text = "App Version",
+            text = stringResource(R.string.about_screen_app_version_title),
             onClick = onAppVersionClick,
             buttonColor = MaterialTheme.colorScheme.secondaryContainer
         ),
         ButtonConfig(
             icon = painterResource(R.drawable.cached),
-            text = "Updates",
+            text = stringResource(R.string.about_screen_updates_title),
             onClick = onUpdatesClick,
             buttonColor = MaterialTheme.colorScheme.primaryContainer
         )

@@ -19,7 +19,7 @@ fun PrivacyPolicyDialog(
 ) {
     InformationDialog(
         showDialog = showDialog,
-        dialogTitle = stringResource(R.string.dialog_title_privacy_policy),
+        dialogTitle = stringResource(R.string.about_screen_dialog_title_privacy_policy),
         dialogDescription = privacyPolicy,
         onDismissDialog = onDismissDialog,
         modifier = modifier

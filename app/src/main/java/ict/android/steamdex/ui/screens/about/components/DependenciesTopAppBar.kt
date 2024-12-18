@@ -29,7 +29,7 @@ fun DependenciesTopAppBar(
     CenterAlignedTopAppBar(
         title = {
             Text(
-                text = stringResource(R.string.dependencies_dependencies_title),
+                text = stringResource(R.string.dependencies_screen_dependencies_title),
                 color = MaterialTheme.colorScheme.primary,
                 style = MaterialTheme.typography.displaySmall
             )
