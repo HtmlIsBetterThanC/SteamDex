@@ -9,6 +9,8 @@ import ict.android.steamdex.data.repositories.GameRepository
 import ict.android.steamdex.data.repositories.GameRepositoryImpl
 import ict.android.steamdex.data.repositories.ProfileRepository
 import ict.android.steamdex.data.repositories.ProfileRepositoryImpl
+import ict.android.steamdex.data.repositories.SettingsRepository
+import ict.android.steamdex.data.repositories.SettingsRepositoryImpl
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.DefaultRequest
 import io.ktor.client.plugins.HttpTimeout
@@ -93,4 +95,13 @@ abstract class ProfileRepositoryModule {
     @Singleton
     @Binds
     abstract fun bindsProfileRepository(profileRepositoryImpl: ProfileRepositoryImpl): ProfileRepository
+}
+
+@Suppress("unused")
+@Module
+@InstallIn(SingletonComponent::class)
+abstract class SettingsRepositoryModule {
+    @Singleton
+    @Binds
+    abstract fun bindsSettingsRepository(settingsRepositoryImpl: SettingsRepositoryImpl): SettingsRepository
 }

@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">SteamDex</string>
+    <string name="play_arrow_icon_description">Change settings of %1$s</string>
     <string name="cancel_button_title">Cancel</string>
     <string name="confirm_button_title">Confirm</string>
     <string name="back_arrow_icon_description">Back arrow icon</string>
@@ -17,7 +18,7 @@
     <string name="button_calculator">Calculator</string>
     <string name="progress_bar_out_of">out of</string>
     <string name="progress_bar_games_played">games played</string>
-    <string name="button_icon_calculator">Calculator</string>
+    <string name="calculate_icon_description">Calculator</string>
     <string name="header_title_owned_games">Owned Games</string>
     <string name="header_price_hour_parameter">Price / Hour</string>
     <string name="header_price_parameter">Price</string>
@@ -25,12 +26,6 @@
     <string name="header_title_parameter">Title</string>
     <string name="search_icon_description">Search icon</string>
     <string name="app_icon_description">App icon</string>
-    <string name="profile_screen_theme_system">System</string>
-    <string name="profile_screen_theme_dark">Dark</string>
-    <string name="profile_screen_theme_light">Light</string>
-    <string name="profile_screen_theme_dialog_title">Theme</string>
-    <string name="profile_screen_reset_dialog_title">Reset all your settings</string>
-    <string name="profile_screen_reset_dialog_description">You are going to lose all your settings preferences</string>
     <string name="activate_button_title">Activate</string>
     <string name="deactivate_button_title">Deactivate</string>
     <string name="dependencies_screen_dependencies_title">Dependencies</string>
@@ -49,4 +44,32 @@
     <string name="about_screen_app_version_title">App Version</string>
     <string name="about_screen_updates_title">Updates</string>
     <string name="close_icon_description">Close icon</string>
+    <string name="profile_screen_pitch_black_dialog_title">Activate Pitch Black</string>
+    <string name="profile_screen_pitch_black_dialog_description">Applies full black to all backgrounds.
+    Activating this automatically disables the gradient background</string>
+    <string name="profile_screen_material_you_dialog_title">Activate Material You</string>
+    <string name="profile_screen_material_you_dialog_description">Uses the color derived from your wallpaper.
+    Activating this automatically disables the gradient background</string>
+    <string name="profile_screen_gradient_background_dialog_title">Activate Gradient background</string>
+    <string name="profile_screen_gradient_background_dialog_description">Applies our gradient to all backgrounds</string>
+    <string name="profile_screen_default_screen_dialog_title">Default starting screen</string>
+    <string name="profile_screen_language_dialog_title">Language</string>
+    <string name="profile_screen_logout_dialog_title">Logout</string>
+    <string name="profile_screen_logout_dialog_description">Removes your Steam account from this app, and you will be then asked to log in again</string>
+    <string name="profile_screen_settings_language_title">Language</string>
+    <string name="profile_screen_settings_theme_title">Theme</string>
+    <string name="profile_screen_settings_pitch_black_title">Pitch Black</string>
+    <string name="profile_screen_settings_material_you_title">Material You</string>
+    <string name="profile_screen_settings_gradient_background_title">Gradient background</string>
+    <string name="profile_screen_settings_default_startup_page_title">Default Startup Page</string>
+    <string name="profile_screen_settings_restore_default_title">Restore Default</string>
+    <string name="profile_screen_settings_about_title">About this app</string>
+    <string name="profile_screen_settings_logout_title">Logout</string>
+    <string name="profile_screen_theme_system">System</string>
+    <string name="profile_screen_theme_dark">Dark</string>
+    <string name="profile_screen_theme_light">Light</string>
+    <string name="profile_screen_theme_dialog_title">Theme</string>
+    <string name="profile_screen_reset_dialog_title">Reset all your settings</string>
+    <string name="profile_screen_reset_dialog_description">You are going to lose all your settings preferences</string>
+    <string name="profile_screen_button_calculator_title">Calculator</string>
 </resources>

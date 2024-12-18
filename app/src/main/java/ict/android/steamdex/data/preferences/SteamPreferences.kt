@@ -45,6 +45,11 @@ class SteamPreferences @Inject constructor(@ApplicationContext private val conte
         GRADIENT_BACKGROUND_KEY,
         gradientBackground
     )
+    suspend fun getDefaultStartingScreen() = dataStore.getValue(DEFAULT_STARTING_SCREEN_KEY, "")
+    suspend fun setDefaultStartingScreen(screen: String) = dataStore.setValue(
+        DEFAULT_STARTING_SCREEN_KEY,
+        screen
+    )
 
     suspend fun getMostPlayedGamesExpanded() = dataStore.getValue(MOST_PLAYED_GAMES_EXPANDED_KEY, true)
     suspend fun setMostPlayedGamesExpanded(expanded: Boolean) =
@@ -72,6 +77,7 @@ class SteamPreferences @Inject constructor(@ApplicationContext private val conte
         private val PITCH_BLACK_KEY = booleanPreferencesKey("pitchBlack")
         private val MATERIAL_YOU_KEY = booleanPreferencesKey("materialYou")
         private val GRADIENT_BACKGROUND_KEY = booleanPreferencesKey("gradientBackground")
+        private val DEFAULT_STARTING_SCREEN_KEY = stringPreferencesKey("defaultStartingScreen")
         private val MOST_PLAYED_GAMES_EXPANDED_KEY = booleanPreferencesKey("mostPlayedGamesExpanded")
         private val TRENDING_GAMES_EXPANDED_KEY = booleanPreferencesKey("trendingGamesExpanded")
         private val ON_SALE_GAMES_EXPANDED_KEY = booleanPreferencesKey("onSaleGamesExpanded")
