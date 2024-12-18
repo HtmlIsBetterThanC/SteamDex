@@ -25,6 +25,7 @@ fun OnSaleCategory(
     isExpanded: Boolean,
     onCategoryClick: () -> Unit,
     onIsExpandedClick: (Boolean) -> Unit,
+    onGameClick: (Long) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(modifier) {
@@ -37,7 +38,7 @@ fun OnSaleCategory(
             onCategoryBarClick = onCategoryClick,
             onIsExpandedClick = onIsExpandedClick
         )
-        HorizontalCarousel(onSaleGames, large = isExpanded)
+        HorizontalCarousel(games = onSaleGames, onClick = onGameClick, large = isExpanded)
     }
 }
 
@@ -53,6 +54,7 @@ private fun OnSaleCategoryPreview(
                 editMode = false,
                 isExpanded = uiState.isOnSaleGamesExpanded,
                 onCategoryClick = {},
+                onGameClick = {},
                 onIsExpandedClick = {}
             )
         }
@@ -74,6 +76,7 @@ private fun OnSaleCategoryEditPreview(
                 editMode = false,
                 isExpanded = uiState.isOnSaleGamesExpanded,
                 onCategoryClick = {},
+                onGameClick = {},
                 onIsExpandedClick = {
                     isExpanded = it
                 }

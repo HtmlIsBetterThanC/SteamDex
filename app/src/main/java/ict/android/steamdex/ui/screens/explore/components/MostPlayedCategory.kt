@@ -25,6 +25,7 @@ fun MostPlayedCategory(
     isExpanded: Boolean,
     onCategoryClick: () -> Unit,
     onIsExpandedClick: (Boolean) -> Unit,
+    onGameClick: (Long) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(modifier) {
@@ -39,6 +40,7 @@ fun MostPlayedCategory(
         )
         HorizontalCarousel(
             games = mostPlayedGames,
+            onClick = onGameClick,
             large = isExpanded
         )
     }
@@ -56,7 +58,8 @@ private fun MostPlayedPreview(
                 editMode = false,
                 isExpanded = uiState.isMostPlayedGamesExpanded,
                 onCategoryClick = {},
-                onIsExpandedClick = {}
+                onIsExpandedClick = {},
+                onGameClick = {}
             )
         }
     }
@@ -79,7 +82,8 @@ private fun MostPlayedEditPreview(
                 onCategoryClick = {},
                 onIsExpandedClick = {
                     isExpanded = it
-                }
+                },
+                onGameClick = {}
             )
         }
     }

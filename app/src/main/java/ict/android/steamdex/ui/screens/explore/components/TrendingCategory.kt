@@ -25,6 +25,7 @@ fun TrendingCategory(
     isExpanded: Boolean,
     onCategoryClick: () -> Unit,
     onIsExpandedClick: (Boolean) -> Unit,
+    onGameClick: (Long) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(modifier) {
@@ -38,7 +39,8 @@ fun TrendingCategory(
             onIsExpandedClick = onIsExpandedClick
         )
         HorizontalCarousel(
-            trendingGames,
+            games = trendingGames,
+            onClick = onGameClick,
             large = isExpanded
         )
     }
@@ -56,6 +58,7 @@ private fun TrendingCategoryPreview(
                 editMode = false,
                 isExpanded = uiState.isTrendingGamesExpanded,
                 onCategoryClick = {},
+                onGameClick = {},
                 onIsExpandedClick = {}
             )
         }
@@ -77,6 +80,7 @@ private fun TrendingCategoryEditPreview(
                 editMode = true,
                 isExpanded = isExpanded,
                 onCategoryClick = {},
+                onGameClick = {},
                 onIsExpandedClick = {
                     isExpanded = it
                 }

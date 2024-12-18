@@ -25,6 +25,7 @@ fun PopularCategory(
     isExpanded: Boolean,
     onCategoryClick: () -> Unit,
     onIsExpandedClick: (Boolean) -> Unit,
+    onGameClick: (Long) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(modifier) {
@@ -38,7 +39,8 @@ fun PopularCategory(
             onIsExpandedClick = onIsExpandedClick
         )
         HorizontalCarousel(
-            popularGames,
+            games = popularGames,
+            onClick = onGameClick,
             large = isExpanded
         )
     }
@@ -56,7 +58,8 @@ private fun PopularCategoryPreview(
                 editMode = false,
                 isExpanded = uiState.isPopularGamesExpanded,
                 onCategoryClick = {},
-                onIsExpandedClick = {}
+                onIsExpandedClick = {},
+                onGameClick = {}
             )
         }
     }
@@ -79,7 +82,8 @@ private fun PopularCategoryEditPreview(
                 onCategoryClick = {},
                 onIsExpandedClick = {
                     isExpanded = it
-                }
+                },
+                onGameClick = {}
             )
         }
     }

@@ -1,6 +1,7 @@
 package ict.android.steamdex.ui.screens.explore.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -27,9 +28,10 @@ import ict.android.steamdex.ui.theme.SteamDexTheme
 fun GameCard(
     currentPlayers: Double,
     iconUrl: String,
+    onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Box(modifier.fillMaxSize()) {
+    Box(modifier.fillMaxSize().clickable { onClick() }) {
         SteamAsyncImage(
             model = iconUrl,
             modifier = Modifier.fillMaxSize(),
@@ -73,7 +75,8 @@ private fun GameCardPreview() {
             game.currentPlayers?.let {
                 GameCard(
                     currentPlayers = it,
-                    iconUrl = game.iconUrl
+                    iconUrl = game.iconUrl,
+                    onClick = {}
                 )
             }
         }

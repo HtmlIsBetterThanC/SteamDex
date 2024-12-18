@@ -41,6 +41,7 @@ fun ExploreScreen(
     onProfileClick: () -> Unit,
     onCategoryClick: (Int) -> Unit,
     onCarouselExpandedClick: (Int, Boolean) -> Unit,
+    onGameClick: (Long) -> Unit,
     onSearchClick: () -> Unit,
     modifier: Modifier = Modifier,
     bottomBar: @Composable () -> Unit = {}
@@ -96,7 +97,8 @@ fun ExploreScreen(
                                 Category.MostPlayed.id,
                                 it
                             )
-                        }
+                        },
+                        onGameClick = onGameClick
                     )
                 }
 
@@ -111,7 +113,8 @@ fun ExploreScreen(
                                 Category.Trending.id,
                                 it
                             )
-                        }
+                        },
+                        onGameClick = onGameClick
                     )
                 }
 
@@ -121,7 +124,8 @@ fun ExploreScreen(
                         editMode = editMode,
                         isExpanded = uiState.isOnSaleGamesExpanded,
                         onCategoryClick = { onCategoryClick(Category.OnSale.id) },
-                        onIsExpandedClick = { onCarouselExpandedClick(Category.OnSale.id, it) }
+                        onIsExpandedClick = { onCarouselExpandedClick(Category.OnSale.id, it) },
+                        onGameClick = onGameClick
                     )
                 }
 
@@ -131,7 +135,8 @@ fun ExploreScreen(
                         editMode = editMode,
                         isExpanded = uiState.isPopularGamesExpanded,
                         onCategoryClick = { onCategoryClick(Category.Popular.id) },
-                        onIsExpandedClick = { onCarouselExpandedClick(Category.Popular.id, it) }
+                        onIsExpandedClick = { onCarouselExpandedClick(Category.Popular.id, it) },
+                        onGameClick = onGameClick
                     )
                 }
             }
@@ -159,6 +164,7 @@ private fun ExploreScreenPreview(
             onSearchClick = {},
             onProfileClick = {},
             onCarouselExpandedClick = { _: Int, _: Boolean -> },
+            onGameClick = {},
             bottomBar = {
                 BottomNavbar(rememberNavController())
             }
@@ -179,6 +185,7 @@ private fun ExploreScreenGradientPreview(
             onSearchClick = {},
             onProfileClick = {},
             onCarouselExpandedClick = { _: Int, _: Boolean -> },
+            onGameClick = {},
             modifier = Modifier.gradientBackground(isSystemInDarkTheme()),
             bottomBar = {
                 BottomNavbar(rememberNavController())

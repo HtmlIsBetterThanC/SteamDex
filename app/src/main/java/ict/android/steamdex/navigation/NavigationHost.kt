@@ -66,6 +66,12 @@ fun NavigationHost(
                 }
             }
 
+            val onGameClick = { id: Long ->
+                navController.navigate(GameRoute(id)) {
+                    launchSingleTop = true
+                }
+            }
+
             val onSearchClick = {
             }
 
@@ -80,6 +86,7 @@ fun NavigationHost(
                 onCategoryClick = onCategoryClick,
                 onCarouselExpandedClick = onCarouselExpandedClick,
                 onSearchClick = onSearchClick,
+                onGameClick = onGameClick,
                 bottomBar = {
                     BottomNavbar(navController)
                 }

@@ -20,6 +20,7 @@ import ict.android.steamdex.ui.theme.SteamDexTheme
 @Composable
 fun HorizontalCarousel(
     games: List<UiGame>,
+    onClick: (Long) -> Unit,
     modifier: Modifier = Modifier,
     state: CarouselState = rememberCarouselState { games.count() },
     large: Boolean = false
@@ -37,6 +38,7 @@ fun HorizontalCarousel(
             GameCard(
                 currentPlayers = it,
                 iconUrl = game.iconUrl,
+                onClick = { onClick(game.id) },
                 modifier = Modifier
                     .height(205.dp)
                     .maskClip(MaterialTheme.shapes.extraLarge)
@@ -51,7 +53,7 @@ fun HorizontalCarousel(
 private fun HorizontalCarouselPreview() {
     SteamDexTheme {
         Surface {
-            HorizontalCarousel(games)
+            HorizontalCarousel(games, {})
         }
     }
 }
@@ -62,7 +64,7 @@ private fun HorizontalCarouselPreview() {
 private fun HorizontalCarouselVariantPreview() {
     SteamDexTheme {
         Surface {
-            HorizontalCarousel(games = games, large = true)
+            HorizontalCarousel(games = games, {}, large = true)
         }
     }
 }
