@@ -65,7 +65,7 @@ Full documentation for SteamDEX is available [here](/docs).
 
 ### **⚖️ License**
 
-SteamDEX is licensed under the MIT license. See the [license file](LICENSE) for details. You are free to use, modify, and distribute the app under the terms of the license.
+SteamDEX is licensed under the GPL-3.0 license. See the [license file](LICENSE) for details. You are free to use, modify, and distribute the app under the terms of the license.
 
 ---
 
