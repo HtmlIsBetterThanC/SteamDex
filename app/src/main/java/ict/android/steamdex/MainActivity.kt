@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
+import ict.android.steamdex.navigation.LibraryRoute
 import ict.android.steamdex.navigation.NavigationHost
 import ict.android.steamdex.ui.theme.SteamDexTheme
 
@@ -21,7 +22,8 @@ class MainActivity : ComponentActivity() {
                 val navController = rememberNavController()
                 NavigationHost(
                     navController = navController,
-                    modifier = Modifier.fillMaxSize()
+                    modifier = Modifier.fillMaxSize(),
+                    startDestination = LibraryRoute
                 )
             }
         }
