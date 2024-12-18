@@ -8,17 +8,25 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import androidx.navigation.toRoute
 import ict.android.steamdex.navigation.graphs.aboutGraph
 import ict.android.steamdex.ui.components.BottomNavbar
+import ict.android.steamdex.ui.preview.PreviewData.profiles
+import ict.android.steamdex.ui.screens.calculator.CalculatorScreen
+import ict.android.steamdex.ui.screens.calculator.CalculatorUiState
 import ict.android.steamdex.ui.screens.explore.Category
 import ict.android.steamdex.ui.screens.explore.ExploreScreen
+import ict.android.steamdex.ui.screens.game.GameScreen
+import ict.android.steamdex.ui.screens.game.components.generateRandomFloats
+import ict.android.steamdex.ui.screens.library.LibraryScreen
+import ict.android.steamdex.ui.screens.login.LoginScreen
 import ict.android.steamdex.ui.screens.profile.ProfileScreen
 import ict.android.steamdex.viewmodels.ExploreViewModel
-import ict.android.steamdex.viewmodels.ProfileViewModel
-import ict.android.steamdex.ui.components.BottomNavbar
-import ict.android.steamdex.ui.screens.library.LibraryScreen
+import ict.android.steamdex.viewmodels.GameViewModel
 import ict.android.steamdex.viewmodels.LibraryViewModel
+import ict.android.steamdex.viewmodels.ProfileViewModel
 
+@Suppress("LongMethod")
 @Composable
 fun NavigationHost(
     navController: NavHostController,
@@ -31,8 +39,14 @@ fun NavigationHost(
         modifier = modifier,
         startDestination = startDestination
     ) {
-        fadeComposable<LoginRoute> { }
-        fadeComposable<ExploreRoute> {
+        slideInComposable<LoginRoute> {
+            LoginScreen(
+                url = "https://optimal-frank-spider.ngrok-free.app/",
+                useGradientBackground = useGradientBackground
+            )
+        }
+
+        slideInComposable<ExploreRoute> {
             val viewModel = hiltViewModel<ExploreViewModel>()
             val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -71,9 +85,7 @@ fun NavigationHost(
                 }
             )
         }
-        fadeComposable<LibraryRoute> { }
-        fadeComposable<ExploreRoute> { }
-        fadeComposable<LibraryRoute> {
+        slideInComposable<LibraryRoute> {
             val viewModel = hiltViewModel<LibraryViewModel>()
             val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -104,9 +116,43 @@ fun NavigationHost(
                 }
             )
         }
-        fadeComposable<GameRoute> { }
-        fadeComposable<PublisherRoute> { }
-        fadeComposable<ProfileRoute> {
+        slideInComposable<GameRoute> { backStack ->
+            val id = backStack.toRoute<GameRoute>().id
+            val viewModel = hiltViewModel<GameViewModel>()
+            val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
+            val onBackClick: () -> Unit = {
+                navController.navigateUp()
+            }
+            val onProfileClick = {
+                navController.navigate(ProfileRoute) {
+                    launchSingleTop = true
+                }
+            }
+
+            LaunchedEffect(null) {
+                viewModel.start(id)
+            }
+
+            GameScreen(
+                uiState = uiState,
+                useGradientBackground = useGradientBackground,
+                charHorizontalAxisData = (1..365).toList(),
+                charVerticalAxisData = generateRandomFloats(365, 9.99f, 69.99f),
+                onClickWhitelist = {},
+                onClickFollow = {},
+                onClickIgnore = {},
+                onClickWatch = {},
+                onProfileClick = onProfileClick,
+                onClickReviews = {},
+                onClickInGame = {},
+                onClickGameInfo = {},
+                onClickStore = {},
+                onBackClick = onBackClick,
+                onClickHub = {}
+            )
+        }
+        slideInComposable<ProfileRoute> {
             val viewModel = hiltViewModel<ProfileViewModel>()
             val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -170,7 +216,26 @@ fun NavigationHost(
                 }
             )
         }
-        fadeComposable<CalculatorRoute> { }
+        slideInComposable<CalculatorRoute> {
+            val onBackClick: () -> Unit = {
+                navController.navigateUp()
+            }
+
+            val onGameClick = { id: Long ->
+                navController.navigate(GameRoute(id))
+            }
+
+            CalculatorScreen(
+                uiState = CalculatorUiState(
+                    profile = profiles[0],
+                    todayValue = 14542,
+                    currentXpToNextLevel = 239
+                ),
+                useGradientBackground = useGradientBackground,
+                onBackClick = onBackClick,
+                onGameClick = onGameClick,
+            )
+        }
         aboutGraph(navController, useGradientBackground)
     }
 }

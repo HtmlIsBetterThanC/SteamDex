@@ -4,6 +4,6 @@ import androidx.compose.runtime.Immutable
 
 @Immutable
 data class UiPublisher(
-    val name: String,
-    val gamesIds: List<Long>
+    val name: String = "",
+    val gamesIds: List<Long> = emptyList()
 )

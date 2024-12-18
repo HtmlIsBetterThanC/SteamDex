@@ -1,12 +1,11 @@
 package ict.android.steamdex.ui.screens.explore
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -46,42 +45,42 @@ fun ExploreScreen(
     modifier: Modifier = Modifier,
     bottomBar: @Composable () -> Unit = {}
 ) {
-    if (uiState.isLoading) {
-        Row(
-            modifier = Modifier.fillMaxSize().background(
-                if (useGradientBackground) Color.Transparent else MaterialTheme.colorScheme.background
-            ).safeContentPadding(),
-            horizontalArrangement = Arrangement.Center
-        ) {
-            CircularProgressIndicator()
-        }
-    } else {
-        val profile = uiState.profile
-        var editMode by remember {
-            mutableStateOf(false)
-        }
-        Scaffold(
-            modifier = modifier.fillMaxSize(),
-            topBar = {
-                ExploreTopBar(
-                    useGradientBackground = useGradientBackground,
-                    editMode = editMode,
-                    iconUrl = profile.iconUrl,
-                    name = profile.name,
-                    level = profile.level,
-                    onProfileClick = onProfileClick,
-                    onEditClick = {
-                        editMode = !editMode
-                    }
-                )
-            },
-            bottomBar = bottomBar,
-            floatingActionButton = {
-                SearchFAB(onSearchClick)
-            },
-            containerColor =
-            if (useGradientBackground) Color.Transparent else MaterialTheme.colorScheme.background
-        ) { innerPadding ->
+    val profile = uiState.profile
+    var editMode by remember {
+        mutableStateOf(false)
+    }
+    Scaffold(
+        modifier = modifier.fillMaxSize(),
+        topBar = {
+            ExploreTopBar(
+                useGradientBackground = useGradientBackground,
+                editMode = editMode,
+                iconUrl = profile.iconUrl,
+                name = profile.name,
+                level = profile.level,
+                onProfileClick = onProfileClick,
+                onEditClick = {
+                    editMode = !editMode
+                }
+            )
+        },
+        bottomBar = bottomBar,
+        floatingActionButton = {
+            SearchFAB(onSearchClick)
+        },
+        containerColor =
+        if (useGradientBackground) Color.Transparent else MaterialTheme.colorScheme.background
+    ) { innerPadding ->
+        if (uiState.isLoading) {
+            Row(
+                Modifier
+                    .fillMaxWidth()
+                    .padding(innerPadding),
+                horizontalArrangement = Arrangement.Center
+            ) {
+                CircularProgressIndicator()
+            }
+        } else {
             LazyColumn(
                 modifier = Modifier.padding(innerPadding),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
@@ -92,7 +91,12 @@ fun ExploreScreen(
                         editMode = editMode,
                         isExpanded = uiState.isMostPlayedGamesExpanded,
                         onCategoryClick = { onCategoryClick(Category.MostPlayed.id) },
-                        onIsExpandedClick = { onCarouselExpandedClick(Category.MostPlayed.id, it) }
+                        onIsExpandedClick = {
+                            onCarouselExpandedClick(
+                                Category.MostPlayed.id,
+                                it
+                            )
+                        }
                     )
                 }
 
@@ -102,7 +106,12 @@ fun ExploreScreen(
                         editMode = editMode,
                         isExpanded = uiState.isTrendingGamesExpanded,
                         onCategoryClick = { onCategoryClick(Category.Trending.id) },
-                        onIsExpandedClick = { onCarouselExpandedClick(Category.Trending.id, it) }
+                        onIsExpandedClick = {
+                            onCarouselExpandedClick(
+                                Category.Trending.id,
+                                it
+                            )
+                        }
                     )
                 }
 

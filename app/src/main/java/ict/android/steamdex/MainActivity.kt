@@ -17,8 +17,9 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
+import ict.android.steamdex.navigation.ExploreRoute
+import ict.android.steamdex.navigation.LoginRoute
 import ict.android.steamdex.navigation.NavigationHost
-import ict.android.steamdex.navigation.ProfileRoute
 import ict.android.steamdex.ui.components.modifiers.gradientBackground
 import ict.android.steamdex.ui.theme.SteamDexTheme
 import ict.android.steamdex.viewmodels.MainActivityViewModel
@@ -72,7 +73,7 @@ class MainActivity : ComponentActivity() {
                     navController = navController,
                     useGradientBackground = useGradientBackground,
                     modifier = navModifier,
-                    startDestination = ProfileRoute
+                    startDestination = ExploreRoute
                 )
             }
         }

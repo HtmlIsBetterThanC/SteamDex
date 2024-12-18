@@ -1,14 +1,17 @@
 package ict.android.steamdex.ui.screens.game
 
 import GamePreviewParameterProvider
-import androidx.compose.foundation.border
+import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.contentColorFor
@@ -51,90 +54,103 @@ fun GameScreen(
     onClickGameInfo: () -> Unit,
     onClickStore: () -> Unit,
     onClickHub: () -> Unit,
+    onBackClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Scaffold(
-        modifier = modifier,
-        topBar = {
-            ScreenTopBar(
-                backEnabled = true,
-                useGradientBackground = useGradientBackground,
-                profileIconUrl = uiState.profile.iconUrl,
-                profileName = uiState.profile.name,
-                profileLevel = uiState.profile.level,
-                onProfileClick = onProfileClick,
-            )
-        },
-        containerColor =
-        if (useGradientBackground) {
-            Color.Transparent
-        } else {
-            MaterialTheme.colorScheme.background
-        },
-        contentColor =
-        if (useGradientBackground) {
-            MaterialTheme.colorScheme.onBackground
-        } else {
-            contentColorFor(MaterialTheme.colorScheme.background)
-        }
-    ) { innerPadding ->
-        Column(
-            modifier = Modifier
-                .padding(innerPadding)
-                .padding(10.dp),
-            verticalArrangement = Arrangement.spacedBy(10.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+    if (uiState.isLoading) {
+        Row(
+            Modifier
+                .fillMaxWidth()
+                .background(if (useGradientBackground) Color.Transparent else MaterialTheme.colorScheme.background)
+                .safeContentPadding(),
+            horizontalArrangement = Arrangement.Center
         ) {
-            AssistiveChipsRow(
-                onClickWhislist = onClickWhitelist,
-                onClickFollow = onClickFollow,
-                onClickIgnore = onClickIgnore,
-                onClickWatch = onClickWatch
-            )
-            SteamAsyncImage(
-                model = uiState.game.name,
+            CircularProgressIndicator()
+        }
+    } else {
+        Scaffold(
+            modifier = modifier,
+            topBar = {
+                ScreenTopBar(
+                    backEnabled = true,
+                    useGradientBackground = useGradientBackground,
+                    profileIconUrl = uiState.profile.iconUrl,
+                    profileName = uiState.profile.name,
+                    profileLevel = uiState.profile.level,
+                    onProfileClick = onProfileClick,
+                    onBackClick = onBackClick
+                )
+            },
+            containerColor =
+            if (useGradientBackground) {
+                Color.Transparent
+            } else {
+                MaterialTheme.colorScheme.background
+            },
+            contentColor =
+            if (useGradientBackground) {
+                MaterialTheme.colorScheme.onBackground
+            } else {
+                contentColorFor(MaterialTheme.colorScheme.background)
+            }
+        ) { innerPadding ->
+            Column(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .height(200.dp)
-                    .clip(RoundedCornerShape(10.dp))
-                    .border(2.dp, Color.Red) // TODO remove this border
-            )
-            GameTitleHeader(
-                gameTitle = uiState.game.name,
-                modifier = Modifier.layout { measurable, constraints ->
-                    val placeable = measurable.measure(
-                        constraints.copy(
-                            maxWidth = constraints.maxWidth + 20.dp.roundToPx(),
+                    .padding(innerPadding)
+                    .padding(10.dp),
+                verticalArrangement = Arrangement.spacedBy(10.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                AssistiveChipsRow(
+                    onClickWhislist = onClickWhitelist,
+                    onClickFollow = onClickFollow,
+                    onClickIgnore = onClickIgnore,
+                    onClickWatch = onClickWatch
+                )
+                SteamAsyncImage(
+                    model = uiState.game.iconUrl,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(200.dp)
+                        .clip(RoundedCornerShape(10.dp))
+                )
+                GameTitleHeader(
+                    gameTitle = uiState.game.name,
+                    modifier = Modifier.layout { measurable, constraints ->
+                        val placeable = measurable.measure(
+                            constraints.copy(
+                                maxWidth = constraints.maxWidth + 20.dp.roundToPx(),
+                            )
                         )
-                    )
-                    layout(placeable.width, placeable.height) {
-                        placeable.place((0).dp.roundToPx(), 0)
+                        layout(placeable.width, placeable.height) {
+                            placeable.place((0).dp.roundToPx(), 0)
+                        }
                     }
-                }
-            )
-            PrimaryButtonRow(
-                leftButtonIconId = R.drawable.gamepad, // TODO put the right icon
-                rightButtonIconId = R.drawable.gamepad,
-                leftButtonLabel = R.string.reviews_button_label,
-                rightButtonLabel = R.string.in_game_counter,
-                leftButtonValue = "${uiState.game.ratings ?: "--.--"}%",
-                rightButtonValue = uiState.game.currentPlayers ?: 0,
-                onClickLeftButton = onClickReviews,
-                onClickRightButton = onClickInGame,
-            )
-            LineChart(
-                horizontalAxisData = charHorizontalAxisData,
-                verticalAxisData = charVerticalAxisData
-            )
+                )
+                PrimaryButtonRow(
+                    leftButtonIconId = R.drawable.gamepad, // TODO put the right icon
+                    rightButtonIconId = R.drawable.gamepad,
+                    leftButtonLabel = R.string.reviews_button_label,
+                    rightButtonLabel = R.string.in_game_counter,
+                    leftButtonValue = "${uiState.game.ratings ?: "--.--"}%",
+                    rightButtonValue = uiState.game.currentPlayers ?: 0,
+                    onClickLeftButton = onClickReviews,
+                    onClickRightButton = onClickInGame,
+                )
+                LineChart(
+                    horizontalAxisData = charHorizontalAxisData,
+                    verticalAxisData = charVerticalAxisData
+                )
 
-            SecondaryButtonRow(
-                firstLabel = R.string.game_screen_info, // TODO put the info icon
-                secondLabel = R.string.game_screen_store,
-                thirdLabel = R.string.game_screen_hub,
-                onClickFirst = onClickGameInfo,
-                onClickSecond = onClickStore,
-                onClickThird = onClickHub,
-            )
+                SecondaryButtonRow(
+                    firstLabel = R.string.game_screen_info, // TODO put the info icon
+                    secondLabel = R.string.game_screen_store,
+                    thirdLabel = R.string.game_screen_hub,
+                    onClickFirst = onClickGameInfo,
+                    onClickSecond = onClickStore,
+                    onClickThird = onClickHub,
+                )
+            }
         }
     }
 }
@@ -160,6 +176,7 @@ private fun GameScreenPreview(
             onClickGameInfo = {},
             onClickStore = {},
             onClickHub = {},
+            onBackClick = {},
             charHorizontalAxisData = year,
             charVerticalAxisData = priceHistory
         )
@@ -187,6 +204,7 @@ private fun GameScreenGradientPreview(
             onClickGameInfo = {},
             onClickStore = {},
             onClickHub = {},
+            onBackClick = {},
             charHorizontalAxisData = year,
             charVerticalAxisData = priceHistory,
             modifier = Modifier.gradientBackground(isSystemInDarkTheme())
