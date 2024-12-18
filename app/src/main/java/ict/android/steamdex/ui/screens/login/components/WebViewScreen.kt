@@ -51,13 +51,16 @@ fun WebViewScreen(
                 modifier = Modifier.fillMaxSize(),
                 factory = { context ->
                     WebView(context).apply {
+                        val header = mutableMapOf<String, String>()
+                        header["ngrok-skip-browser-warning"] = "TOKEN"
                         layoutParams = ViewGroup.LayoutParams(
                             ViewGroup.LayoutParams.MATCH_PARENT,
                             ViewGroup.LayoutParams.MATCH_PARENT
                         )
                         webViewClient = WebViewClient()
                         settings.javaScriptEnabled = true
-                        loadUrl(url)
+                        loadUrl(url, header)
+
                     }
                 }
             )

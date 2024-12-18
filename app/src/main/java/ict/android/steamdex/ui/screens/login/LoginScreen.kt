@@ -31,10 +31,11 @@ import kotlinx.coroutines.delay
 fun LoginScreen(
     url: String,
     useGradientBackground: Boolean,
+    onSuccessfulLogin: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     var showWebView by remember { mutableStateOf(false) }
-    var selectedUrl by remember { mutableStateOf("https://optimal-frank-spider.ngrok-free.app/") }
+    var selectedUrl by remember { mutableStateOf(url) }
 
     LaunchedEffect(Unit) {
         delay(8000)
@@ -69,6 +70,7 @@ fun LoginScreen(
                     WelcomeText()
                     LoginButton(
                         onClick = {
+                            onSuccessfulLogin
                             showWebView = true
                         }
                     )
@@ -84,7 +86,8 @@ private fun LoginScreenPreview() {
     SteamDexTheme {
         LoginScreen(
             url = "https://amzn.eu/d/8ldmXfR",
-            useGradientBackground = false
+            useGradientBackground = false,
+            onSuccessfulLogin = {}
         )
     }
 }
@@ -97,6 +100,7 @@ private fun LoginScreenGradientPreview() {
         LoginScreen(
             url = "https://amzn.eu/d/8ldmXfR",
             useGradientBackground = true,
+            onSuccessfulLogin = {},
             modifier = Modifier.gradientBackground(theme)
         )
     }
