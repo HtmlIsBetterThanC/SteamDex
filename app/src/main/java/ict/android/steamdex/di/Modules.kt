@@ -7,6 +7,8 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import ict.android.steamdex.data.repositories.GameRepository
 import ict.android.steamdex.data.repositories.GameRepositoryImpl
+import ict.android.steamdex.data.repositories.ProfileRepository
+import ict.android.steamdex.data.repositories.ProfileRepositoryImpl
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.DefaultRequest
 import io.ktor.client.plugins.compression.ContentEncoding
@@ -76,4 +78,13 @@ abstract class GameRepositoryModule {
     @Singleton
     @Binds
     abstract fun bindsGameRepository(gameRepositoryImpl: GameRepositoryImpl): GameRepository
+}
+
+@Suppress("unused")
+@Module
+@InstallIn(SingletonComponent::class)
+abstract class ProfileRepositoryModule {
+    @Singleton
+    @Binds
+    abstract fun bindsProfileRepository(profileRepositoryImpl: ProfileRepositoryImpl): ProfileRepository
 }
