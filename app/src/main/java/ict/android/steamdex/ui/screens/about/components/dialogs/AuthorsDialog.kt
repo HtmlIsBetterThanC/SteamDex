@@ -19,7 +19,7 @@ fun AuthorsDialog(
 ) {
     InformationDialog(
         showDialog = showDialog,
-        dialogTitle = stringResource(R.string.about_app_screen_authors_dialog_title),
+        dialogTitle = stringResource(R.string.about_screen_dialog_title_authors),
         dialogDescription = authors,
         onDismissDialog = onDismissDialog,
         modifier = modifier

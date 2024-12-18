@@ -19,7 +19,7 @@ fun AppLicenseDialog(
 ) {
     InformationDialog(
         showDialog = showDialog,
-        dialogTitle = stringResource(R.string.about_app_screen_license_dialog_title_app),
+        dialogTitle = stringResource(R.string.about_screen_dialog_title_app_license),
         dialogDescription = license,
         onDismissDialog = onDismissDialog,
         modifier = modifier

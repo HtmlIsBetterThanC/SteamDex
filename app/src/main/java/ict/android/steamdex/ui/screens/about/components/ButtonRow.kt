@@ -3,7 +3,6 @@ package ict.android.steamdex.ui.screens.about.components
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
@@ -13,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import ict.android.steamdex.R
@@ -56,37 +56,32 @@ fun ButtonRow(
 
 @PreviewSteam
 @Composable
-fun ButtonRowPreview() {
-
+private fun ButtonRowPreview() {
     val firstRowButtons = listOf(
         ButtonConfig(
             icon = painterResource(R.drawable.group_filled),
-            text = "Authors",
+            text = stringResource(R.string.about_screen_authors_title),
             onClick = { },
             buttonColor = MaterialTheme.colorScheme.tertiaryContainer
-
         ),
         ButtonConfig(
             icon = painterResource(R.drawable.translate),
-            text = "Translation",
+            text = stringResource(R.string.about_screen_translation_title),
             onClick = { },
             buttonColor = MaterialTheme.colorScheme.tertiaryContainer
-
         ),
         ButtonConfig(
             icon = painterResource(R.drawable.volunteer_activism),
-            text = "Donations",
+            text = stringResource(R.string.about_screen_donations_title),
             onClick = { },
             buttonColor = MaterialTheme.colorScheme.tertiaryContainer
-
         )
     )
 
     SteamDexTheme {
         Surface {
             ButtonRow(
-                firstRowButtons,
-
+                firstRowButtons
             )
         }
     }
